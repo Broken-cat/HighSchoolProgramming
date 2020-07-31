@@ -12,8 +12,7 @@ public class Level1 {
 	}
 	
 	static int fac(int N) {
-		if (N ==0 )return 1;
-		N = N * (fac(N - 1));
-		return N;
+		if (N ==0 ) return 1;		
+		return N = N * (fac(N - 1));
 	}
 }
