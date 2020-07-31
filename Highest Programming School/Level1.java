@@ -8,11 +8,15 @@ public class Level1 {
 	*/
 	
 	static int squirrel(int N) {
-		return Character.getNumericValue(String.valueOf(N).charAt(0));
+		int tmp = fac(N);
+		while (tmp/10 != 0) {
+			tmp /= 10;
+		}
+		return tmp;
 	}
 	
 	static int fac(int N) {
-		if (N ==0 ) return 1;		
+		if (N == 0) return 1;		
 		return N = N * (fac(N - 1));
 	}
 }
