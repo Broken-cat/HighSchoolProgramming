@@ -5,7 +5,7 @@ public class Level1 {
 	работает рекурсия и пытался запихнуть всё в один метод.
 	Для решения задачи решил разбить на подзадачи: вычисление факториала
 	и нахождения первой цифры.	
-	/*
+	*/
 	
 	static int squirrel(int N) {
 		return Character.getNumericValue(String.valueOf(N).charAt(0));
