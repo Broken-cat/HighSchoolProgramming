@@ -1,5 +1,5 @@
 
-public class Level2 {
+public class Level1 {
 
 	
 	static int odometer(int [] oksana) {
