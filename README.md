@@ -1,2 +1,1 @@
-# HighSchoolProgramming
-High School Programming repo. Tasks.
+send to github
