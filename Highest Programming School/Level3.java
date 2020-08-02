@@ -1,11 +1,9 @@
 
-public class Level3 {
+public class Level1 {
 
 	
 	
-	// N x M - размеры
-	// even elem of array - coords of высадки по N
-	// odd elem of array - coords of высадки по M
+	
 	
 	
 	static int ConquestCampaign(int N, int M, int L, int[] battalion) {
