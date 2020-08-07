@@ -1,5 +1,5 @@
 
-public class Level4 {
+public class Level1 {
 
 	
 	static int[] MadMax(int N, int[] Tele) {
