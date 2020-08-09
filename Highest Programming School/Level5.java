@@ -1,5 +1,5 @@
 
-public class Level5 {
+public class Level1 {
 
 	static int[] SynchronizingTables(int N, int[] ids, int[] salary) {
 		int[] tmpIdx = new int[N];
