@@ -6,9 +6,10 @@ public class Level1 {
 
 	static int[][] numberLock = { { 6, 1, 9 }, { 5, 2, 8 }, { 4, 3, 7 } };
 
+	
 	static String PatternUnlock(int N, int[] hits) {
 		int startInt = hits[0];
-
+		
 		double length = 0;
 
 		outer: for (int i = 0; i < numberLock.length; i++) {
@@ -34,34 +35,18 @@ public class Level1 {
 
 	
 		
-		return round(String.valueOf(length));
+		return round(length);
 	}
 
-	static String round(String tmp) {
+	static String round(double tmp) {
 		String result = "";
-		char[] chars = tmp.toCharArray();
+		String length = String.format("%.5f", tmp);		 // round
+		char[] chars = length.toCharArray(); 
+		
 		for (int i = 0; i < chars.length; i++) {
-			if(tryParseInt(String.valueOf(chars[i])) && chars[i] != '0') result += String.valueOf(chars[i]);	
-			
-		}
-
-		char[] chars2 = new char[6];
-		chars = result.toCharArray();
-		try {
-			for (int i = 0; i < chars2.length; i++) {
-				chars2[i] = chars[i];			
-			}
-			if( chars[6] >= 5) {
-				int k = chars[5];
-				chars2[5] = (char) ++k;
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
+			if(tryParseInt(String.valueOf(chars[i])) && chars[i] != '0') result += String.valueOf(chars[i]);				
 		}
 		
-		
-		result = String.copyValueOf(chars2);
-		result = result.trim();
 		return result;
 	}
 
