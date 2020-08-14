@@ -1,5 +1,5 @@
 
-public class Level6 {
+public class Level1 {
 
 	static int startX = 0;
 	static int startY = 0;
