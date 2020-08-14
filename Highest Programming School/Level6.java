@@ -1,5 +1,5 @@
 
-public class Level6 {
+public class Level1 {
 
 	static int startX = 0;
 	static int startY = 0;
@@ -7,10 +7,9 @@ public class Level6 {
 	static int[][] numberLock = { { 6, 1, 9 }, { 5, 2, 8 }, { 4, 3, 7 } };
 
 	static String PatternUnlock(int N, int[] hits) {
-		String result;
+		
 		int startInt = hits[0];
 
-		int searchingInt;
 		double length = 0;
 
 		outer: for (int i = 0; i < numberLock.length; i++) {
