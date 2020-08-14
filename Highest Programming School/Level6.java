@@ -52,13 +52,14 @@ public class Level1 {
 			for (int i = 0; i < chars2.length; i++) {
 				chars2[i] = chars[i];			
 			}
+			if( chars[6] >= 5) {
+				int k = chars[5];
+				chars2[5] = (char) ++k;
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		if( chars[6] >= 5) {
-			int k = chars[5];
-			chars2[5] = (char) ++k;
-		}
+		
 		result = String.copyValueOf(chars2);
 		return result;
 	}
