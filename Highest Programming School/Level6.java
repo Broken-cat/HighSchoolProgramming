@@ -59,7 +59,9 @@ public class Level1 {
 			// TODO: handle exception
 		}
 		
+		
 		result = String.copyValueOf(chars2);
+		result = result.trim();
 		return result;
 	}
 
