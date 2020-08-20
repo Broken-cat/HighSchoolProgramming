@@ -1,5 +1,5 @@
 
-public class Level8 {
+public class Level1 {
 
 	static int SumOfThe(int N, int[] data) {
 
