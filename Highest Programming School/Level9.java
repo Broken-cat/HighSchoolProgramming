@@ -1,5 +1,5 @@
 
-public class Level9 {
+public class Level1 {
 	static String TheRabbitsFoot(String s, boolean encode) {
 		if (encode)
 			return codeString(s);
