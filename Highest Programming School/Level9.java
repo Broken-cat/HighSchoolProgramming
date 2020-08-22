@@ -40,6 +40,7 @@ public class Level1 {
 			}
 			res += " ";
 		}
+			res = res.replaceAll(" ", "");
 		return res;
 	}
 
@@ -88,7 +89,7 @@ public class Level1 {
 				tmp += matrix[j][i];
 			}
 		}
-
+		tmp = tmp.replaceAll(" ", "");
 		return tmp;
 	}
 
