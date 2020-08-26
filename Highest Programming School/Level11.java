@@ -1,5 +1,5 @@
 
-public class Level11 {
+public class Level1 {
 
 	static String BigMinus(String s1, String s2) {
 		s1 = reverseString(s1);
