@@ -1,5 +1,5 @@
 
-public class Level13 {
+public class Level1 {
 	static int[] UFO(int N, int[] data, boolean octal) {
 		int[] res = new int[N];
 		if (octal) {
