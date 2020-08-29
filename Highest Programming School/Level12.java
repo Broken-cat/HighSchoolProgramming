@@ -1,5 +1,5 @@
 
-public class Level12 {
+public class Level1 {
 	static String MassVote(int N, int[] Votes) {
 		double summ = 0;
 		for (int x : Votes)
