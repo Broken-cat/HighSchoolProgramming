@@ -10,26 +10,29 @@ public class Level1 {
 			percents[i] = round(String.valueOf(tmp));
 		}
 
-		if (!checkNoWinners(percents))
-			return "no winner";
-
+		
 		int ind = 0;
 		double posWinner = 0;
-		for (int i = 0; i < percents.length - 1; i++) {
+		for (int i = 0; i < percents.length; i++) {
 			if (percents[i] > posWinner) {
 				posWinner = percents[i];
 				ind = i;
 			}
 		}
+		
+		
+		
 		if (percents[ind] > 50)
 			return "majority winner " + (ind + 1);
+		if (!checkNoWinners(percents))
+			return "no winner";
 		return "minority winner " + (ind + 1);
 	}
 
 	static boolean checkNoWinners(double[] array) {
 		double max = 0;
 		int ind = 0;
-		for (int i = 0; i < array.length - 1; i++) {
+		for (int i = 0; i < array.length; i++) {
 			if (array[i] > max) {
 				max = array[i];
 				ind = i;
