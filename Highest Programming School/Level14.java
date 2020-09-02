@@ -1,6 +1,6 @@
-import java.util.Arrays;
 
-public class Level14 {
+
+public class Level1 {
 	static int turn = 0;
 	static int k = 0;
 	static boolean isGreen = false;
@@ -53,7 +53,6 @@ public class Level14 {
 	static int[] makeArr(int arr[], int time) {
 		if(arr[1] == 0)isGreen = true;
 		for (int i = 0; i < time; i++) {
-			System.out.println(Arrays.toString(arr) + " " + i);
 			if (isGreen == false) {
 				if (arr[1] != 0) {
 					arr[1]--;
