@@ -54,7 +54,7 @@ public class Level1 {
 	}
 
 	static int[] makeArr(int arr[], int time) {
-		if(arr[1] == 0)isGreen = true;
+		if(arr[1] == 0 || arr[1] == 1)isGreen = true;
 		for (int i = 0; i < time; i++) {
 			
 			if (isGreen == false) {
