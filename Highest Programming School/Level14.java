@@ -1,7 +1,7 @@
 
 
 public class Level1 {
-	static int turn = 0;
+		static int turn = 0;
 	static int k = 0;
 	static boolean isGreen = false;
 
@@ -10,9 +10,11 @@ public class Level1 {
 		for (int i = 0; i < L; i++) {
 			turn++;
 			try {
+		
 				if (i + 1 == track[k][0] && k < N ) {
 					track[k][0] = 0;
 					turn = Itterate(track[k], turn);
+					
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -25,19 +27,20 @@ public class Level1 {
 		arr = makeArr(arr, time);
 		for (int i = 0; i < arr[1]+1; i++) {
 			if (isGreen == false) {
-				if (arr[1] != 0) {
+				if (arr[1] != 1) {
 					arr[1]--;
 					turn++;
 				} else {
 					isGreen = true;
 					arr[1] = arr[2];
 					arr[2]--;
+					turn++;
 				}
 			} else if (isGreen == true && arr[0] == 0) {
 				k++;
 				return turn;
 			} else {
-				if (arr[2] != 0)
+				if (arr[2] != 1)
 					arr[2]--;
 				else {
 					isGreen = false;
@@ -53,8 +56,9 @@ public class Level1 {
 	static int[] makeArr(int arr[], int time) {
 		if(arr[1] == 0)isGreen = true;
 		for (int i = 0; i < time; i++) {
+			
 			if (isGreen == false) {
-				if (arr[1] != 0) {
+				if (arr[1] != 1) {
 					arr[1]--;
 				} else {
 					isGreen = true;
@@ -62,7 +66,7 @@ public class Level1 {
 					arr[2]--;
 				}
 			} else {
-				if (arr[2] != 0)
+				if (arr[2] != 1)
 					arr[2]--;
 				else {
 					isGreen = false;
