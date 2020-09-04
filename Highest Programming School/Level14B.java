@@ -1,6 +1,5 @@
-import java.util.Arrays;
 
-public class Level14 {
+public class Level1 {
 	static int Unmanned(int L, int N, int[][] track) {
 		int time = 0;
 		int k = 0;
