@@ -27,20 +27,20 @@ public class Level1 {
 		isGreen = false;
 		for (int i = 0; i < time; i++) {
 			if (isGreen == false) {
-				if (arr[1] != 0) {
+				if (arr[1] != 1) {
 					arr[1]--;
 				} else {
 					isGreen = true;
 					arr[1] = arr[2];
-					arr[2]--;
+					
 				}
 			} else {
-				if (arr[2] != 0) {
+				if (arr[2] != 1) {
 					arr[2]--;
 				} else {
 					isGreen = false;
 					arr[2] = arr[1];
-					arr[1]--;
+					
 				}
 
 			}
