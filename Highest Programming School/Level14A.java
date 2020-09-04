@@ -13,8 +13,7 @@ public class Level1 {
 				if (track[k][0] != i+1)
 					turn++;
 				else {
-					turn = makeArr(track[k], turn);
-					turn++;
+					turn = makeArr(track[k], ++turn);
 				}
 			} else {
 				turn++;
@@ -26,7 +25,7 @@ public class Level1 {
 
 	static int makeArr(int[] arr, int time) {
 		isGreen = false;
-		for (int i = 0; i < time+1; i++) {
+		for (int i = 0; i < time; i++) {
 			if (isGreen == false) {
 				if (arr[1] != 0) {
 					arr[1]--;
