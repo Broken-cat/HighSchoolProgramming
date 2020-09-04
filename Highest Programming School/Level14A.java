@@ -1,6 +1,6 @@
-import java.util.Arrays;
 
-public class Level14 {
+
+public class Level1 {
 	static int turn = 0;
 	static int k = 0;
 	
@@ -46,7 +46,6 @@ public class Level14 {
 
 			}
 		}
-		System.out.println(Arrays.toString(arr));
 		if (isGreen == true) {
 			k++;
 			return turn;
@@ -61,30 +60,5 @@ public class Level14 {
 
 	}
 
-	static void test(int[] arr, int time) {
-		boolean isG = false;
-		for (int i = 0; i < time; i++) {
-			if (isG == false) {
-				if (arr[1] != 0) {
-					arr[1]--;
-					System.out.println(Arrays.toString(arr));
-				} else {
-					arr[1] = arr[2];
-					arr[2]--;
-					isG = true;
-					System.out.println(Arrays.toString(arr));
-				}
-			} else {
-				if (arr[2] != 0) {
-					arr[2]--;
-					System.out.println(Arrays.toString(arr));
-				} else {
-					arr[2] = arr[1];
-					arr[1]--;
-					isG = false;
-					System.out.println(Arrays.toString(arr));
-				}
-			}
-		}
-	}
+	
 }
