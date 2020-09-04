@@ -65,7 +65,7 @@ class Svetophor {
 		int g = redTime;
 		int s = greenTime;
 		if (isGreen == false) {
-			if (redTime != 1) {
+			if (redTime != 0) {
 				redTime--;
 			} else {
 				redTime = g;
@@ -73,7 +73,7 @@ class Svetophor {
 				step = 0;
 			}
 		} else {
-			if (greenTime != 1) {
+			if (greenTime != 0) {
 				greenTime--;
 			} else {
 				greenTime = s;
@@ -83,8 +83,9 @@ class Svetophor {
 		}
 	}
 
-	public int Wait() {
+		public int Wait() {
 		int k = 0;
+		if(redTime == 0)return 1;
 		while (redTime != 0) {
 			redTime--;
 			k++;
