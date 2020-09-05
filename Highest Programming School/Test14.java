@@ -1,20 +1,5 @@
-import java.util.Arrays;
 
-import javax.print.attribute.standard.Severity;
-
-import jdk.jfr.Percentage;
-
-public class Test {
-
-	public static void main(String[] args) {
-		int[][] ab = { { 3,2,2 }, { 6, 1, 3 } }; //10
-		int[][] bc =  { { 3,5,5 }, { 5, 2, 2 } };  //12
-		int[][] cd = { { 3,6,2 }, { 6, 2, 2 } }; //14
-		System.out.println(Unmanned(10, 2, cd) + "cd");
-		System.out.println(Unmanned(10, 2, ab) + "ab");
-		System.out.println(Unmanned(10, 2, bc) + "bc");
-	}
-
+public class Level1 {
 	static int Unmanned(int L, int N, int[][] track) {
 		int time = 0;
 		int k = 0;
