@@ -1,16 +1,6 @@
-import java.util.Arrays;
 
-public class Level15 {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[][] arr = LevelTest.convertToArr(2, 2, "34 98");
-		System.out.print(LevelTest.TankRush(3, 4, "1234 2345 0987", 1, 4, "12345"));
-	}
-
-}
-
-class LevelTest {
+class Level1 {
 	static boolean TankRush(int H1, int W1, String S1, int H2, int W2, String S2) {
 		boolean isFound = false;
 		if (H2 > H1 | W2 > W1)return false;
