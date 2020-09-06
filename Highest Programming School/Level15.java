@@ -8,8 +8,8 @@ class Level1 {
 		int[][] Find = convertToArr(H2, W2, S2);
 
 		try {
-			got: for (int i = 0; i < H1; i++) {
-				for (int j = 0; j < W1; j++) { // searching map
+			 for (int i = 0; i < H1; i++) {
+				got:  for (int j = 0; j < W1; j++) { // searching map
 					int k = 0;
 					if (Map[i][j] == Find[0][0]) { // if map - first elem of Find
 						int posX = i;
