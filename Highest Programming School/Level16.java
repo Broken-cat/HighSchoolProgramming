@@ -1,15 +1,5 @@
 
-public class Level16 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[] arr ={400, 350, 300, 250, 200, 150, 100};
-		System.out.print(LevelTestin.MaximumDiscount(7, arr));
-	}
-
-}
-
-class LevelTestin {
+class Level1 {
 
 	static int MaximumDiscount(int N, int[] price) {
 		int summ = 0;
