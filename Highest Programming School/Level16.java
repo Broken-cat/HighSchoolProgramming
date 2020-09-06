@@ -1,5 +1,5 @@
 
-class Level1 {
+public class Level1 {
 
 	static int MaximumDiscount(int N, int[] price) {
 		int summ = 0;
