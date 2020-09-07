@@ -1,13 +1,4 @@
 
-class Level17Test {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.print(Level1.LineAnalysis("*.*.*.*.*.*.*"
-				+ ""));
-	}
-
-}
 
 class Level1  {
 	static boolean LineAnalysis(String line) {
