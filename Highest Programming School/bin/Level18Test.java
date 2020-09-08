@@ -1,20 +1,3 @@
-package bin;
-
-import java.util.Arrays;
-
-public class Level18Test {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[] a = { 1, 19, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 2, 20 };
-		int[] b = { 1, 3, 4, 5, 6, 2, 7 };
-		// double timeStart = System.currentTimeMillis();
-		System.out.println(Level1.MisterRobot(7, a));
-		// double timeSpent = System.currentTimeMillis()-timeStart;
-		// System.out.print("sec: " + timeSpent/1000);
-	}
-
-}
 
 class Level1 {
 	static boolean MisterRobot(int N, int[] data) {
