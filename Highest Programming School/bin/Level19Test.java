@@ -1,6 +1,6 @@
 
 
-class Level19 {
+class Level1 {
 
 	static String[] ShopOLAP(int N, String[] items) {
 		int[] prices = takePrices(items);
