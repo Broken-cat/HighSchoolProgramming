@@ -1,17 +1,4 @@
-package bin;
 
-import java.util.Arrays;
-
-public class Level19Test {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		String[] a = { "платье1 5", "сумка32 2", "платье1 1", "сумка23 2", "сумка128 4" };
-		System.out.print(Arrays.toString(Level19.ShopOLAP(a.length, a)));
-	}
-
-}
 
 class Level19 {
 
