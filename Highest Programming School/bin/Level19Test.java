@@ -1,10 +1,8 @@
 
-
 import java.util.*;
 
 
-
-public class Level1 {
+class Level1 {
 
 	static String[] ShopOLAP(int N, String[] items) {
 		Arrays.sort(items);
@@ -39,7 +37,7 @@ public class Level1 {
 	}
 
 	static String[] reverseAndSort(String[] items, int[] prices) {
-		
+
 		for (int i = 0; i < items.length; i++) {
 			items[i] = reverse(items[i]);
 		}
@@ -52,9 +50,8 @@ public class Level1 {
 		return items;
 	}
 
-	
 	static String[] sort(String[] item, int[] prices) {
-		int len = item.length;	
+		int len = item.length;
 
 		for (int i = 0; i < len - 1; i++) {
 			for (int j = 0; j < len - 1 - i; j++) {
@@ -93,15 +90,15 @@ public class Level1 {
 
 	static int[] takePrices(String[] data) {
 		int[] prices = new int[data.length];
-		t : for (int i = 0; i < prices.length; i++) {
+		t: for (int i = 0; i < prices.length; i++) {
 			char[] tmp = data[i].toCharArray();
-			for (int j = tmp.length-1; j >0; j--) {
-				if(tmp[j] == ' ') {
-					prices[i] = Integer.parseInt(data[i].substring(j+1));
+			for (int j = tmp.length - 1; j > 0; j--) {
+				if (tmp[j] == ' ') {
+					prices[i] = Integer.parseInt(data[i].substring(j + 1));
 					continue t;
 				}
 			}
-			
+
 		}
 		return prices;
 	}
@@ -114,8 +111,10 @@ public class Level1 {
 			String tmp = goods[i];
 			count = i;
 			for (int j = count; j < goods.length; j++) {
-				if (j != ind & tmp.equals(goods[j]))
+				if (j != ind & tmp.equals(goods[j])) {
 					k++;
+					i++;
+				}
 			}
 		}
 		k = goods.length - k;
