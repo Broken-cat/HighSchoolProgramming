@@ -2,6 +2,8 @@
 
 import java.util.*;
 
+
+
 class Level1 {
 
 	static String[] ShopOLAP(int N, String[] items) {
@@ -29,12 +31,15 @@ class Level1 {
 			result[indx] = tmpitms[i] + " " + String.valueOf(pr);
 			indx++;
 		}
-		result = reverseAndSort(result, prices);
+		int[] tmpPr = new int[result.length];
+		tmpPr = takePrices(result);
+		result = reverseAndSort(result, tmpPr);
 
 		return result;
 	}
 
 	static String[] reverseAndSort(String[] items, int[] prices) {
+		
 		for (int i = 0; i < items.length; i++) {
 			items[i] = reverse(items[i]);
 		}
@@ -72,7 +77,7 @@ class Level1 {
 		for (int i = array.length - 1; i >= 0; i--) {
 			result = result + array[i];
 		}
-		return tmp;
+		return result;
 	}
 
 	static String takeItems(String data) {
@@ -88,8 +93,15 @@ class Level1 {
 
 	static int[] takePrices(String[] data) {
 		int[] prices = new int[data.length];
-		for (int i = 0; i < prices.length; i++) {
-			prices[i] = Integer.parseInt(data[i].substring(data[i].length() - 1));
+		t : for (int i = 0; i < prices.length; i++) {
+			char[] tmp = data[i].toCharArray();
+			for (int j = tmp.length-1; j >0; j--) {
+				if(tmp[j] == ' ') {
+					prices[i] = Integer.parseInt(data[i].substring(j+1));
+					continue t;
+				}
+			}
+			
 		}
 		return prices;
 	}
