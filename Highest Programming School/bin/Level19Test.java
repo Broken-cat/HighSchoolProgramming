@@ -4,7 +4,7 @@ import java.util.*;
 
 
 
-class Level1 {
+public class Level1 {
 
 	static String[] ShopOLAP(int N, String[] items) {
 		Arrays.sort(items);
