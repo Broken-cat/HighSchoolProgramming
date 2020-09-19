@@ -2,7 +2,7 @@
 import java.util.*;
 
 
-class Level20 {
+class Level1 {
 
 	static public String BastShoe(String command) {
 		
