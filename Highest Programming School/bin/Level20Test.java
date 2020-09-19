@@ -1,51 +1,6 @@
-package bin;
 
-import static java.lang.System.out;
+import java.util.*;
 
-import java.util.Stack;
-
-public class Level20Test {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String test = "";
-		out.println(Level20.BastShoe("1 Privet"));
-		out.println(Level20.BastShoe("1 , mir!"));
-		out.println(Level20.BastShoe("1 ++"));
-		out.println(Level20.BastShoe("2 2"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("1 *"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("3 6"));
-		out.println(Level20.BastShoe("2 100"));
-		
-		out.println(Level20.BastShoe("1 Privet"));
-		out.println(Level20.BastShoe("1 , mir!"));
-		out.println(Level20.BastShoe("1 ++"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("5"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("5"));
-		out.println(Level20.BastShoe("5"));
-		out.println(Level20.BastShoe("5"));
-		out.println(Level20.BastShoe("5"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("2 2") + " deleted");
-		out.println(Level20.BastShoe("4"));
-		out.println(Level20.BastShoe("5"));
-		out.println(Level20.BastShoe("5"));
-		out.println(Level20.BastShoe("5"));
-		
-	
-
-	}
-
-}
 
 class Level20 {
 
