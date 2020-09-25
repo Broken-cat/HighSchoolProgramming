@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class Level {
+public class Level1 {
 
 	static Stack<String> steck = new Stack<String>();
 	public static Stack<String> removeDuplicates(Stack<String> list) {
