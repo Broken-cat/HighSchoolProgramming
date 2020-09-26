@@ -1,17 +1,7 @@
-import java.util.Stack;
+import java.util.*;
 
-public class lvl23 {
+public class Level1 {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String[] s = { ".+..", "..+.", ".+.." };
-		for (int i = 0; i < 12; i++) {
-			System.out.println("year: " + i);
-			TreeOfLife(3, 4, i, s);
-			System.out.println();
-		}
-
-	}
 
 	static String[] TreeOfLife(int H, int W, int N, String[] tree) {
 		String treeString = "";
@@ -90,16 +80,6 @@ public class lvl23 {
 				count++;
 			}
 		}
-		count = 0;
-		for (int i = 0; i < H; i++) {
-			for (int j = 0; j < W; j++) {
-				System.out.print(result[count] + " ");
-				count++;
-			}
-			System.out.println();
-		}
-	
-		
 		return result;
 	}
 
