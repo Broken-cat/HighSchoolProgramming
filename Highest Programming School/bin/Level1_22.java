@@ -1,9 +1,7 @@
 
 import java.util.*;
-
 public class Level1 {
 
-	
 
 	static boolean SherlockValidString(String s) {
 		char[] chars = s.toCharArray();
@@ -22,7 +20,6 @@ public class Level1 {
 			}
 		}
 		nums.push(count);
-
 		int avgCount = findFrequent(nums);
 		int possibleRemove = 1;
 		for (Integer l : nums) {
@@ -41,24 +38,29 @@ public class Level1 {
 	}
 
 	static int findFrequent(Stack<Integer> s) {
-		Collections.sort(s);
-		int comparableInt = s.elementAt(0);
-		int tmpMax = 0;	
-		int k = 1;
-		for (Integer i : s) {
-			if (comparableInt == i) {
-				k++;
-			} else {
-				if (k > tmpMax) {
-					tmpMax = k;
-					comparableInt = s.elementAt(i-1);
-				} else {
-					k = 0;
-				}
-				
-			}
-		}
-		return comparableInt;
+		int len = s.size();
+		  int[] a = new int[s.size()];
+		  for (int i = 0; i < len; i++)a[i] = s.elementAt(i);
+		  int count = 1, tempCount;
+		  int popular = a[0];
+		  int temp = 0;
+		  for (int i = 0; i < (a.length - 1); i++)
+		  {
+		    temp = a[i];
+		    tempCount = 0;
+		    for (int j = 1; j < a.length; j++)
+		    {
+		      if (temp == a[j])
+		        tempCount++;
+		    }
+		    if (tempCount > count)
+		    {
+		      popular = temp;
+		      count = tempCount;
+		    }
+		  }
+		  return popular;
 	}
 
 }
+
