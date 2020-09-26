@@ -1,18 +1,9 @@
-package lvl22;
 
-import java.util.Collections;
-import java.util.Stack;
+import java.util.*;
 
-public class Level1_22 {
+public class Level1 {
 
-	public static void main(String[] args) {
-		System.out.println(SherlockValidString("exxyyzz"));
-		System.out.println(SherlockValidString("xyzaa"));
-		System.out.println(SherlockValidString("xxyyz"));
-		System.out.println(SherlockValidString("xyzzz"));
-		System.out.println(SherlockValidString("xxyyza"));
-		System.out.println(SherlockValidString("xxyyzabc"));
-	}
+	
 
 	static boolean SherlockValidString(String s) {
 		char[] chars = s.toCharArray();
