@@ -37,9 +37,10 @@ public class Level1 {
 			return res;
 		} catch (Exception e) {
 			// TODO: handle exception
+			return "";
 		}
 
-		return res;
+		
 	}
 
 	static void printPermutn(String str, String ans) {
