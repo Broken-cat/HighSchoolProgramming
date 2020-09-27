@@ -1,15 +1,8 @@
 import java.util.Stack;
 
-public class lvl23 {
+public class Level1 {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String[] s = { ".+..", "..+.", ".+.." };
 	
-			TreeOfLife(3, 4, 12, s);
-			System.out.println();
-		
-	}
 
 	static String[] TreeOfLife(int H, int W, int N, String[] tree) {
 		String treeString = "";
