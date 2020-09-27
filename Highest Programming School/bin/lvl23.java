@@ -76,6 +76,7 @@ public class Level1 {
 		for(int i = 0; i < H; i++) {
 			for (int j = 0; j < W; j++) {
 				if(treeHxW[i][j].equals("0"))treeHxW[i][j] = ".";
+				else treeHxW[i][j] = "+";
 				result[count] = treeHxW[i][j];
 				count++;
 			}
