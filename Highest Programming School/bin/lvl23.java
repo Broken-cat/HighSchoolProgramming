@@ -73,23 +73,19 @@ public class Level1 {
 				(isEven) = false;
 		}
 		count = 0;
-		String[] result = new String[H*W];
+		String[] result = new String[tree.length];
+		String tmp = "";
 		for(int i = 0; i < H; i++) {
 			for (int j = 0; j < W; j++) {
 				if(treeHxW[i][j].equals("0"))treeHxW[i][j] = ".";
 				else treeHxW[i][j] = "+";
-				result[count] = treeHxW[i][j];
+				tmp += treeHxW[i][j];
 				count++;
 			}
+			result[i] = tmp;
+			tmp = "";
 		}
 		count = 0;
-		for (int i = 0; i < H; i++) {
-			for (int j = 0; j < W; j++) {
-				System.out.print(result[count] + " ");
-				count++;
-			}
-			System.out.println();
-		}
 	
 		
 		return result;
