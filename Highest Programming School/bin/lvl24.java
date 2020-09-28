@@ -1,17 +1,11 @@
-package lvl23;
 
 import java.util.Arrays;
 
-public class lvl23 {
+public class Level1 {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String[] s = { "123456", "234567", "345678", "456789" };
-		String[] tmp = MatrixTurn(s, 4, 6, 2);
-		System.out.print(Arrays.toString(tmp));
-	}
+	
 
-	static String[] MatrixTurn(String Matrix[], int M, int N, int T) {
+	static void MatrixTurn(String Matrix[], int M, int N, int T) {
 
 		String MatrixString = "";
 		for (int i = 0; i < Matrix.length; i++) {
@@ -73,17 +67,7 @@ public class lvl23 {
 			}
 		}
 
-		count = 0;
-		String[] result = new String[Matrix.length];
-		String tmp = "";
-		for (int i = 0; i < MatrixMxN.length; i++) {
-			for (int j = 0; j < MatrixMxN[i].length; j++) {
-				tmp += MatrixMxN[i][j];
-				count++;
-			}
-			result[i] = tmp;
-			tmp = "";
+	
 		}
-		return result;
 	}
 }
