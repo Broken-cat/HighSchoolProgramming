@@ -63,7 +63,18 @@ public class Level1 {
 				col++;
 			}
 		}
-
+		count = 0;
+		String[] result = new String[Matrix.length];
+		String tmp = "";
+		for (int i = 0; i < MatrixMxN.length; i++) {
+			for (int j = 0; j < MatrixMxN[i].length; j++) {
+				tmp += MatrixMxN[i][j];
+				count++;
+			}
+			result[i] = tmp;
+			tmp = "";
+		}
+		Matrix = result;
 	
 	}
 }
