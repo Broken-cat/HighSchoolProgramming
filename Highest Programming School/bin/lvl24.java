@@ -1,9 +1,6 @@
-
 import java.util.Arrays;
 
 public class Level1 {
-
-	
 
 	static void MatrixTurn(String Matrix[], int M, int N, int T) {
 
@@ -68,6 +65,5 @@ public class Level1 {
 		}
 
 	
-		}
 	}
 }
