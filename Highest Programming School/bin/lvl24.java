@@ -1,9 +1,19 @@
 import java.util.Arrays;
 
 public class Level1 {
+	
+	static String[] s;
+	
+	public static void setS(String[] ss) {
+		s  = ss;
+	}
+	
+	public static String[] getS() {
+		return s;
+	}
 
 	static void MatrixTurn(String Matrix[], int M, int N, int T) {
-
+		
 		String MatrixString = "";
 		for (int i = 0; i < Matrix.length; i++) {
 			MatrixString += Matrix[i];
@@ -75,6 +85,6 @@ public class Level1 {
 			tmp = "";
 		}
 		Matrix = result;
-	
+		setS(Matrix);
 	}
 }
