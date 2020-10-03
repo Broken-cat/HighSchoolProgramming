@@ -27,11 +27,11 @@ public class Level1 {
 				count++;
 			}
 		}
-		for (int tick = 0; tick < T; tick++) {
+		
 		int row = 0, col = 0;
 		String prev;
 		String curr;
-
+		for (int tick = 0; tick < T; tick++) {
 
 			while (row < M && col < N) {
 
