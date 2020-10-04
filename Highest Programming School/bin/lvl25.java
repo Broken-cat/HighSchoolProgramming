@@ -16,6 +16,11 @@ public class Level1 {
 	static int[] funcS(int A[], int N) {
 		int k;
 		int[] B = new int[N];
+		if(N == 1) {
+			B[0] = A[0];
+			return B;
+		}
+		
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N-i-1; j++) {
 				k=i+j;
@@ -24,6 +29,7 @@ public class Level1 {
 		}
 		return B;
 	}
+	
 	
 	static int findMax(int A[], int j, int k) {
 		int tmpMax = 0;
