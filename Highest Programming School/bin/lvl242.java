@@ -1,100 +1,65 @@
 import java.util.Arrays;
 
 public class Level1 {
-		static String[] s = { "123456", "234567", "345678", "456789" };
-	public static void setS(String[] ss) {
-		s = ss;
-	}
-
-	public static String[] getS() {
-		return s;
-	}
+	
 
 	
-	
-	static String[] turn(String Matrix[], int M, int N) {
-		Matrix = getS();
-		String MatrixString = "";
-		for (int i = 0; i < Matrix.length; i++) {
-					MatrixString += Matrix[i];
-		}
-	
-			char[] chars = MatrixString.toCharArray();
-			String[][] MatrixMxN = new String[M][N];
-			int count = 0;
-			for (int i = 0; i < M; i++) {
-				for (int j = 0; j < N; j++) {
-					MatrixMxN[i][j] = String.valueOf(chars[count]);
-					count++;
-				}
-			}
+	static String replace(int i, String str, String prev) {
+		str = str.substring(0,i) + prev + str.substring(i+1, str.length());
+		return str;
+	}
+
+	static void MatrixTurn(String Matrix[], int M, int N, int T) {
 		
-			int row = 0, col = 0;
+		
+		for (int tick = 0; tick < T; tick++) {
+		int tmpN = N;
+		int tmpM = M;	
+		int row = 0, col = 0;
 
-			String prev;
-			String curr;
+			char prev;
+			char curr;
 
-			while (row < M && col < N) {
-
-				if (row  == N || col == M)
+			while (row < tmpM && col < tmpN) {
+				if (row  == tmpN || col == tmpM)
 					break;
 
-				prev = MatrixMxN[row + 1][col];
+				prev = Matrix[row + 1].charAt(col);
 
-				for (int i = col; i < N; i++) {
-					curr = MatrixMxN[row][i];
-					MatrixMxN[row][i] = prev;
+				for (int i = col; i < tmpN; i++) {
+					curr = Matrix[row].charAt(i);
+					Matrix[row] = replace(i, Matrix[row], String.valueOf(prev));
 					prev = curr;
+			
 				}
 				row++;
 
-				for (int i = row; i < M; i++) {
-					curr = MatrixMxN[i][N - 1];
-					MatrixMxN[i][N - 1] = prev;
+				for (int i = row; i < tmpM; i++) {
+					curr = Matrix[i].charAt(tmpN-1);
+					Matrix[i] = replace(tmpN-1, Matrix[i], String.valueOf(prev));//Matrix[i].replace(t, prev);//[tmpN - 1] = prev;
 					prev = curr;
 				}
-				N--;
+				tmpN--;
 
-				if (row < M) {
-					for (int i = N - 1; i >= col; i--) {
-						curr = MatrixMxN[M - 1][i];
-						MatrixMxN[M - 1][i] = prev;
+				if (row < tmpM) {
+					for (int i = tmpN - 1; i >= col; i--) {
+						curr = Matrix[tmpM - 1].charAt(i); //[i];
+						Matrix[tmpM - 1] = replace(i, Matrix[tmpM-1], String.valueOf(prev)); //Matrix[tmpM-1].replace(t, prev);//[i] = prev;
 						prev = curr;
 					}
 				}
-				M--;
-
-				if (col < N) {
-					for (int i = M - 1; i >= row; i--) {
-						curr = MatrixMxN[i][col];
-						MatrixMxN[i][col] = prev;
+				tmpM--;
+				if (col < tmpN) {
+					for (int i = tmpM - 1; i >= row; i--) {
+						curr = Matrix[i].charAt(col);//[col];
+						Matrix[i] = replace(col, Matrix[i], String.valueOf(prev));//Matrix[i].replace(t, prev); //[col] = prev;
 						prev = curr;
 					}
 				}
 				col++;
-
-			}
-			
+			}		
 		
-		 count = 0;
-		String[] result = new String[Matrix.length];
-		String tmp = "";
-		for (int i = 0; i < MatrixMxN.length; i++) {
-			for (int j = 0; j < MatrixMxN[i].length; j++) {
-				tmp += MatrixMxN[i][j];
-				count++;
-			}
-			result[i] = tmp;
-			tmp = "";
+		
 		}
-		Matrix = result;
-		return Matrix;
-		}
-	
-	
-
-	static void MatrixTurn(String Matrix[], int M, int N, int T) {
-		setS(Matrix);
-		for(int i = 0; i < T; i++)setS(turn(Matrix, M, N));
 	}
 }
