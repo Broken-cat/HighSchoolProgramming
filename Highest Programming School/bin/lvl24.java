@@ -11,69 +11,75 @@ public class Level1 {
 	public static String[] getS() {
 		return s;
 	}
-
 	static void MatrixTurn(String Matrix[], int M, int N, int T) {
-		
+		setS(Matrix);	
+		for (int tick = 0; tick < T; tick++) {
+		int tmpN = N;
+		int tmpM = M;
+		Matrix = getS();
 		String MatrixString = "";
 		for (int i = 0; i < Matrix.length; i++) {
-			MatrixString += Matrix[i];
+					MatrixString += Matrix[i];
 		}
-		char[] chars = MatrixString.toCharArray();
-		String[][] MatrixMxN = new String[M][N];
-		int count = 0;
-		for (int i = 0; i < M; i++) {
-			for (int j = 0; j < N; j++) {
-				MatrixMxN[i][j] = String.valueOf(chars[count]);
-				count++;
+	
+			char[] chars = MatrixString.toCharArray();
+			String[][] MatrixMxN = new String[tmpM][tmpN];
+			int count = 0;
+			for (int i = 0; i < tmpM; i++) {
+				for (int j = 0; j < tmpN; j++) {
+					MatrixMxN[i][j] = String.valueOf(chars[count]);
+					count++;
+				}
 			}
-		}
 		
-		int row = 0, col = 0;
-		String prev;
-		String curr;
-		for (int tick = 0; tick < T; tick++) {
+			int row = 0, col = 0;
 
-			while (row < M && col < N) {
+			String prev;
+			String curr;
 
-				if (row  == M || col  == N)
+			while (row < tmpM && col < tmpN) {
+
+				if (row + 1 == tmpM || col + 1 == tmpN)
 					break;
 
 				prev = MatrixMxN[row + 1][col];
 
-				for (int i = col; i < N; i++) {
+				for (int i = col; i < tmpN; i++) {
 					curr = MatrixMxN[row][i];
 					MatrixMxN[row][i] = prev;
 					prev = curr;
 				}
 				row++;
 
-				for (int i = row; i < M; i++) {
-					curr = MatrixMxN[i][N - 1];
-					MatrixMxN[i][N - 1] = prev;
+				for (int i = row; i < tmpM; i++) {
+					curr = MatrixMxN[i][tmpN - 1];
+					MatrixMxN[i][tmpN - 1] = prev;
 					prev = curr;
 				}
-				N--;
+				tmpN--;
 
-				if (row < M) {
-					for (int i = N - 1; i >= col; i--) {
-						curr = MatrixMxN[M - 1][i];
-						MatrixMxN[M - 1][i] = prev;
+				if (row < tmpM) {
+					for (int i = tmpN - 1; i >= col; i--) {
+						curr = MatrixMxN[tmpM - 1][i];
+						MatrixMxN[tmpM - 1][i] = prev;
 						prev = curr;
 					}
 				}
-				M--;
+				tmpM--;
 
-				if (col < N) {
-					for (int i = M - 1; i >= row; i--) {
+				if (col < tmpN) {
+					for (int i = tmpM - 1; i >= row; i--) {
 						curr = MatrixMxN[i][col];
 						MatrixMxN[i][col] = prev;
 						prev = curr;
 					}
 				}
 				col++;
+
 			}
-		}
-		count = 0;
+			
+		
+		 count = 0;
 		String[] result = new String[Matrix.length];
 		String tmp = "";
 		for (int i = 0; i < MatrixMxN.length; i++) {
@@ -84,7 +90,9 @@ public class Level1 {
 			result[i] = tmp;
 			tmp = "";
 		}
+
 		Matrix = result;
 		setS(Matrix);
+		}
 	}
 }
