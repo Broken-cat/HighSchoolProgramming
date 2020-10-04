@@ -39,7 +39,7 @@ public class Level1 {
 
 			while (row < tmpM && col < tmpN) {
 
-				if (row + 1 == tmpM || col + 1 == tmpN)
+				if (row  == tmpM || col  == tmpN)
 					break;
 
 				prev = MatrixMxN[row + 1][col];
