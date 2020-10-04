@@ -35,7 +35,7 @@ public class Level1 {
 
 			while (row < M && col < N) {
 
-				if (row + 1 == M || col + 1 == N)
+				if (row  == M || col  == N)
 					break;
 
 				prev = MatrixMxN[row + 1][col];
