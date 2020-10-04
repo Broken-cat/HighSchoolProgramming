@@ -11,6 +11,7 @@ public class Level1 {
 	public static String[] getS() {
 		return s;
 	}
+	
 	static void MatrixTurn(String Matrix[], int M, int N, int T) {
 		setS(Matrix);	
 		for (int tick = 0; tick < T; tick++) {
@@ -39,7 +40,7 @@ public class Level1 {
 
 			while (row < tmpM && col < tmpN) {
 
-				if (row  == tmpM || col  == tmpN)
+				if (row  == tmpN || col == tmpM)
 					break;
 
 				prev = MatrixMxN[row + 1][col];
@@ -90,9 +91,9 @@ public class Level1 {
 			result[i] = tmp;
 			tmp = "";
 		}
-
-		Matrix = result;
-		setS(Matrix);
+		setS(result);
+		Matrix = getS();
+		
 		}
 	}
 }
