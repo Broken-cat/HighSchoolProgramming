@@ -1,10 +1,6 @@
-package tmp244;
-
 import java.util.Arrays;
 
-public class lvl24 {
-	static String[] s = { "123456", "234567", "345678", "456789" };
-
+public class Level1 {
 	public static void setS(String[] ss) {
 		s = ss;
 	}
@@ -13,18 +9,7 @@ public class lvl24 {
 		return s;
 	}
 
-	public static void main(String[] argv) {
-		setS(s);
-		for (int i = 0; i < s.length; i++)
-			System.out.println(s[i]);
-		System.out.println();
-		MatrixTurn(s, 4, 6, 3);
-		String[] t = getS();
-		for (int k = 0; k < t.length; k++)
-			System.out.println(t[k]);
-		System.out.println();
-		
-	}
+	
 	
 	static String[] turn(String Matrix[], int M, int N) {
 		Matrix = getS();
