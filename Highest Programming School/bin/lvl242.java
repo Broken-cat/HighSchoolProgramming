@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class Level1 {
+		static String[] s = { "123456", "234567", "345678", "456789" };
 	public static void setS(String[] ss) {
 		s = ss;
 	}
