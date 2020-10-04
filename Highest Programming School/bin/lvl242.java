@@ -87,14 +87,14 @@ public class Level1 {
 			result[i] = tmp;
 			tmp = "";
 		}
-		setS(result);
-		return result;
+		Matrix = result;
+		return Matrix;
 		}
 	
 	
 
 	static void MatrixTurn(String Matrix[], int M, int N, int T) {
 		setS(Matrix);
-		for(int i = 0; i < T; i++)Matrix = turn(Matrix, M, N);
+		for(int i = 0; i < T; i++)setS(turn(Matrix, M, N));
 	}
 }
