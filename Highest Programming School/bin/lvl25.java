@@ -1,14 +1,7 @@
-package lvl25;
 
-import javax.sql.rowset.spi.TransactionalWriter;
+public class Level1 {
 
-public class lvl25 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int [] A = {1,2,3,4,5};
-		System.out.println(TransformTransform(A, A.length));
-	}
+	
 
 	static boolean TransformTransform(int A[], int N) {
 		int [] B = funcS(A, N);
