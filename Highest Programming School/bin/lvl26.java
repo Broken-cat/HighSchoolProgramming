@@ -1,11 +1,7 @@
-package lvl26;
 
-public class lvl26 {
+public class Level1 {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(BalancedParentheses(4));
-	}
+	
 	static int k = 0;
 	static String res = "";
 	static String startString = "";
