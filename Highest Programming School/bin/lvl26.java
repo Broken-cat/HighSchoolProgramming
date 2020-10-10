@@ -13,11 +13,12 @@ public class Level1 {
 	}
 	static String BalancedParentheses(int N) {		
 		String finalRes = "";		
+	//	if( N == 1 && k != 0)return finalRes;
 		res = makeS(N,k);
 		if(N == 1 && k == 0)return res;	
-		if(N == 1 )return finalRes;
+		if(N == 1 )return finalRes + " " + res;
 		
-		if(N == N+k)finalRes += res + " ";
+	//	if(N == N+k)finalRes += res + " ";
 		int len = res.length();
 		k++;
 		
@@ -25,7 +26,7 @@ public class Level1 {
 			finalRes += replace(N-1, t,  res);
 		}
 		finalRes = finalRes.substring(0, finalRes.length()-1);
-		return finalRes += BalancedParentheses(N-1);
+		return finalRes += " " + BalancedParentheses(N-1);
 	}
 	
 	
