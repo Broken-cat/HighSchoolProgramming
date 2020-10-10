@@ -16,7 +16,7 @@ public class Level1 {
 	//	if( N == 1 && k != 0)return finalRes;
 		res = makeS(N,k);
 		if(N == 1 && k == 0)return res;	
-		if(N == 1 )return finalRes + " " + res;
+		if(N == 1 )return finalRes + res;
 		
 	//	if(N == N+k)finalRes += res + " ";
 		int len = res.length();
@@ -25,8 +25,10 @@ public class Level1 {
 		for (int t = len-2; t >(N+k)/2 ; t--) {
 			finalRes += replace(N-1, t,  res);
 		}
+		
 		finalRes = finalRes.substring(0, finalRes.length()-1);
-		return finalRes += " " + BalancedParentheses(N-1);
+		finalRes += " ";
+		return finalRes += BalancedParentheses(N-1);
 	}
 	
 	
