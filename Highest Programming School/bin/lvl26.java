@@ -24,21 +24,11 @@ public class Level1 {
 		for (int t = len-2; t >(N+k)/2 ; t--) {
 			finalRes += replace(N-1, t,  res);
 		}
-		
-		return sort(finalRes += BalancedParentheses(N-1));
+		finalRes = finalRes.substring(0, finalRes.length()-1);
+		return finalRes += BalancedParentheses(N-1);
 	}
 	
-	static String sort(String t) {
-		String[] arr = t.split(" ");
-		Arrays.sort(arr);
-		t = "";
-		//System.out.println(Arrays.toString(arr));
-		for (int i = 0; i < arr.length; i++) {
-			t += arr[i] + " ";
-		}
-		return t;
 	
-	}
 	
 	static String replace(int i, int k, String str) {
 		int len = str.length();
