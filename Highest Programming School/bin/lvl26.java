@@ -20,15 +20,15 @@ public class Level1 {
 		
 	//	if(N == N+k)finalRes += res + " ";
 		int len = res.length();
-		k++;
-		
+		k++;		
 		for (int t = len-2; t >(N+k)/2 ; t--) {
 			finalRes += replace(N-1, t,  res);
 		}
 		
 		finalRes = finalRes.substring(0, finalRes.length()-1);
 		finalRes += " ";
-		return finalRes += BalancedParentheses(N-1);
+		finalRes += BalancedParentheses(N-1);
+		return finalRes;
 	}
 	
 	
