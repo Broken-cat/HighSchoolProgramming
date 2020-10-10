@@ -11,15 +11,18 @@ public class Level1 {
 		for(int i = 0; i < N+k; i++)tmp += ")";
 		return tmp;
 	}
-	static String BalancedParentheses(int N) {
+	static String BalancedParentheses(int N) {		
 		String finalRes = "";	
+		if( N == 1 && k != 0)return finalRes;
 		res = makeS(N,k);
+		if(N == 1 && k == 0)return res;	
+		finalRes += res + " ";
 		int len = res.length();
 		k++;
+		
 		for (int t = len-2; t >(N+k)/2 ; t--) {
 			finalRes += replace(N-1, t,  res);
 		}
-		if(N == 1)return finalRes + res;
 		return finalRes += BalancedParentheses(N-1);
 	}
 	
