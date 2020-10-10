@@ -12,19 +12,22 @@ public class Level1 {
 		return tmp;
 	}
 	static String BalancedParentheses(int N) {		
-		String finalRes = "";	
-		if( N == 1 && k != 0)return finalRes;
+		String finalRes = "";		
 		res = makeS(N,k);
 		if(N == 1 && k == 0)return res;	
-		finalRes += res + " ";
+		if(N == 1 )return finalRes;
+		
+		if(N == N+k)finalRes += res + " ";
 		int len = res.length();
 		k++;
 		
 		for (int t = len-2; t >(N+k)/2 ; t--) {
 			finalRes += replace(N-1, t,  res);
 		}
+		
 		return finalRes += BalancedParentheses(N-1);
 	}
+	
 	
 	static String replace(int i, int k, String str) {
 		int len = str.length();
