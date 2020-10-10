@@ -1,0 +1,43 @@
+package lvl26;
+
+public class lvl26 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(BalancedParentheses(4));
+	}
+	static int k = 0;
+	static String res = "";
+	static String startString = "";
+	static String makeS(int N, int k) {
+		String tmp = "";
+		for(int i = 0; i < N+k; i++)tmp += "(";
+		for(int i = 0; i < N+k; i++)tmp += ")";
+		return tmp;
+	}
+	static String BalancedParentheses(int N) {
+		String finalRes = "";	
+		res = makeS(N,k);
+		int len = res.length();
+		k++;
+		for (int t = len-2; t >(N+k)/2 ; t--) {
+			finalRes += replace(N-1, t,  res);
+		}
+		if(N == 1)return finalRes + res;
+		return finalRes += BalancedParentheses(N-1);
+	}
+	
+	static String replace(int i, int k, String str) {
+		int len = str.length();
+		if (k == len-1 || i == 0 || k == len/2-1)return "";
+		char[] chrs = str.toCharArray();
+		char tmp = chrs[i];
+		chrs[i] = chrs[k];
+		chrs[k] = tmp;
+		str = String.valueOf(chrs);
+		return  str + " ";
+	}
+
+	
+	
+}
