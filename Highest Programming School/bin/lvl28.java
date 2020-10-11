@@ -1,22 +1,10 @@
-package lvl28;
+public class Level1 {
 
-import java.util.Arrays;
-
-public class lvl28 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(Keymaker(8));
-	}
+	
 	static String Keymaker(int k) {
 		int[] doors = new int[k];
 		for(int i = 1; i <= k; i++) {
 			openDoors(doors, i);
-			int o = 0;
-			for(int j =0;j < k;j++) {
-				if(doors[j]==1)o++;
-			}
-			System.out.println(Arrays.toString(doors) + " " + o + " n: " + i);
 		}
 		String res = "";
 		for(int i = 0; i <k; i++) {
