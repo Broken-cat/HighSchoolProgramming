@@ -32,6 +32,7 @@ public class Level1 {
 		char[] chrs = new char[2 * N];
 		if(N > 0) 
 			_printParenthesis(chrs, 0, N, open, close); 
+		res = res.substring(0, res.length()-1);
 		return res;
 	}
 
