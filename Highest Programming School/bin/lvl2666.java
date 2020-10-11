@@ -1,6 +1,4 @@
-package lvl266;
-
-public class lvl2666 {
+public class Level1 {
 
 	static int open = 0;
 	static int close = 0;
@@ -37,8 +35,5 @@ public class lvl2666 {
 		return res;
 	}
 
-	// driver program
-	public static void main(String[] args) {
-		System.out.println(BalancedParentheses(4));
-	}
+	
 }
