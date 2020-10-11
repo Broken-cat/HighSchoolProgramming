@@ -29,6 +29,7 @@ public class Level1 {
 	
 	
 	static String BalancedParentheses(int N) {
+		res = "";
 		char[] chrs = new char[2 * N];
 		if(N > 0) 
 			_printParenthesis(chrs, 0, N, open, close); 
