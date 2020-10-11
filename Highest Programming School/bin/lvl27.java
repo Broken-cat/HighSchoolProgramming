@@ -1,14 +1,7 @@
-package lvl27;
 
-import java.util.Arrays;
+public class Level1 {
 
-public class lvl27 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[] f = { 2,7,5,6,3,10};
-		System.out.println(Football(f, f.length));
-	}
+	
 
 	static boolean Football(int F[], int N) {
 		int[] tmp = new int[N];
