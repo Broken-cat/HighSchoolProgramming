@@ -18,14 +18,22 @@ public class LinkedListTests {
 		ll.insertAfter(new Node(88), new Node(35));
 		ll.removeAll(15);
 		ll.display();
+		ll.Remove(25);
 		ll.showHead();
+		ll.display();
+		ll.Remove(16);
+		ll.showHead();
+		ll.display();
 		Node find = ll.find(35);
 		System.out.println(find.value);
+		System.out.println("count: " + ll.count());
 		ll.clear();
 		ll.display();
+		System.out.println("count: " + ll.count()); //0
 		Node find2 = ll.find(35);
 		ArrayList<Node> ar = ll.findAll(0);
 		
+		//System.out.println(find2.value); // nullPointerException
 		//System.out.println(find2.value); // nullPointerException
 		LinkedList l2 = new LinkedList();
 		l2.addInTail(new Node(15));
