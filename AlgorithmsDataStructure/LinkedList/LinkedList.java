@@ -1,5 +1,5 @@
 
-public class LinkedList {
+ppublic class LinkedList {
 	public Node head;
 	public Node tail;
 	
@@ -34,6 +34,7 @@ public class LinkedList {
 	}
 	
 	public ArrayList<Node> findAll (int _value){
+		if(this.head == null)return null;
 		ArrayList<Node> nodes = new ArrayList<Node>();
 		Node current = this.head;
 		while(current != null) {
@@ -46,10 +47,11 @@ public class LinkedList {
 	}
 	
 	public void showHead() {
-		System.out.println(this.head.value);
+		System.out.println("Head --> " + this.head.value);
 	}
 	
-	public boolean Remove(int _value) {
+	public boolean remove(int _value) {
+		if(this.head == null)return false;
 		Node current = this.head;
 		if(current.value == _value)this.head = current.next;
 		Node previous =  current;
@@ -67,6 +69,7 @@ public class LinkedList {
 	}
 	
 	public void removeAll (int _value) {
+		if(this.head == null)return;
 		Node current = this.head;
 		if(current.value == _value)head = current.next;
 		Node previous =  current;
@@ -100,6 +103,7 @@ public class LinkedList {
 	}
 	
 	public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
+		if(this.head == null)return;
 		Node current = this.head;
 		while(current != null) {
 			if(current.value == _nodeAfter.value) {
