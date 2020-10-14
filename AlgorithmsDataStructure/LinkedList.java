@@ -49,7 +49,7 @@ public class LinkedList {
 		System.out.println(this.head.value);
 	}
 	
-	public boolean Remove(int _value) {
+	public boolean remove(int _value) {
 		Node current = this.head;
 		if(current.value == _value)this.head = current.next;
 		Node previous =  current;
