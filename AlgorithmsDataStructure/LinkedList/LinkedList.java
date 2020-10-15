@@ -65,6 +65,11 @@ public class LinkedList {
 		if (this.head == null)
 			return false;
 		Node current = this.head;
+		if(current.value == _value && this.tail == this.head) {
+			this.tail = null;
+			this.head = null;
+			return true;
+		}
 		if (current.value == _value) {
 			this.head = current.next;
 			return true;
@@ -88,6 +93,11 @@ public class LinkedList {
 	public void removeAll(int _value) {
 		if (this.head == null)
 			return;
+		if (count() == 1 && this.head.value == _value) {
+			this.tail = null;
+			this.head = null;
+			return;
+		}
 		Node current = this.head;
 		Node previous = current;
 		while (current != null) {
@@ -111,6 +121,7 @@ public class LinkedList {
 			this.head = current.next;
 			current = current.next;
 		}
+		this.tail = null;
 	}
 
 	public int count() {
@@ -153,21 +164,5 @@ public class LinkedList {
 			return result;
 		}
 		return null;
-	}
-}
-
-
-class Node {
-	public int value;
-	public Node next;
-	public Node prev;
-	public Node(int _value) {
-		value = _value;
-		next = null;
-		prev = null;
-	}
-	
-	public void display() {
-		System.out.print(value + " ");
 	}
 }
