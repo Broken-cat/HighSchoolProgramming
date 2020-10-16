@@ -115,6 +115,8 @@ public class LinkedTest {
 		list.display();
 	}
 	
+	
+	
 	@Test
 	public void insertAfter() {
 		LinkedList list = new LinkedList();
@@ -123,6 +125,9 @@ public class LinkedTest {
 		list.insertAfter(new Node(0), new Node(5));
 		list.insertAfter(new Node(4), new Node(6));
 		list.showTail();
+		list.clear();
+		list.insertAfter(new Node(0), new Node(2));
+		list.display();
 	}
 	
 	@Test
