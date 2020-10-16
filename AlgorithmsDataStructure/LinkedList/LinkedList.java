@@ -40,8 +40,6 @@ public class LinkedList {
 	}
 
 	public ArrayList<Node> findAll(int _value) {
-		if (this.head == null)
-			return null;
 		ArrayList<Node> nodes = new ArrayList<Node>();
 		Node current = this.head;
 		while (current != null) {
