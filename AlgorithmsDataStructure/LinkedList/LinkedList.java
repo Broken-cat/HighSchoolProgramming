@@ -133,8 +133,10 @@ public class LinkedList {
 	}
 
 	public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
-		if (this.head == null)
+		if (this.head == null) {
+			addInTail(_nodeToInsert);
 			return;
+		}
 		Node current = this.head;
 		while (current != null) {
 			if (current.value == _nodeAfter.value) {
