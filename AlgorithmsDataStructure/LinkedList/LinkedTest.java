@@ -134,11 +134,23 @@ public class LinkedTest {
 		list.showTail();
 	}
 	
+	
 	@Test
 	public void removeAll() {
 		LinkedList list = new LinkedList();
 		list.addInTail(new Node(1));
 		list.removeAll(1);
 	}
+	
+	@Test
+	public void count() {
+		LinkedList list = new LinkedList();
+		list.count();
+		for(int i = 0; i < 4; i++)list.addInTail(new Node(i));
+		list.count();
+		list.clear();
+		list.count();
+	}
+
 
 }
