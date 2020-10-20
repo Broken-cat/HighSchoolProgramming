@@ -70,6 +70,7 @@ public class LinkedList2 {
 			return false;
 		if (this.head.value == _value) {
 			this.head = this.head.next;
+			this.head.prev = null;
 			return true;
 		}
 		if (this.tail.value == _value) {
