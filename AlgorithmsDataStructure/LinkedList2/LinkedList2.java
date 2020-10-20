@@ -1,6 +1,3 @@
-package LinkedList2;
-
-import java.util.ArrayList;
 
 public class LinkedList2 {
 	public Node head;
@@ -177,4 +174,22 @@ public class LinkedList2 {
 			current = current.next;
 		}
 	}
+}
+
+class Node
+{
+     public int value;
+     public Node next;
+     public Node prev;
+
+     public Node(int _value) 
+     { 
+       value = _value; 
+       next = null;
+       prev = null;
+     }
+     
+     public void display() {
+    	 System.out.println(this.prev.value + " " + this.next.value);
+     }
 }
