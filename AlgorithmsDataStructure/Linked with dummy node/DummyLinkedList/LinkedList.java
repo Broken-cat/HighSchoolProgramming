@@ -45,10 +45,10 @@ public class LinkedList {
 	}
 
 	public Node find(int _value) {
-		if (this.dummyHead.next == this.dummyTail)
+		if (this.dummyHead.next instanceof DummyNode)
 			return null;
 		Node current = this.dummyHead.next;
-		while (current != this.dummyTail) {
+		while (current instanceof Node) {
 			if (current.value == _value)
 				return current;
 			current = current.next;
@@ -58,10 +58,10 @@ public class LinkedList {
 
 	public ArrayList<Node> findAll(int _value) {
 		ArrayList<Node> nodes = new ArrayList<Node>();
-		if (this.dummyHead.next == this.dummyTail)
+		if (this.dummyHead.next instanceof DummyNode)
 			return nodes;
 		Node current = this.dummyHead.next;
-		while (current != null) {
+		while (current instanceof Node) {
 			if (current.value == _value)
 				nodes.add(current);
 			current.prev = current;
