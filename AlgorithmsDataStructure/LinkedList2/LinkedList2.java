@@ -84,11 +84,12 @@ public class LinkedList2 {
 			if (current.value == _value) {
 				current.next.prev = current.prev;
 				current.prev.next = current.next;
+				return true;
 			}
 			
 			current = current.next;
 		}
-		return true;
+		return false;
 	}
 
 	public void removeAll(int _value) {
