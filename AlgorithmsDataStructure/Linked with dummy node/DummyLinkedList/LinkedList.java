@@ -2,6 +2,7 @@ package DummyLinkedList;
 
 import java.util.ArrayList;
 
+
 public class LinkedList {
 	public DummyNode dummyHead;
 	public DummyNode dummyTail;
@@ -72,10 +73,14 @@ public class LinkedList {
 
 	public boolean remove(int _value) {
 		Node current = this.dummyHead.next;
-		while (current != this.dummyTail) {
+		while (current instanceof Node) {
 			if (current.value == _value) {
-				current.next.prev = current.prev;
 				current.prev.next = current.next;
+				current.next.prev = current.prev;
+				if(current.prev instanceof DummyNode)
+						this.dummyHead.next = current.next;
+				if (current.next instanceof DummyNode)
+					this.dummyTail.prev = current.prev;
 				return true;
 			}
 			current = current.next;
@@ -116,6 +121,10 @@ public class LinkedList {
 	}
 
 	public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
+		if(this.dummyHead.next instanceof DummyNode) {
+			addInTail(_nodeToInsert);
+			return;
+		}
 		Node current = this.dummyHead.next;
 		while (current instanceof Node) {
 			if (current.value == _nodeAfter.value) {
