@@ -12,6 +12,7 @@ public class DynArrayJUnit {
 	@Test
 	public void makeArray() {
 		DynArray<Integer> dyn = new DynArray<Integer>(Integer.class);
+		dyn.display();
 		for(int i = 0; i < 8; i++) 
 			dyn.append(new Integer(i));
 		dyn.makeArray(45);
