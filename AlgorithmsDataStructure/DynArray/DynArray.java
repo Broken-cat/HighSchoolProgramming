@@ -37,6 +37,7 @@ public class DynArray<T> {
 	}
 
 	public void makeArray(int new_capacity) {
+		if(new_capacity < 16)new_capacity = 16;
 		try {
 			array = Arrays.copyOf(array, new_capacity);
 		} catch (Exception e) {
