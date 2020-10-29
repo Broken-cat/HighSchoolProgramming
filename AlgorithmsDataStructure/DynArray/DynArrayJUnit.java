@@ -32,9 +32,13 @@ public class DynArrayJUnit {
 	
 	@Test
 	public void append() {
-		DynArray<Integer> dyn = new DynArray<Integer>(Integer.class);
-		for(int i = 0; i < 100; i++) 
-			dyn.append(new Integer(i));
+		DynArray<Boolean> dyn = new DynArray<Boolean>(Boolean.class);
+		dyn.display();
+		for(int i = 0; i < 1; i++) 
+			dyn.append(true);
+		dyn.display();
+		dyn.makeArray(80);
+		dyn.display();
 	}
 	
 	@Test
