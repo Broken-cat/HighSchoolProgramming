@@ -101,6 +101,7 @@ public class DynArray<T> {
 	}
 
 	public void remove(int index) {
+		if (count == 0 ) return;
 		if (index < 0 || index > count)
 			throw new ArrayIndexOutOfBoundsException();
 		try {
