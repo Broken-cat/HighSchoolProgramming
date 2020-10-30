@@ -73,8 +73,7 @@ public class DynArray<T> {
 	}
 
 	public boolean checkCapacity() {
-		if(count == 0) return true;
-		if ((double) getCount(this.array) / this.array.length < 0.5)
+		if ((double) count / capacity < 0.5)
 			return true;
 		return false;
 	}
@@ -102,13 +101,8 @@ public class DynArray<T> {
 	}
 
 	public void remove(int index) {
-		if(count == 0) {
-			if (checkCapacity() && capacity > 16) {
-				makeArray((int) (capacity / 1.5));
-			}
-			return;
-		}
-		if (index < 0 || index > count)
+		
+		if (index < 0 || index > count || count == 0)
 			throw new ArrayIndexOutOfBoundsException();
 		try {
 			while (array[index] != null) {
@@ -120,8 +114,8 @@ public class DynArray<T> {
 			array[index] = null;
 		}
 
-		if (checkCapacity() && this.array.length > 16) {
-			makeArray((int) ((int) this.array.length / 1.5));
+		if (checkCapacity() && capacity > 16) {
+			makeArray((int) (this.array.length / 1.5));
 		}
 
 	}
