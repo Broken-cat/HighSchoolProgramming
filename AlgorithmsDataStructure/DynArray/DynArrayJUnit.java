@@ -1,28 +1,41 @@
 package DynArray;
 
-import static org.junit.Assert.*;
-import static org.junit.Assume.assumeNoException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import junit.framework.Assert;
+
 public class DynArrayJUnit {
 
 	@Test
+	public void arr() {
+		int[] arr = new int[5];
+		arr = null;
+		assertNull(arr);
+	}
+	
+	@Test
 	public void makeArray() {
-		DynArray<Integer> dyn = new DynArray<Integer>(Integer.class);
-		dyn.display();
-		for(int i = 0; i < 8; i++) 
-			dyn.append(new Integer(i));
-		dyn.makeArray(45);
-		dyn.display();
+		DynArray<Boolean> dyn = new DynArray<Boolean>(Boolean.class);
+		assertEquals(new ArrayList<Boolean>(0), dyn.array);
+		Assert.assertEquals(List.of(), dyn.array);
+	//	dyn.makeArray(10);
+	//	assertNull(dyn.array);
 		
 	}
 	
 	@Test
 	public void getItem() {
 		DynArray<Integer> dyn = new DynArray<Integer>(Integer.class);
+	
 		for(int i = 0; i < 100; i++) 
 			dyn.append(new Integer(i));
 		assertNotNull(dyn.getItem(9));
@@ -44,12 +57,14 @@ public class DynArrayJUnit {
 	@Test
 	public void insert() {
 		DynArray<Integer> dyn = new DynArray<Integer>(Integer.class);
+		int [] arr = null;
+		assertEquals(arr, dyn.array);
 		for (int i = 0; i < 15; i++) 
 			dyn.insert(i, i);
 		dyn.display();
 		dyn.insert(8, 15);
 		dyn.display();
-		dyn.insert(99, 16);
+		dyn.insert(99, 15);
 		dyn.insert(99, 20);
 		dyn.display();
 		exceptionRule.expect(ArrayIndexOutOfBoundsException.class);
