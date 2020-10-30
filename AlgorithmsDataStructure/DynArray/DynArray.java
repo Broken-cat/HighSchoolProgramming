@@ -73,6 +73,7 @@ public class DynArray<T> {
 	}
 
 	public boolean checkCapacity() {
+		if(count == 0) return true;
 		if ((double) getCount(this.array) / this.array.length < 0.5)
 			return true;
 		return false;
