@@ -101,23 +101,16 @@ public class DynArray<T> {
 	}
 
 	public void remove(int index) {
-		
-		if (index < 0 || index > count || count == 0)
+		if (index < 0 || index > getCount(array) || getCount(array) == 0)
 			throw new ArrayIndexOutOfBoundsException();
-		try {
-			while (array[index] != null) {
-				array[index] = array[index + 1];
-				index++;
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			array[index] = null;
+		array[index] = null;
+		for(int i = index; i < count-1; i++)
+			array[i] = array[i+1];
+		array[count-1] = null;
+		count--;
+		if (checkCapacity()) {
+			makeArray((int) (capacity/1.5));
 		}
-
-		if (checkCapacity() && capacity > 16) {
-			makeArray((int) (this.array.length / 1.5));
-		}
-
 	}
 
 }
