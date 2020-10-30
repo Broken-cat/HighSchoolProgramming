@@ -25,12 +25,12 @@ public class DynArrayJUnit {
 	@Test
 	public void makeArray() {
 		DynArray<Boolean> dyn = new DynArray<Boolean>(Boolean.class);
-		List<Boolean> t = new ArrayList<Boolean>();
+		List<Boolean> t = new ArrayList<Boolean>(); 
 		List<Boolean> s = Arrays.asList(dyn.array);
 		dyn.display();
-		assertThat(t.size(), is(0));
-		assertThat(s.isEmpty(), is(false));
-		Assert.assertEquals(new ArrayList<Boolean>(16), dyn.array);
+		assertThat(t.size(), is(0)); // True
+		assertThat(s.isEmpty(), is(false)); // True
+		Assert.assertEquals(new ArrayList<Boolean>(16), dyn.array);//False
 		assertEquals(new ArrayList<Boolean>(0), dyn.array);
 		Assert.assertEquals(List.of(), dyn.array);
 	//	dyn.makeArray(10);
