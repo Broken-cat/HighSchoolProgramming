@@ -25,7 +25,9 @@ public class DynArrayJUnit {
 	@Test
 	public void makeArray() {
 		DynArray<Boolean> dyn = new DynArray<Boolean>(Boolean.class);
+		Assert.assertEquals(new ArrayList<Boolean>(0), dyn.array);
 		assertEquals(new ArrayList<Boolean>(0), dyn.array);
+		
 		Assert.assertEquals(List.of(), dyn.array);
 	//	dyn.makeArray(10);
 	//	assertNull(dyn.array);
