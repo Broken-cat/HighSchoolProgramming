@@ -79,7 +79,7 @@ public class DynArray<T> {
 	}
 
 	public void insert(T itm, int index) {
-		if (index < 0 || index > capacity)
+		if (index < 0 || index > count)
 			throw new ArrayIndexOutOfBoundsException();
 		if (getCount(array) == array.length) {
 			makeArray(this.array.length * 2);
