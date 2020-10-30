@@ -1,5 +1,4 @@
 
-
 public class DynArray<T> {
 	public T[] array;
 	public int count;
@@ -13,11 +12,11 @@ public class DynArray<T> {
 	}
 
 	public void display() {
-		for (int i = 0; i < count; i++)
+		for (int i = 0; i < array.length; i++)
 			System.out.print(this.array[i] + " ");
 		System.out.println();
-		System.out.println("capacity: " + array.length);
-		System.out.println("count: " + this.count);
+		System.out.println("capacity: " + capacity);
+		System.out.println("count: " + count);
 	}
 
 	public int getCount(T[] array) {
@@ -40,11 +39,14 @@ public class DynArray<T> {
 		if(new_capacity < 16)new_capacity = 16;
 		try {
 			array = Arrays.copyOf(array, new_capacity);
+			capacity = new_capacity;
 		} catch (Exception e) {
 			// TODO: handle exception
 			array = (T[]) Array.newInstance(this.clazz, new_capacity);
+			capacity = new_capacity;
 		}
-		count = getCount(this.array);
+		
+		count = getCount(array);
 	}
 
 	public T getItem(int index) {
@@ -71,14 +73,13 @@ public class DynArray<T> {
 	}
 
 	public boolean checkCapacity() {
-		// System.out.println((double)getCount(this.array)/this.array.length);
 		if ((double) getCount(this.array) / this.array.length < 0.5)
 			return true;
 		return false;
 	}
 
 	public void insert(T itm, int index) {
-		if (index < 0 || index > array.length)
+		if (index < 0 || index > capacity)
 			throw new ArrayIndexOutOfBoundsException();
 		if (getCount(array) == array.length) {
 			makeArray(this.array.length * 2);
@@ -91,18 +92,16 @@ public class DynArray<T> {
 				try {
 					array[i] = array[i - 1];
 				} catch (ArrayIndexOutOfBoundsException ex) {
-					// TODO: handle exception
-					// makeArray(this.array.length * 2);
 				}
 				i--;
 			}	
-		count++;
-		array[index] = itm;
+				count++;
+				array[index] = itm;
 		}
 	}
 
 	public void remove(int index) {
-		if (index < 0 || index > array.length)
+		if (index < 0 || index > capacity)
 			throw new ArrayIndexOutOfBoundsException();
 		try {
 			while (array[index] != null) {
