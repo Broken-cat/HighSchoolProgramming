@@ -29,6 +29,7 @@ public class DynArrayJUnit {
 		List<Boolean> s = Arrays.asList(dyn.array);
 		dyn.display();
 		assertThat(t.size(), is(0)); // True
+		assertThat(s.size(), is(0)); // false
 		assertThat(s.isEmpty(), is(false)); // True
 		Assert.assertEquals(new ArrayList<Boolean>(16), dyn.array);//False
 		assertEquals(new ArrayList<Boolean>(0), dyn.array);
