@@ -5,13 +5,13 @@ import java.util.*;
 public class Stack<T> implements StackBeh<T>
 {
 	
-	  public List<T> stack;
+	  public LinkedList<T> stack;
 	  private int count;
 	  private T top;
 	  
       public Stack()
       {
-    	  stack = new ArrayList<>();
+    	  stack = new LinkedList<>();
     	  count = 0;
     	  top = null;
       } 
