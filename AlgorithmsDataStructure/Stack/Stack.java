@@ -1,4 +1,4 @@
-йцуйцу
+
 public class Stack<T> implements StackBeh<T>
 {
 	
