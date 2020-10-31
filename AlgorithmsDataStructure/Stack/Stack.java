@@ -1,6 +1,3 @@
-package Stack;
-
-import java.util.*;
 
 public class Stack<T> implements StackBeh<T>
 {
