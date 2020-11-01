@@ -1,7 +1,3 @@
-package Queue;
-
-import java.util.Arrays;
-import java.util.LinkedList;
 
 public class Queue<T> implements QueueBeh<T>
 {
