@@ -29,10 +29,10 @@ public class Deque<T>
     	count++;
     }
 
-    public T removeFront()
+      public T removeFront()
     {
      if(count >0) {
-    	 T res = head;
+    	 T res = dequ.peekLast();
     	 dequ.removeLast();
     	 head = dequ.peekLast();
          count--;
@@ -44,7 +44,7 @@ public class Deque<T>
     public T removeTail()
     {
     	if(count > 0) {
-    		T res = tail;
+    		T res = dequ.peekFirst();
     		dequ.removeFirst();
     		tail = dequ.peekFirst();
     		count--;
