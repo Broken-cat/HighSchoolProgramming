@@ -1,6 +1,3 @@
-package Deque;
-
-import java.util.*;
 
 public class Deque<T>
 {
