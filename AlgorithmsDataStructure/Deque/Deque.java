@@ -29,30 +29,28 @@ public class Deque<T>
     	count++;
     }
 
-      public T removeFront()
-    {
-     if(count >0) {
-    	 T res = dequ.peekLast();
-    	 dequ.removeLast();
-    	 head = dequ.peekLast();
-         count--;
-         return res;
-     }
-     return null;
-    }
+ 	public T removeFront() {
+		if (count > 0) {
+			T res = dequ.peekFirst();
+			dequ.removeFirst();
+			tail = dequ.peekFirst();
+			count--;
+			return res;
+		}
 
-    public T removeTail()
-    {
-    	if(count > 0) {
-    		T res = dequ.peekFirst();
-    		dequ.removeFirst();
-    		tail = dequ.peekFirst();
-    		count--;
-    		return res;
-    	}
- 
-     return null;
-    }
+		return null;
+	}
+
+	public T removeTail() {
+		if (count > 0) {
+			T res = dequ.peekLast();
+			dequ.removeLast();
+			head = dequ.peekLast();
+			count--;
+			return res;
+		}
+		return null;
+	}
         
     public int size()
     {
