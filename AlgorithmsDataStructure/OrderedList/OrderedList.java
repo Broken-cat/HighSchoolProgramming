@@ -1,19 +1,3 @@
-package OrderedList;
-
-import java.util.*;
-
-interface interfaceOrderedList<T> {
-	void add(T item);
-
-	int compare(T arg0, T arg1);
-
-	Node<T> find(T item);
-
-	void delete(T item);
-
-	void clear(boolean t);
-
-}
 
 class Node<T> {
 	public T value;
@@ -26,7 +10,7 @@ class Node<T> {
 	}
 }
 
-public class OrderedList<T extends Comparable<T>> implements Comparator<T>, interfaceOrderedList<T> {
+public class OrderedList<T extends Comparable<T>> implements Comparator<T>{
 	public Node<T> head, tail;
 	private boolean _ascending;
 	private int count;
@@ -43,7 +27,7 @@ public class OrderedList<T extends Comparable<T>> implements Comparator<T>, inte
 		return _ascending;
 	}
 
-	public void display() {
+	/*public void display() {
 		Node<T> current = this.head;
 		while (current != null) {
 			System.out.print(current.value + " ");
@@ -54,7 +38,7 @@ public class OrderedList<T extends Comparable<T>> implements Comparator<T>, inte
 		System.out.println("tail: " + this.tail.value);
 		System.out.println("min: " + min + " " + "max: " + max + " count: " + count);
 
-	}
+	}*/
 
 	public int compare(T v1, T v2) {
 		return (v1.compareTo(v2));
