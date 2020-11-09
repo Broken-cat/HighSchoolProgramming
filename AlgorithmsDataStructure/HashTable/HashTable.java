@@ -1,4 +1,3 @@
-package HashTable;
 
 public class HashTable {
 	public int size;
@@ -61,7 +60,7 @@ public class HashTable {
 		}		
 	}
 
-	public int find(String value) 
+	public int find(String value) {
 		for(int i = 0; i < size;i++) 
 			if(slots[i].equals(value))return i;
 		return -1;
