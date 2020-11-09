@@ -154,11 +154,18 @@ public class OrderedList<T extends Comparable<T>> implements Comparator<T>{
 	public void delete(T val) {
 		if (this.head == null || compare(val, max) > 0 || compare(val, min) < 0)
 			return;
+		if (this.head.equals(this.tail)) {
+			this.head = null;
+			this.tail = null;
+			count--;
+			return;
+		}
 		Node<T> current = this.head;
 		while (current != null) {
 			if (current.value.equals(val)) {
+
 				if (current.equals(this.head)) {
-					this.head = this.head.next;
+					this.head = head.next;
 					this.head.prev = null;
 					count--;
 					if(_ascending)min = this.head.value;
