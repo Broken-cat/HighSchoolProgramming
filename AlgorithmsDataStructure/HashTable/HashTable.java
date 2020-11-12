@@ -1,5 +1,4 @@
 
-
 public class HashTable {
 	public int size;
 	public int step;
@@ -35,13 +34,14 @@ public class HashTable {
 		if(isFilled())
 			return -1;
 		int indx = hashFun(value);
-		if (slots[step+indx] == null || slots[step+indx].equals(value))
-			return indx+step;
+		if (slots[indx] == null || slots[indx].equals(value))
+			return indx;
 		else {
-			step = 0;
+			int steps = 0;
+			
 			while(true) {
-				step++;
-				indx = step % size;
+				steps +=step;
+				indx = steps % (size-1);
 				if(slots[indx] == null)break;
 			}
 			return indx;
@@ -50,7 +50,6 @@ public class HashTable {
 	
 
 	public int put(String value) {
-		step = 0;
 			int indx = seekSlot(value);
 			try {
 				slots[indx] = value;
