@@ -61,9 +61,15 @@ public class HashTable {
 	}
 
 	public int find(String value) {
-		for(int i = 0; i < size;i++) 
-			if(slots[i].equals(value))return i;
+		try {
+			for(int i = 0; i < size;i++) 
+				if(slots[i].equals(value))return i;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return -1;
+		}
 		return -1;
+		
 	}
 	
 	
