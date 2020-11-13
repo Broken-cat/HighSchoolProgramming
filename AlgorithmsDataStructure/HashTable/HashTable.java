@@ -34,14 +34,13 @@ public class HashTable {
 		if(isFilled())
 			return -1;
 		int indx = hashFun(value);
-		if (slots[indx] == null || slots[indx].equals(value))
+		if (slots[indx] == null)
 			return indx;
 		else {
 			int steps = 0;
-			
 			while(true) {
 				steps +=step;
-				indx = steps % (size-1);
+				indx = steps % (size);
 				if(slots[indx] == null)break;
 			}
 			return indx;
