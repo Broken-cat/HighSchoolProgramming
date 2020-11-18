@@ -41,13 +41,12 @@ class NativeDictionary<T> {
 	}
 
 	public T get(String key) {
-		int indx = seekSlot(key);
 		try {
-			if (slots[indx].equals(key))
-				return values[indx];
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+			for (int i = 0; i < size; i++) 
+				if (slots[i] != null && slots[i].equals(key))
+					return values[i];
+		} catch (Exception e) {}
+
 		return null;
 	}
 
