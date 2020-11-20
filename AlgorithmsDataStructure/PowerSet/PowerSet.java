@@ -1,7 +1,3 @@
-package PowerSet;
-
-import java.util.Arrays;
- 
 
 public class PowerSet {
 
