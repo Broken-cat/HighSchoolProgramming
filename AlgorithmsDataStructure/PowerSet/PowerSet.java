@@ -1,0 +1,174 @@
+package PowerSet;
+
+import java.util.Arrays;
+ 
+
+public class PowerSet {
+
+	public int capacity;
+	public String[] slots;
+	private int count;
+
+	public PowerSet() {
+		count = 0;
+		capacity = 16;
+		makeArray(capacity);
+	}
+
+	public int size() {
+		return count;
+	}
+	
+	
+	public void makeArray(int new_capacity) {
+		if (new_capacity < 16)new_capacity = 16;
+		try {
+			slots = Arrays.copyOf(slots, new_capacity);
+			capacity = new_capacity;
+		} catch (Exception e) {
+			// TODO: handle exception
+			slots = new String[capacity];
+			for(int i =0; i<  capacity;i++)
+				slots[i] = null;
+		}
+		
+	}
+	
+
+	public int hashFun(String value) {
+		byte[] bytes = value.getBytes();
+		int sum = 0;
+		for (int i = 0; i < bytes.length; i++) {
+			sum += bytes[i];
+		}
+		return sum % capacity;
+	}
+
+	public boolean isFilled() {
+		int i = 0;
+		while (i < capacity) {
+			if (slots[i] == null)
+				return false;
+			i++;
+		}
+		return true;
+	}
+
+	public int seekSlot(String value) {
+		if ((double)this.count/this.capacity > 0.7)
+			makeArray(this.capacity*2);
+		int indx = hashFun(value);
+		try {
+			if (slots[indx].equals(value))
+				return indx;	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		if (slots[indx] == null)
+			return indx;
+		else {
+			int steps = 0;
+			while (true) {
+				steps++;
+				indx = steps % (capacity);
+				if (slots[indx] == null)
+					break;
+			}
+			return indx;
+		}
+	}
+
+	public int put(String value) {
+		int indx = seekSlot(value);
+		try {
+			slots[indx] = value;
+			count++;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return indx;
+
+	}
+
+	public boolean get(String value) {
+		try {
+			for (int i = 0; i < capacity; i++) 
+				if (slots[i] != null && slots[i].equals(value))
+					return true;
+		} catch (Exception e) {}
+
+		return false;
+	}
+
+	public boolean remove(String value) {
+		try {
+			for (int i = 0; i < capacity; i++) 
+				if (slots[i] != null && slots[i].equals(value)) {
+					slots[i] = null;
+					count--;
+					return true;
+				}
+		} catch (Exception e) {}
+
+		return false;
+	}
+
+	public PowerSet intersection(PowerSet set2) {
+		PowerSet res = new PowerSet();
+		for (int i = 0; i < set2.capacity; i++) {
+		go : for(int j = 0; j < this.capacity; j++) {
+				if(this.slots[j] == set2.slots[i] && this.slots[j] != null) {
+					res.put(slots[j]);
+					continue go;
+				}
+			}
+		}
+		res.display();
+		return res;
+	}
+
+	public PowerSet union(PowerSet set2) {
+		PowerSet res = new PowerSet();
+	//	int new_size = this.count + set2.count;
+		res.makeArray(this.capacity);
+		for(int i = 0; i < this.capacity; i++)
+			res.slots[i] = this.slots[i];
+		for(int i = 0; i < set2.capacity; i++) {
+			if(set2.slots[i] != null && !(res.slots[i] == set2.slots[i])) {
+				res.slots[i+res.count] = set2.slots[i];
+			}
+		}
+		res.display();
+		return res;
+	}
+
+	public PowerSet difference(PowerSet set2) {
+		PowerSet res = new PowerSet();
+		res.slots = this.slots;
+		for(int i = 0; i < res.capacity; i++) {
+			for(int j = 0; j < set2.capacity;j++) {
+				if(set2.slots[j] == res.slots[i])
+					res.slots[i] = null;
+			}
+		}
+		res.display();
+		return res;
+	}
+
+	public boolean isSubset(PowerSet set2) {
+		PowerSet res = this.union(set2);
+		for(int i = 0;i < this.capacity; i++) {
+			if(res.slots[i] != this.slots[i])return false;
+		}
+		
+		return true;
+	}
+	
+	public void display(){
+		for(int i = 0;i < capacity; i++) {
+			if(slots[i]==null)continue;
+			System.out.print(slots[i] + " ");
+		}
+		System.out.println();
+	}
+}
