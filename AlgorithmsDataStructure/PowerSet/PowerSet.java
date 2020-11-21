@@ -14,22 +14,21 @@ public class PowerSet {
 	public int size() {
 		return count;
 	}
-	
-	
+
 	public void makeArray(int new_capacity) {
-		if (new_capacity < 16)new_capacity = 16;
+		if (new_capacity < 16)
+			new_capacity = 16;
 		try {
 			slots = Arrays.copyOf(slots, new_capacity);
 			capacity = new_capacity;
 		} catch (Exception e) {
 			// TODO: handle exception
 			slots = new String[capacity];
-			for(int i =0; i<  capacity;i++)
+			for (int i = 0; i < capacity; i++)
 				slots[i] = null;
 		}
-		
+
 	}
-	
 
 	public int hashFun(String value) {
 		byte[] bytes = value.getBytes();
@@ -51,12 +50,12 @@ public class PowerSet {
 	}
 
 	public int seekSlot(String value) {
-		if ((double)this.count/this.capacity > 0.7)
-			makeArray(this.capacity*2);
+		if ((double) this.count / this.capacity > 0.7)
+			makeArray(this.capacity * 2);
 		int indx = hashFun(value);
 		try {
 			if (slots[indx].equals(value))
-				return indx;	
+				return indx;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -74,95 +73,85 @@ public class PowerSet {
 		}
 	}
 
-	public int put(String value) {
+	public void put(String value) {
 		int indx = seekSlot(value);
 		try {
 			slots[indx] = value;
 			count++;
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (Exception e) { // TODO: handle exception
 		}
-		return indx;
 
 	}
 
 	public boolean get(String value) {
 		try {
-			for (int i = 0; i < capacity; i++) 
+			for (int i = 0; i < capacity; i++)
 				if (slots[i] != null && slots[i].equals(value))
 					return true;
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 
 		return false;
 	}
 
 	public boolean remove(String value) {
 		try {
-			for (int i = 0; i < capacity; i++) 
+			for (int i = 0; i < capacity; i++)
 				if (slots[i] != null && slots[i].equals(value)) {
 					slots[i] = null;
 					count--;
 					return true;
 				}
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 
 		return false;
 	}
 
 	public PowerSet intersection(PowerSet set2) {
-		PowerSet res = new PowerSet();
-		for (int i = 0; i < set2.capacity; i++) {
-		go : for(int j = 0; j < this.capacity; j++) {
-				if(this.slots[j] == set2.slots[i] && this.slots[j] != null) {
-					res.put(slots[j]);
-					continue go;
-				}
+		for (int i = 0; i < this.capacity; i++) {
+			if(this.slots[i] == null)continue;
+			for(int j = 0; j < set2.capacity;j ++) {
+				if(set2.slots[j] == null)continue;
+				if(set2.slots[j].equals(this.slots[i]))
+					this.slots[i] = null;
 			}
 		}
-		res.display();
-		return res;
+		this.display();
+		return this;
 	}
 
 	public PowerSet union(PowerSet set2) {
-		PowerSet res = new PowerSet();
-	//	int new_size = this.count + set2.count;
-		res.makeArray(this.capacity);
-		for(int i = 0; i < this.capacity; i++)
-			res.slots[i] = this.slots[i];
-		for(int i = 0; i < set2.capacity; i++) {
-			if(set2.slots[i] != null && !(res.slots[i] == set2.slots[i])) {
-				res.slots[i+res.count] = set2.slots[i];
-			}
-		}
-		res.display();
-		return res;
+		for (int i = 0; i < set2.capacity; i++)
+			if (set2.slots[i] != null && !(this.slots[i] == set2.slots[i]))
+				this.put(set2.slots[i]);
+		this.display();
+		return this;
 	}
 
 	public PowerSet difference(PowerSet set2) {
-		PowerSet res = new PowerSet();
-		res.slots = this.slots;
-		for(int i = 0; i < res.capacity; i++) {
-			for(int j = 0; j < set2.capacity;j++) {
-				if(set2.slots[j] == res.slots[i])
-					res.slots[i] = null;
+		for (int i = 0; i < this.capacity; i++) {
+			for (int j = 0; j < set2.capacity; j++) {
+				if (set2.slots[j] == this.slots[i])
+					this.slots[i] = null;
 			}
 		}
-		res.display();
-		return res;
+		this.display();
+		return this;
 	}
 
 	public boolean isSubset(PowerSet set2) {
 		PowerSet res = this.union(set2);
-		for(int i = 0;i < this.capacity; i++) {
-			if(res.slots[i] != this.slots[i])return false;
-		}
-		
+		for (int i = 0; i < this.capacity; i++)
+			if (res.slots[i] != this.slots[i])
+				return false;
 		return true;
 	}
-	
-	public void display(){
-		for(int i = 0;i < capacity; i++) {
-			if(slots[i]==null)continue;
+
+	public void display() {
+		for (int i = 0; i < capacity; i++) {
+			if (slots[i] == null)
+				continue;
 			System.out.print(slots[i] + " ");
 		}
 		System.out.println();
