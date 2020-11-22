@@ -50,7 +50,7 @@ public class PowerSet {
 	}
 
 	public int seekSlot(String value) {
-		if ((double) this.count / this.capacity > 0.7)
+		if ((double) this.count / this.capacity > 0.8)
 			makeArray(this.capacity * 2);
 		int indx = hashFun(value);
 		try {
@@ -66,7 +66,7 @@ public class PowerSet {
 			while (true) {
 				steps++;
 				indx = steps % (capacity);
-				if (slots[indx] == null)
+				if (slots[indx] == null || slots[indx].equals(value))
 					break;
 			}
 			return indx;
@@ -109,51 +109,59 @@ public class PowerSet {
 	}
 
 	public PowerSet intersection(PowerSet set2) {
-		for (int i = 0; i < this.capacity; i++) {
+		PowerSet res = new PowerSet();
+		boolean ist;
+		
+		for(int i = 0; i < this.capacity; i++) {
 			if(this.slots[i] == null)continue;
-			for(int j = 0; j < set2.capacity;j ++) {
+			for(int j = 0; j < set2.capacity; j++) {
 				if(set2.slots[j] == null)continue;
 				if(set2.slots[j].equals(this.slots[i]))
-					this.slots[i] = null;
+					res.put(slots[i]);
 			}
 		}
-		this.display();
-		return this;
+		
+		return res;
 	}
 
 	public PowerSet union(PowerSet set2) {
-		for (int i = 0; i < set2.capacity; i++)
-			if (set2.slots[i] != null && !(this.slots[i] == set2.slots[i]))
-				this.put(set2.slots[i]);
-		this.display();
-		return this;
+		PowerSet res = new PowerSet();
+		res.makeArray(this.capacity);
+		for(int i = 0; i < this.capacity; i++) {
+			if(this.slots[i] == null)continue;
+			res.put(this.slots[i]);
+		}
+		for(int i = 0; i < set2.capacity; i++) {
+			if(set2.slots[i] != null && !(res.slots[i] == set2.slots[i])) {
+				res.put(set2.slots[i]);
+			}
+		}
+		return res;
 	}
 
 	public PowerSet difference(PowerSet set2) {
-		for (int i = 0; i < this.capacity; i++) {
-			for (int j = 0; j < set2.capacity; j++) {
-				if (set2.slots[j] == this.slots[i])
-					this.slots[i] = null;
+		PowerSet res = new PowerSet();
+		for(int i = 0; i < this.capacity; i++) {
+			if(this.slots[i] == null)continue;
+			res.put(this.slots[i]);
+		}
+		for(int i = 0; i < res.capacity; i++) {
+			for(int j = 0; j < set2.capacity;j++) {
+				if(set2.slots[j] == res.slots[i])
+					res.slots[i] = null;
 			}
 		}
-		this.display();
-		return this;
+		return res;
 	}
 
 	public boolean isSubset(PowerSet set2) {
 		PowerSet res = this.union(set2);
-		for (int i = 0; i < this.capacity; i++)
-			if (res.slots[i] != this.slots[i])
-				return false;
+		for(int i = 0;i < this.capacity; i++) {
+			if(res.slots[i] != this.slots[i])return false;
+		}
+		
 		return true;
 	}
 
-	public void display() {
-		for (int i = 0; i < capacity; i++) {
-			if (slots[i] == null)
-				continue;
-			System.out.print(slots[i] + " ");
-		}
-		System.out.println();
-	}
+	
 }
