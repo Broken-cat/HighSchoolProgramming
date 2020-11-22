@@ -167,9 +167,16 @@ public class PowerSet {
 	}
 
 	public boolean isSubset(PowerSet set2) {
-		PowerSet res = this.union(set2);
-		for(int i = 0;i < this.capacity; i++) {
-			if(res.slots[i] != this.slots[i])return false;
+		boolean isSub;
+	go	: for(int i = 0; i < set2.capacity; i++) {
+			if(set2.slots[i] == null)continue;
+			isSub = false;
+			for(int j = 0; j < this.capacity; j++) {
+				if(this.slots[j] == null)continue;
+				if(this.slots[j].equals(set2.slots[i]))
+					continue go;
+			}
+			if(isSub == false)return false;
 		}
 		
 		return true;
