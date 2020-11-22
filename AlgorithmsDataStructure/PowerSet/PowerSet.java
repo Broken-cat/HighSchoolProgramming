@@ -126,16 +126,23 @@ public class PowerSet {
 
 	public PowerSet union(PowerSet set2) {
 		PowerSet res = new PowerSet();
-		res.makeArray(this.capacity);
-		for(int i = 0; i < this.capacity; i++) {
+		
+		for(int i = 0; i < this.capacity;i++) {
 			if(this.slots[i] == null)continue;
 			res.put(this.slots[i]);
 		}
-		for(int i = 0; i < set2.capacity; i++) {
-			if(set2.slots[i] != null && !(res.slots[i] == set2.slots[i])) {
-				res.put(set2.slots[i]);
+		
+		go : for(int i = 0; i < set2.capacity; i++) {
+			if(set2.slots[i] == null)continue;
+			for(int j = 0; j < this.capacity; j++) {
+				if(this.slots[j] == null)continue;
+				if(this.slots[j].equals(set2.slots[i]))continue go;
+			
 			}
+				res.put(set2.slots[i]);
+			
 		}
+		
 		return res;
 	}
 
@@ -163,5 +170,5 @@ public class PowerSet {
 		return true;
 	}
 
-	
+
 }
