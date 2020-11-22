@@ -152,12 +152,18 @@ public class PowerSet {
 			if(this.slots[i] == null)continue;
 			res.put(this.slots[i]);
 		}
-		for(int i = 0; i < res.capacity; i++) {
-			for(int j = 0; j < set2.capacity;j++) {
-				if(set2.slots[j] == res.slots[i])
-					res.slots[i] = null;
+		go : for(int i = 0; i < set2.capacity; i++) {
+			if(set2.slots[i] == null)continue;
+			for(int j = 0; j < res.capacity; j++) {
+				if(res.slots[j] == null)continue;
+				if(res.slots[j].equals(set2.slots[i]))
+					res.slots[j] = null;
+			
 			}
+			
 		}
+		
+		res.display();
 		return res;
 	}
 
