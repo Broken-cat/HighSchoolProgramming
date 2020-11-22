@@ -163,7 +163,6 @@ public class PowerSet {
 			
 		}
 		
-		res.display();
 		return res;
 	}
 
@@ -176,5 +175,5 @@ public class PowerSet {
 		return true;
 	}
 
-
+	
 }
