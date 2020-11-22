@@ -157,7 +157,7 @@ public class PowerSet {
 			for(int j = 0; j < res.capacity; j++) {
 				if(res.slots[j] == null)continue;
 				if(res.slots[j].equals(set2.slots[i]))
-					res.slots[j] = null;
+					res.remove(set2.slots[i]);
 			
 			}
 			
