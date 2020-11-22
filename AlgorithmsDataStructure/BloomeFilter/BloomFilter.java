@@ -1,4 +1,3 @@
-package BloomeFilter;
 
 public class BloomFilter
 {
