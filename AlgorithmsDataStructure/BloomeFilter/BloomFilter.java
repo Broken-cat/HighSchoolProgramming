@@ -1,9 +1,10 @@
 
+
 public class BloomFilter
 {
       public int filter_len;
       public byte[] slots;
-      
+      public BitSet bit_ar;
       public BloomFilter(int f_len)
       {
         filter_len = f_len;
@@ -11,9 +12,8 @@ public class BloomFilter
       }
       
       public void makeArray(int len) {
-    	  slots = new byte[len];
-    	  for(int i = 0; i < len;i++)
-    		  slots[i] = 0;
+    	  bit_ar = new BitSet(len);
+    	  
       }
 
     
@@ -49,15 +49,15 @@ public class BloomFilter
       {
         int f = hash1(str1);
         int s = hash2(str1);
-        slots[f] = 1;
-        slots[s] = 1;
+        bit_ar.set(f);
+        bit_ar.set(s);
       }
 
       public boolean isValue(String str1)
       {
     	  int f = hash1(str1);
           int s = hash2(str1);
-          if(slots[f] == 0 || slots[s] == 0)
+          if(!bit_ar.get(f) || !bit_ar.get(s))
           		return false;
         return true;
       }
