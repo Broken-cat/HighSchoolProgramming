@@ -1,3 +1,6 @@
+package NativeDictionary;
+
+import java.lang.reflect.Array;
 
 class NativeDictionary<T> {
 	public int size;
@@ -22,7 +25,7 @@ class NativeDictionary<T> {
 	public boolean isKey(String key) {
 		try {
 			for (int i = 0; i < size; i++) 
-				if (slots[i] != null && slots[i].equals(key))
+				if (slots[i].equals(key))
 					return true;
 		} catch (Exception e) {}
 
@@ -30,7 +33,7 @@ class NativeDictionary<T> {
 	}
 
 	public void put(String key, T value) {
-		int indx = seekSlot(key);
+		int indx = seekSlot(String.valueOf(value));
 		try {
 			values[indx] = value;
 			slots[indx] = key;
@@ -41,12 +44,13 @@ class NativeDictionary<T> {
 	}
 
 	public T get(String key) {
+		int indx = seekSlot(key);
 		try {
-			for (int i = 0; i < size; i++) 
-				if (slots[i] != null && slots[i].equals(key))
-					return values[i];
-		} catch (Exception e) {}
-
+			if (slots[indx].equals(key))
+				return values[indx];
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 
