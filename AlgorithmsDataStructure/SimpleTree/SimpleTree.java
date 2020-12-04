@@ -72,16 +72,23 @@ class SimpleTree<T> {
 		return;
 	}
 
-	public void leafC(SimpleTreeNode<T> startNode, List<SimpleTreeNode<T>> list) {
-		for (int i = 0; i < list.size(); i++) {
-			SimpleTreeNode<T> res = list.get(i);
-			if (res.Children != null)
-				leafC(res, res.Children);
-			else
-				Leaf++;
+	public void leafC(SimpleTreeNode<T> startNode, List<SimpleTreeNode<T>> list){
+		try {
+			for (int i = 0; i < list.size(); i++) {
+				SimpleTreeNode<T> res = list.get(i);
+				if (res.Children != null)
+					leafC(res, res.Children);
+				else
+					Leaf++;
 
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			Leaf = 1;
 		}
+		
 	}
+
 
 	public void addNode(SimpleTreeNode<T> Parent, SimpleTreeNode<T> Child) {
 		if (Parent.Children == null)
