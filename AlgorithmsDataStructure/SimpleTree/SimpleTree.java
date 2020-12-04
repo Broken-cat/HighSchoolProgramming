@@ -140,7 +140,8 @@ class SimpleTree<T> {
 	public List<SimpleTreeNode<T>> GetAllNodes() {
 		treeNodes.clear();
 		treeNodes.add(Root);
-		recSearch(Root, Root.Children);
+		if(treeNodes.size() > 1)
+			recSearch(Root, Root.Children);
 		for (int i = 1; i < treeNodes.size(); i++) {
 			//System.out.print(treeNodes.get(i).NodeValue + " Parent: " + treeNodes.get(i).Parent.NodeValue + " Node Level: " + treeNodes.get(i).NodeLevel);
 			//System.out.println();
