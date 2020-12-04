@@ -22,6 +22,7 @@ class SimpleTree<T> {
 		Root = root;
 		Root.NodeLevel = 0;
 		treeNodes = new LinkedList<SimpleTreeNode<T>>();
+		treeNodes.add(Root);
 		count = 1;
 		Leaf = 0;
 	}
