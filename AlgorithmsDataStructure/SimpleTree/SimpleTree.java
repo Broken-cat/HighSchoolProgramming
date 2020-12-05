@@ -1,6 +1,3 @@
-package SimpleTree;
-
-import java.util.*;
 
 class SimpleTreeNode<T> {
 	public int NodeLevel;
