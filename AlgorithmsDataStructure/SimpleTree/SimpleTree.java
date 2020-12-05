@@ -152,10 +152,7 @@ class SimpleTree<T> {
 		List<SimpleTreeNode<T>> treeNodes = new LinkedList<SimpleTreeNode<T>>();
 		//treeNodes.clear();
 		recN(Root, treeNodes);
-		for (int i = 0; i < treeNodes.size(); i++) {
-			if(treeNodes.get(i).Parent == null)System.out.println(treeNodes.get(i).NodeValue);
-			else	System.out.println(treeNodes.get(i).NodeValue + " Parent: " + treeNodes.get(i).Parent.NodeValue + " Node Level: " + treeNodes.get(i).NodeLevel);
-		}
+		
 		return treeNodes;
 	}
 
