@@ -91,7 +91,6 @@ class SimpleTree<T> {
 	public List<SimpleTreeNode<T>> FindNodesByValue(T val) {
 		List<SimpleTreeNode<T>> res = new LinkedList<SimpleTreeNode<T>>();
 		recNodeFindBy(Root, val, res);
-		if(res.size() == 0)return null;
 		return res;
 	}
 	
