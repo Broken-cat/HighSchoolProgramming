@@ -59,26 +59,38 @@ public class JUnitSimpleTree {
 		SimpleTree<Integer> tree = new SimpleTree<Integer>(root);
 		
 		tree.AddChild(root, node_L1); // 1
+		assertTrue(tree.GetAllNodes().size() == 2 && tree.LeafCount() == 1);
 		tree.AddChild(tree.Root, node2_L1);// 2
+		assertTrue(tree.GetAllNodes().size() == 3 && tree.LeafCount() == 2);
 		tree.AddChild(tree.Root, node3_L1);// 3
+		assertTrue(tree.GetAllNodes().size() == 4 && tree.LeafCount() == 3);
 
 		// adding to parent 1 nodes: 2,3
 		tree.AddChild(node_L1, node_L2);
+		assertTrue(tree.GetAllNodes().size() == 5 && tree.LeafCount() == 3);
 		tree.AddChild(node_L1, node2_L2);
+		assertTrue(tree.GetAllNodes().size() == 6 && tree.LeafCount() == 4);
 
 		// adding tp parent 4 nodes : 5, 6
 		tree.AddChild(node2_L1, node3_L2);
+		assertTrue(tree.GetAllNodes().size() == 7 && tree.LeafCount() == 4);
 		tree.AddChild(node2_L1, node4_L2);
+		assertTrue(tree.GetAllNodes().size() == 8 && tree.LeafCount() == 5);
 
 		// adding to parent 8 nodes: 7,9
 		tree.AddChild(node3_L1, node5_L2);
+		assertTrue(tree.GetAllNodes().size() == 9 && tree.LeafCount() == 5);
 		tree.AddChild(node3_L1, node6_L2);
+		assertTrue(tree.GetAllNodes().size() == 10 && tree.LeafCount() == 6);
 
 		//adding to 7: -1 and 10
 		tree.AddChild(node5_L2, node_L3); // -1
+		assertTrue(tree.GetAllNodes().size() == 11 && tree.LeafCount() == 6);
 		tree.AddChild(node5_L2, node2_L3); //
+		assertTrue(tree.GetAllNodes().size() == 12 && tree.LeafCount() == 7);
 		
 		tree.AddChild(node2_L2, node2_L4);
+		assertTrue(tree.GetAllNodes().size() == 13 && tree.LeafCount() == 7);
 		//tree.AddChild(node4_L2, node_L1);
 		
 		return tree;
@@ -110,7 +122,11 @@ public class JUnitSimpleTree {
 		assertTrue(tree.Root.Children.contains(node_L1) ); //1
 		assertTrue(tree.Root.Children.contains(node2_L1) ); //4
 		assertTrue(tree.Root.Children.contains(node3_L1) ); //8
-		tree.recNodeT(tree.Root);
+		tree.Count();
+		tree.LeafCount();
+		//tree.recNodeT(tree.Root);
+	//	assertTrue(tree.Count() == 13);
+		//assertTrue(tree.LeafCount() == 6);
 	}
 	
 	
@@ -118,7 +134,7 @@ public class JUnitSimpleTree {
 	public void DeleteChild() {
 		SimpleTree<Integer> tree = createTree();
 		tree.DeleteNode(node2_L1);
-		tree.recNodeT(tree.Root);
+		//tree.recNodeT(tree.Root);
 	}
 	
 	
@@ -144,6 +160,10 @@ public class JUnitSimpleTree {
 			if(!t.get(i).NodeValue.equals(node2_L3.NodeValue))continue;
 			assertTrue(t.get(i).NodeValue.equals(node2_L3.NodeValue));
 		}
+		
+		SimpleTree<Integer> treeSolo = new SimpleTree<Integer>(null);
+		treeSolo.AddChild(null, new SimpleTreeNode(20, null));
+		assertTrue(treeSolo.LeafCount() == 1 && treeSolo.Count() == 1);
 	}
 	
 	
@@ -152,8 +172,10 @@ public class JUnitSimpleTree {
 		SimpleTree<Integer> tree = createTree();
 		tree.MoveNode(node2_L1, node_L1);
 		assertTrue(tree.FindNodesByValue(1).contains(node2_L1));
-		List<SimpleTreeNode<Integer>> t = tree.FindNodesByValue(8); //7 and 9 
-		assertTrue(t.contains(node5_L2)); //true
-		assertTrue(t.contains(node6_L2)); //true
+		List<SimpleTreeNode<Integer>> t = tree.FindNodesByValue(8);
+	//	for (int i = 0; i < t.size(); i++)System.out.println(t.get(i).NodeValue);
+		assertTrue(t.contains(node5_L2));
+		assertTrue(t.contains(node6_L2));
+	//	tree.recNodeT(tree.Root);
 	}
 }
