@@ -152,8 +152,8 @@ public class JUnitSimpleTree {
 		SimpleTree<Integer> tree = createTree();
 		tree.MoveNode(node2_L1, node_L1);
 		assertTrue(tree.FindNodesByValue(1).contains(node2_L1));
-		List<SimpleTreeNode<Integer>> t = tree.FindNodesByValue(8);
-		for (int i = 0; i < t.size(); i++)System.out.println(t.get(i).NodeValue);
-		tree.recNodeT(tree.Root);
+		List<SimpleTreeNode<Integer>> t = tree.FindNodesByValue(8); //7 and 9 
+		assertTrue(t.contains(node5_L2)); //true
+		assertTrue(t.contains(node6_L2)); //true
 	}
 }
