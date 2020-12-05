@@ -74,9 +74,8 @@ class SimpleTree<T> {
 	
 	
 	public void recNodeFindBy(SimpleTreeNode<T> _startNode,  T val, List<SimpleTreeNode<T>> _listToAdd) {
-		if(_startNode.NodeValue.equals(val) && _startNode.Children != null) {
-			for(int i = 0; i < _startNode.Children.size(); i++)
-				_listToAdd.add(_startNode.Children.get(i));
+		if(_startNode.NodeValue.equals(val)) {
+			_listToAdd.add(_startNode);
 		}
 		 if(_startNode.Children != null)
 			 recListFindBy(_startNode, _startNode.Children,  val, _listToAdd);
