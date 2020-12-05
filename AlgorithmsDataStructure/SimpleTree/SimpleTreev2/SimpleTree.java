@@ -1,12 +1,10 @@
-package SimpleTree;
 
-import java.util.*;
 
 class SimpleTreeNode<T> {
 	public T NodeValue;
 	public SimpleTreeNode<T> Parent;
 	public List<SimpleTreeNode<T>> Children;
-
+	
 	public SimpleTreeNode(T val, SimpleTreeNode<T> parent) {
 		NodeValue = val;
 		Parent = parent;
@@ -16,12 +14,14 @@ class SimpleTreeNode<T> {
 
 class SimpleTree<T> {
 	public SimpleTreeNode<T> Root;
-
+	public int count, Leaf;
 	public SimpleTree(SimpleTreeNode<T> root) {
 		Root = root;
+		count = 0;
+		Leaf = 0;
 	}
 	
-
+	
 
 	public void recNodeAdd(SimpleTreeNode<T> _startNode, SimpleTreeNode<T> _parent, SimpleTreeNode<T> _nodeToAdd) {
 		if(_startNode.NodeValue.equals(_parent.NodeValue)) {
@@ -137,13 +137,30 @@ class SimpleTree<T> {
 	//	
 	}
 
-	public int Count() {
+	
+	public void recNCount(SimpleTreeNode<T> _startNode) {
+		 count++;
+		 if(_startNode.Children != null)
+			 recListCount(_startNode.Children);
+		 else
+			 Leaf++;
+	}
 
-		return 0;
+	public void recListCount(List<SimpleTreeNode<T>> list) {
+		for(int i = 0; i < list.size(); i++) 
+			recNCount(list.get(i));
+	}
+	
+	
+	public int Count() {
+		count = 0;
+		recNCount(Root);
+		return count;
 	}
 
 	public int LeafCount() {
-
-		return 0;
+		Leaf = 0;
+		recNCount(Root);
+		return Leaf;
 	}
 }
