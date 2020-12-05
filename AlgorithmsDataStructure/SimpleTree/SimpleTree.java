@@ -171,13 +171,13 @@ class SimpleTree<T> {
 		}
 	
 	
-	// getAllNodesadd
+// getAllNodesadd
 	public void recN(SimpleTreeNode<T> startNode, List<SimpleTreeNode<T>> list) {
 		//SimpleTreeNode<T> node = startNode;
-		if(startNode.NodeValue.equals(Root.NodeValue))list.add(startNode);
-		else list.add(startNode);
+		list.add(new SimpleTreeNode<T>(startNode.NodeValue, null));
 		if(startNode.Children != null)recL(startNode.Children, list);
 	}
+	
 	
 	// getAllNodesadd
 	public void recL(List<SimpleTreeNode<T>> list, List<SimpleTreeNode<T>> _listToAdd) {
