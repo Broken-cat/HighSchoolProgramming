@@ -1,3 +1,6 @@
+package SimpleTree;
+
+import java.util.*;
 
 class SimpleTreeNode<T> {
 	public int NodeLevel;
@@ -150,9 +153,7 @@ class SimpleTree<T> {
 	
 	public List<SimpleTreeNode<T>> GetAllNodes() {
 		List<SimpleTreeNode<T>> treeNodes = new LinkedList<SimpleTreeNode<T>>();
-		//treeNodes.clear();
 		recN(Root, treeNodes);
-		
 		return treeNodes;
 	}
 
@@ -176,7 +177,8 @@ class SimpleTree<T> {
 	// getAllNodesadd
 	public void recN(SimpleTreeNode<T> startNode, List<SimpleTreeNode<T>> list) {
 		SimpleTreeNode<T> node = startNode;
-		list.add(node);
+		if(node.NodeValue.equals(Root.NodeValue))list.add(Root);
+		else list.add(node);
 		if(node.Children != null)recL(node.Children, list);
 	}
 	
