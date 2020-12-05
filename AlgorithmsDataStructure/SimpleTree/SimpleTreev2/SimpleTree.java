@@ -109,7 +109,32 @@ class SimpleTree<T> {
 
 	public List<SimpleTreeNode<T>> GetAllNodes() {
 		List<SimpleTreeNode<T>> res = new LinkedList<SimpleTreeNode<T>>();
-		recNodeFindAll(Root, res);
+		 Queue<SimpleTreeNode> q = new LinkedList<>(); // Create a queue 
+		    q.add(Root); // Enqueue root  
+		    while (!q.isEmpty()) 
+		    { 
+		        int n = q.size(); 
+		  
+		        // If this node has children 
+		        while (n > 0) 
+		        { 
+		            // Dequeue an item from queue 
+		            // and print it 
+		        	SimpleTreeNode<?> p = q.peek(); 
+		        	res.add((SimpleTreeNode<T>) p);
+		            q.remove(); 
+		  
+		            // Enqueue all children of  
+		            // the dequeued item 
+		          if(p.Children != null) {
+		            for (int i = 0; i < p.Children.size(); i++) 
+		                q.add((SimpleTreeNode<T>) p.Children.get(i)); 
+		           }
+		            n--; 
+		        } 
+		          
+		        
+		    } 
 		return res;
 	}
 
