@@ -1,5 +1,4 @@
 
-
 class SimpleTreeNode<T> {
 	public int NodeLevel;
 	public T NodeValue;
@@ -13,28 +12,18 @@ class SimpleTreeNode<T> {
 	}
 }
 
-class abstrRoot<T> extends SimpleTreeNode<T> {
 
-	public abstrRoot(T val, SimpleTreeNode<T> parent) {
-		super(val, parent);
-		Children = new LinkedList<SimpleTreeNode<T>>();
-	}
-	
-}
 class SimpleTree<T> {
 	
 	public SimpleTreeNode<T> Root;
 	public int count;
 	public int Leaf;
-	private abstrRoot<T> abs;
 	List<SimpleTreeNode<T>> treeNodes;
 	public SimpleTree(SimpleTreeNode<T> root) {
 		Root = root;
 		Root.NodeLevel = 0;
 		count = 1;
 		Leaf = 0;
-		abs = new abstrRoot(99, null);
-		abs.Children.add(Root);
 	}
 
 	public void AddChild(SimpleTreeNode<T> ParentNode, SimpleTreeNode<T> NewChild) {
@@ -66,46 +55,6 @@ class SimpleTree<T> {
 		}
 		return null;
 	}
-
-	// getAllNodesadd
-	public void recSearch(SimpleTreeNode<T> startNode, List<SimpleTreeNode<T>> list) {
-		try {
-			for (int i = 0; i < list.size(); i++) {
-				SimpleTreeNode<T> res = list.get(i);
-			//	System.out.println("Taking node: " + res.NodeValue);
-				count++;
-				treeNodes.add(res);
-				if (res.Children != null)
-					recSearch(res, res.Children);
-
-			}
-			return;
-		} catch (Exception e) {
-			// TODO: handle exception
-			
-		}
-		
-	}
-	
-	
-	// getAllNodesadd
-		public void testSearch(SimpleTreeNode<T> startNode, List<SimpleTreeNode<T>> list) {
-			try {
-				for (int i = 0; i < list.size(); i++) {
-					SimpleTreeNode<T> res = list.get(i);
-					//System.out.println("Taking node: " + res.NodeValue);
-					if (res.Children != null)
-						recSearch(res, res.Children);
-				}
-				return;
-			} catch (Exception e) {
-				// TODO: handle exception
-				
-			}
-			
-		}
-	
-	
 
 	public void leafC(SimpleTreeNode<T> startNode, List<SimpleTreeNode<T>> list){
 		try {
@@ -169,11 +118,6 @@ class SimpleTree<T> {
 		recSearch(Root, Root.Children, NodeToDelete);
 	}
 
-	public List<SimpleTreeNode<T>> GetAllNodes() {
-		treeNodes = new LinkedList<SimpleTreeNode<T>>();
-		recSearch(abs, abs.Children);
-		return treeNodes;
-	}
 
 	public List<SimpleTreeNode<T>> FindNodesByValue(T val) {
 		List<SimpleTreeNode<T>> res = new LinkedList<SimpleTreeNode<T>>();
@@ -194,7 +138,7 @@ class SimpleTree<T> {
 
 	public int Count() {
 		count = 0;
-		recSearch(abs, abs.Children);
+		recN(Root);
 		return count;
 	}
 
@@ -202,6 +146,49 @@ class SimpleTree<T> {
 		Leaf = 0;
 		leafC(Root, Root.Children);
 		return Leaf;
+	}
+	
+	public List<SimpleTreeNode<T>> GetAllNodes() {
+		List<SimpleTreeNode<T>> treeNodes = new LinkedList<SimpleTreeNode<T>>();
+		//treeNodes.clear();
+		recN(Root, treeNodes);
+		for (int i = 0; i < treeNodes.size(); i++) {
+			if(treeNodes.get(i).Parent == null)System.out.println(treeNodes.get(i).NodeValue);
+			else	System.out.println(treeNodes.get(i).NodeValue + " Parent: " + treeNodes.get(i).Parent.NodeValue + " Node Level: " + treeNodes.get(i).NodeLevel);
+		}
+		return treeNodes;
+	}
+
+	
+	// getAllNodesadd
+		public void recN(SimpleTreeNode<T> startNode) {
+			SimpleTreeNode<T> node = startNode;
+			count++;
+			if(node.Children != null)recL(node.Children);
+		}
+		
+		
+		// getAllNodesadd
+		public void recL(List<SimpleTreeNode<T>> list) {
+			for(int i = 0; i < list.size(); i++) {
+				recN(list.get(i));
+			}
+		}
+	
+	
+	// getAllNodesadd
+	public void recN(SimpleTreeNode<T> startNode, List<SimpleTreeNode<T>> list) {
+		SimpleTreeNode<T> node = startNode;
+		list.add(node);
+		if(node.Children != null)recL(node.Children, list);
+	}
+	
+	
+	// getAllNodesadd
+	public void recL(List<SimpleTreeNode<T>> list, List<SimpleTreeNode<T>> _listToAdd) {
+		for(int i = 0; i < list.size(); i++) {
+			recN(list.get(i), _listToAdd);
+		}
 	}
 
 }
