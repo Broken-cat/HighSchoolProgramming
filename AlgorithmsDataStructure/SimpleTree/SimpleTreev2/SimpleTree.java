@@ -1,6 +1,9 @@
+package SimpleTree;
 
+import java.util.*;
 
 class SimpleTreeNode<T> {
+	public int NodeLevel;
 	public T NodeValue;
 	public SimpleTreeNode<T> Parent;
 	public List<SimpleTreeNode<T>> Children;
@@ -29,6 +32,8 @@ class SimpleTree<T> {
 			if(_startNode.Children == null)
 				_startNode.Children = new LinkedList<SimpleTreeNode<T>>();
 			_startNode.Children.add(_nodeToAdd);
+			_nodeToAdd.NodeLevel = _nodeToAdd.Parent.NodeLevel + 1;
+			return;
 		}	
 		else
 		 if(_startNode.Children != null)recListAdd(_startNode.Children, _parent, _nodeToAdd);
@@ -46,6 +51,7 @@ class SimpleTree<T> {
 		if (Root == null) {
 			Root = NewChild;
 			NewChild.Parent = null;
+			Root.NodeLevel = 1;
 		} else {
 			recNodeAdd(Root, ParentNode, NewChild);	
 		}
@@ -109,34 +115,23 @@ class SimpleTree<T> {
 
 	public List<SimpleTreeNode<T>> GetAllNodes() {
 		List<SimpleTreeNode<T>> res = new LinkedList<SimpleTreeNode<T>>();
-		 Queue<SimpleTreeNode> q = new LinkedList<>(); // Create a queue 
-		    q.add(Root); // Enqueue root  
-		    while (!q.isEmpty()) 
-		    { 
-		        int n = q.size(); 
-		  
-		        // If this node has children 
-		        while (n > 0) 
-		        { 
-		            // Dequeue an item from queue 
-		            // and print it 
-		        	SimpleTreeNode<?> p = q.peek(); 
-		        	res.add((SimpleTreeNode<T>) p);
-		            q.remove(); 
-		  
-		            // Enqueue all children of  
-		            // the dequeued item 
-		          if(p.Children != null) {
-		            for (int i = 0; i < p.Children.size(); i++) 
-		                q.add((SimpleTreeNode<T>) p.Children.get(i)); 
-		           }
-		            n--; 
-		        } 
-		          
-		        
-		    } 
+		recNodeFindAll(Root, res);
+		recNodeFindAllT(Root);
 		return res;
 	}
+	
+	public void recNodeFindAllT(SimpleTreeNode<T> _startNode) {
+		 System.out.print(_startNode.NodeValue + " ");
+		 if(_startNode.Children != null)
+			 recListFindAllT(_startNode.Children);
+		 return;
+	}
+
+	public void recListFindAllT(List<SimpleTreeNode<T>> list  ) {
+		for(int i = 0; i < list.size(); i++) 
+			recNodeFindAllT(list.get(i));
+	}
+
 
 	public SimpleTreeNode<T> copyChildren(SimpleTreeNode<T> startNode, List<SimpleTreeNode<T>> list,
 			SimpleTreeNode<T> searchingNode) {
@@ -162,11 +157,10 @@ class SimpleTree<T> {
 
 	
 	public void recNCount(SimpleTreeNode<T> _startNode) {
-		 count++;
-		 if(_startNode.Children != null)
-			 recListCount(_startNode.Children);
+		 if(_startNode.Children == null || _startNode.Children.size() == 0) Leaf++;
 		 else
-			 Leaf++;
+			 recListCount(_startNode.Children);
+	
 	}
 
 	public void recListCount(List<SimpleTreeNode<T>> list) {
@@ -177,7 +171,7 @@ class SimpleTree<T> {
 	
 	public int Count() {
 		count = 0;
-		recNCount(Root);
+		int count = GetAllNodes().size();
 		return count;
 	}
 
