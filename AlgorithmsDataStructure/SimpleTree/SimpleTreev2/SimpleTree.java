@@ -24,7 +24,7 @@ class SimpleTree<T> {
 	
 
 	public void recNodeAdd(SimpleTreeNode<T> _startNode, SimpleTreeNode<T> _parent, SimpleTreeNode<T> _nodeToAdd) {
-		if(_startNode.NodeValue.equals(_parent.NodeValue)) {
+		if(_startNode.equals(_parent)) {
 			_nodeToAdd.Parent = _startNode;
 			if(_startNode.Children == null)
 				_startNode.Children = new LinkedList<SimpleTreeNode<T>>();
