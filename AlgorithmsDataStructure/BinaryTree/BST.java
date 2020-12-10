@@ -1,7 +1,3 @@
-package BinaryTree;
-
-import java.io.*;
-import java.util.*;
 
 class BSTNode<T> {
 	public int ChildsCount;
@@ -53,13 +49,7 @@ public class BST<T> {
 		Root = node;
 	}
 
-	public void recTest(BSTNode<T> _startNode) {
-		System.out.println(_startNode.NodeValue);
-		if (_startNode.LeftChild != null)
-			recTest(_startNode.LeftChild);
-		if (_startNode.RightChild != null)
-			recTest(_startNode.RightChild);
-	}
+	
 
 	public BSTFind<T> FindNodeByKey(int key) {
 		BSTNode<T> current = Root;
@@ -194,8 +184,22 @@ public class BST<T> {
 	
 	
 	
+	public void recTest(BSTNode<T> _startNode) {
+		if(_startNode.LeftChild != null || _startNode.RightChild != null)
+			count++;
+		if (_startNode.LeftChild != null) 
+			recTest(_startNode.LeftChild);
+		if (_startNode.RightChild != null) 
+			recTest(_startNode.RightChild);
+			
+	}
+	
+	
+	
 	public int Count() {
-		return 0;
+		count = 0;
+		recTest(Root);
+		return count;
 	}
 
 }
