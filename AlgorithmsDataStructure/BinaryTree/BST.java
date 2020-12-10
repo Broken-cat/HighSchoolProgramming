@@ -7,6 +7,7 @@ class BSTNode<T> {
 	public BSTNode<T> LeftChild;
 	public BSTNode<T> RightChild;
 	public boolean isLeaf;
+	
 
 	public BSTNode(int key, T val, BSTNode<T> parent) {
 		NodeKey = key;
@@ -44,9 +45,10 @@ class BSTFind<T> {
 
 public class BST<T> {
 	BSTNode<T> Root;
-
+	private int count;
 	public BST(BSTNode<T> node) {
 		Root = node;
+		count = 0;
 	}
 
 	
@@ -181,8 +183,6 @@ public class BST<T> {
 		
 	}
 
-	
-	
 	
 	public void recTest(BSTNode<T> _startNode) {
 		if(_startNode.LeftChild != null || _startNode.RightChild != null)
