@@ -152,18 +152,20 @@ public class BST<T> {
 		} else {
 			reciever = FinMinMax(current.Node.RightChild, false);
 			
+			if(reciever.RightChild != null) {
+				reciever.RightChild.Parent = reciever.Parent;
+				reciever.Parent.LeftChild = reciever.RightChild;
+			} else
+				reciever.Parent.LeftChild = null;
+			
+			if(!reciever.equals(current.Node.LeftChild))
+				reciever.LeftChild = current.Node.LeftChild;
+			if(!reciever.equals(current.Node.RightChild))
+				reciever.RightChild = current.Node.RightChild;
 			if(reciever.NodeKey < reciever.Parent.NodeKey)
 				reciever.Parent.LeftChild = null;
 			else
 				reciever.Parent.RightChild = null;
-			
-			
-			if(reciever.RightChild != null) {
-				reciever.RightChild.Parent = reciever.Parent;
-				reciever.Parent.LeftChild = reciever.RightChild;
-			}
-			
-			
 			
 			//making parent of deleting node reference to reciever 
 			if(!current.Node.equals(Root)){
@@ -172,10 +174,7 @@ public class BST<T> {
 				else
 					current.Node.Parent.LeftChild = reciever;
 			} 
-			if(!reciever.equals(current.Node.LeftChild))
-				reciever.LeftChild = current.Node.LeftChild;
-			if(!reciever.equals(current.Node.RightChild))
-				reciever.RightChild = current.Node.RightChild;
+			
 			if(current.Node.equals(Root)) {
 				if(Root.LeftChild != null)
 					Root.LeftChild.Parent = reciever;
@@ -204,6 +203,7 @@ public class BST<T> {
 	
 	
 	public void recTest(BSTNode<T> _startNode) {
+		System.out.println(_startNode.NodeKey);
 		if(_startNode.LeftChild != null || _startNode.RightChild != null)
 			count++;
 		if (_startNode.LeftChild != null) 
