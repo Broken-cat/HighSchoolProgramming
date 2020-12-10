@@ -150,12 +150,14 @@ public class BST<T> {
 			current.Node = null;
 			return true;
 		} else {
+			//find a reciever
 			reciever = FinMinMax(current.Node.RightChild, false);
 			
+			//link reciever RightChild with recieverParent
 			if(reciever.RightChild != null) {
 				reciever.RightChild.Parent = reciever.Parent;
 				reciever.Parent.LeftChild = reciever.RightChild;
-			} else
+			} else if (!reciever.Parent.equals(Root))
 				reciever.Parent.LeftChild = null;
 			
 			if(!reciever.equals(current.Node.LeftChild))
@@ -181,9 +183,7 @@ public class BST<T> {
 				if(Root.RightChild != null)
 					Root.RightChild.Parent= reciever;
 				Root = reciever;
-			}
-				
-			else
+			}	else
 				reciever.Parent = current.Node.Parent;
 			current.Node = null;
 			return true;
