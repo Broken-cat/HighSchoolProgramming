@@ -176,8 +176,16 @@ public class BST<T> {
 				reciever.LeftChild = current.Node.LeftChild;
 			if(!reciever.equals(current.Node.RightChild))
 				reciever.RightChild = current.Node.RightChild;
-			if(current.Node.equals(Root))
+			if(current.Node.equals(Root)) {
+				if(Root.LeftChild != null)
+					Root.LeftChild.Parent = reciever;
+				if(Root.RightChild != null)
+					Root.RightChild.Parent= reciever;
 				Root = reciever;
+			}
+				
+			else
+				reciever.Parent = current.Node.Parent;
 			current.Node = null;
 			return true;
 			
@@ -185,6 +193,15 @@ public class BST<T> {
 		
 	}
 
+	public void Show(BSTNode<T> _startNode) {
+		System.out.println(_startNode.NodeKey);
+		if (_startNode.LeftChild != null) 
+			Show(_startNode.LeftChild);
+		if (_startNode.RightChild != null) 
+			Show(_startNode.RightChild);	
+	}
+	
+	
 	
 	public void recTest(BSTNode<T> _startNode) {
 		if(_startNode.LeftChild != null || _startNode.RightChild != null)
