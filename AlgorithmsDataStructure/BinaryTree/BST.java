@@ -172,8 +172,10 @@ public class BST<T> {
 				else
 					current.Node.Parent.LeftChild = reciever;
 			} 
-			reciever.LeftChild = current.Node.LeftChild;
-			reciever.RightChild = current.Node.RightChild;
+			if(!reciever.equals(current.Node.LeftChild))
+				reciever.LeftChild = current.Node.LeftChild;
+			if(!reciever.equals(current.Node.RightChild))
+				reciever.RightChild = current.Node.RightChild;
 			if(current.Node.equals(Root))
 				Root = reciever;
 			current.Node = null;
