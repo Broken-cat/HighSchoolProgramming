@@ -269,7 +269,7 @@ public class BST<T> {
 	public int Count() {
 		count = 0;
 		if(Root == null) return 0;
-		recTest(Root);
+		
 		return count;
 	}
 
