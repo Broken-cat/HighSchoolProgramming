@@ -1,5 +1,4 @@
 
-
 class BSTNode<T> {
 	public int ChildsCount;
 	public int NodeKey;
@@ -57,7 +56,7 @@ public class BST<T> {
 	}
 
 	public BSTFind<T> FindNodeByKey(int key) {
-		BSTNode<T> current = Root;
+		BSTNode<T> current = this.Root;
 		BSTFind<T> fNode = new BSTFind<T>(current);
 		fNode.NodeHasKey = true;
 		while (fNode.Node.NodeKey != key) {
@@ -174,11 +173,21 @@ public class BST<T> {
 		} else if (currentNode.ChildCount() == 2) {
 			reciever = FinMinMax(currentNode.RightChild, false);
 			if(reciever.LeftChild == null && reciever.RightChild == null) {
+				if(!currentNode.LeftChild.equals(reciever))
+					currentNode.LeftChild.Parent = reciever;
+				if(!currentNode.RightChild.equals(reciever))
+					currentNode.RightChild.Parent = reciever;
+				if(reciever.NodeKey > reciever.Parent.NodeKey)
+					reciever.Parent.RightChild = null;
+				else
+					reciever.Parent.LeftChild = null;
+
+				
 				reciever.LeftChild = currentNode.LeftChild;
 				reciever.RightChild = currentNode.RightChild;
-				reciever.RightChild = null;
-				if(currentNode.equals(Root)) {
-					Root = reciever;
+				if(currentNode.equals(this.Root)) {
+					this.Root = reciever;
+					reciever.Parent = null;
 				} else {
 					if(reciever.NodeKey > reciever.Parent.NodeKey) {
 						currentNode.Parent.RightChild = reciever;;
@@ -186,26 +195,43 @@ public class BST<T> {
 						currentNode.Parent.LeftChild = reciever;
 					}
 				}
-					
-				
 				return true;
 			} else if (reciever.LeftChild == null && reciever.RightChild != null) {
-				reciever.RightChild.Parent = reciever.Parent;
 				if(reciever.NodeKey > reciever.Parent.NodeKey)
 					reciever.Parent.RightChild = reciever.RightChild;
 				else
 					reciever.Parent.LeftChild = reciever.RightChild;
-				reciever = null;
+				reciever.RightChild.Parent = reciever.Parent;
+				
+				currentNode.LeftChild.Parent = reciever;
+				currentNode.RightChild.Parent = reciever;
+				reciever.LeftChild = currentNode.LeftChild;
+				reciever.RightChild = currentNode.RightChild;
+				if(currentNode.equals(this.Root)) {
+					reciever.Parent = null;
+					this.Root = reciever;
+					currentNode = null;
+					return true;
+				} else {
+					reciever.Parent = currentNode.Parent;
+					if(currentNode.NodeKey > currentNode.Parent.NodeKey)
+						currentNode.Parent.RightChild = reciever;
+					else 
+						currentNode.Parent.LeftChild = reciever;
+				}
 				return true;
 			} else {
 				if(reciever.RightChild != null) {
 					reciever.RightChild.Parent = reciever.Parent;
 					reciever.Parent.LeftChild = reciever.RightChild;
 				}
+
+				currentNode.LeftChild.Parent = reciever;
+				currentNode.RightChild.Parent = reciever;
 				reciever.LeftChild = currentNode.LeftChild;
 				reciever.RightChild = currentNode.RightChild;
-				if(currentNode.equals(Root))
-					Root = reciever;
+				if(currentNode.equals(this.Root))
+					this.Root = reciever;
 				return true;
 			}
 		}
@@ -222,7 +248,7 @@ public class BST<T> {
 	}
 
 	public void recTest(BSTNode<T> _startNode) {
-		System.out.println(_startNode.NodeKey);
+	//	System.out.println(_startNode.NodeKey);
 		if (_startNode.LeftChild != null || _startNode.RightChild != null)
 			count++;
 		if (_startNode.LeftChild != null)
