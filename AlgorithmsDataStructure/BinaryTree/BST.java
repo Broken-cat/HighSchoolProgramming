@@ -33,6 +33,8 @@ class BSTNode<T> {
 	}
 }
 
+
+//////////////To_left one time was used
 class BSTFind<T> {
 
 	public BSTNode<T> Node;
@@ -56,15 +58,22 @@ public class BST<T> {
 	}
 
 	public BSTFind<T> FindNodeByKey(int key) {
-		BSTNode<T> current = this.Root;
-		BSTFind<T> fNode = new BSTFind<T>(current);
+		BSTFind<T> fNode = new BSTFind<T>(this.Root);
+		if(Root == null) {
+			fNode.NodeHasKey = false;
+			return fNode;
+		} 
 		fNode.NodeHasKey = true;
-		while (fNode.Node.NodeKey != key) {
+		while (fNode.Node.NodeKey != key) {    
 			if (fNode.Node.NodeKey > key) {
 				if (fNode.Node.LeftChild != null)
 					fNode.Node = fNode.Node.LeftChild;
 				else {
 					fNode.NodeHasKey = false;
+					if(fNode.Node.NodeKey < key)
+						fNode.ToLeft = false;
+					else
+						fNode.ToLeft = true;
 					return fNode;
 				}
 			} else {
@@ -72,12 +81,15 @@ public class BST<T> {
 					fNode.Node = fNode.Node.RightChild;
 				else {
 					fNode.NodeHasKey = false;
+					if(fNode.Node.NodeKey < key)
+						fNode.ToLeft = false;
+					else
+						fNode.ToLeft = true;
 					return fNode;
 				}
 				fNode.NodeHasKey = true;
 			}
 		}
-		current = fNode.Node;
 		return fNode;
 	}
 
@@ -89,13 +101,13 @@ public class BST<T> {
 		}
 		BSTFind<T> current = FindNodeByKey(key);
 		if (!current.NodeHasKey)
-			if (nodeToAdd.NodeKey > current.Node.NodeKey) {
+			if (current.ToLeft == false) {
 				current.Node.RightChild = nodeToAdd;
-				nodeToAdd.Parent = current.Node;
+				current.Node.RightChild.Parent = current.Node;
 				return true;
 			} else {
 				current.Node.LeftChild = nodeToAdd;
-				nodeToAdd.Parent = current.Node;
+				current.Node.LeftChild.Parent = current.Node;
 				return true;
 			}
 		return false;
@@ -259,6 +271,7 @@ public class BST<T> {
 	//	System.out.println(_startNode.NodeKey);
 		if (_startNode.LeftChild != null || _startNode.RightChild != null)
 			count++;
+		FindNodeByKey(_startNode.NodeKey);
 		if (_startNode.LeftChild != null)
 			recTest(_startNode.LeftChild);
 		if (_startNode.RightChild != null)
@@ -269,7 +282,7 @@ public class BST<T> {
 	public int Count() {
 		count = 0;
 		if(Root == null) return 0;
-		
+		recTest(Root);
 		return count;
 	}
 
