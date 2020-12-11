@@ -189,19 +189,22 @@ public class BST<T> {
 					this.Root = reciever;
 					reciever.Parent = null;
 				} else {
-					if(reciever.NodeKey > reciever.Parent.NodeKey) {
+					
+					if(reciever.NodeKey > currentNode.Parent.NodeKey) {
 						currentNode.Parent.RightChild = reciever;;
 					} else {
 						currentNode.Parent.LeftChild = reciever;
 					}
+					reciever.Parent = currentNode.Parent;
 				}
 				return true;
-			} else if (reciever.LeftChild == null && reciever.RightChild != null) {
+			} else if (reciever.LeftChild == null && reciever.RightChild != null) {//123123123
 				if(reciever.NodeKey > reciever.Parent.NodeKey)
 					reciever.Parent.RightChild = reciever.RightChild;
 				else
 					reciever.Parent.LeftChild = reciever.RightChild;
 				reciever.RightChild.Parent = reciever.Parent;
+				
 				
 				currentNode.LeftChild.Parent = reciever;
 				currentNode.RightChild.Parent = reciever;
@@ -213,12 +216,17 @@ public class BST<T> {
 					currentNode = null;
 					return true;
 				} else {
-					reciever.Parent = currentNode.Parent;
-					if(currentNode.NodeKey > currentNode.Parent.NodeKey)
+					if(currentNode.NodeKey > currentNode.Parent.NodeKey) {
 						currentNode.Parent.RightChild = reciever;
-					else 
+						reciever.Parent = currentNode.Parent;
+					}
+					else {
 						currentNode.Parent.LeftChild = reciever;
+						reciever.Parent = currentNode.Parent;
+					}
+						
 				}
+				
 				return true;
 			} else {
 				if(reciever.RightChild != null) {
@@ -240,7 +248,7 @@ public class BST<T> {
 	}
 
 	public void Show(BSTNode<T> _startNode) {
-	//	System.out.println(_startNode.NodeKey);
+		System.out.println(_startNode.NodeKey);
 		if (_startNode.LeftChild != null)
 			Show(_startNode.LeftChild);
 		if (_startNode.RightChild != null)
