@@ -17,29 +17,33 @@ public class JUntiTestbBST {
 	public BST createTree() {
 		BSTNode root = new BSTNode(50, 50, null);
 		BST tree = new BST(root);
-		assertTrue(tree.Count() == 0);
+		assertTrue(tree.Count() == 0 && tree.Root.LeftChild == null && tree.Root.RightChild == null);
 		tree.AddKeyValue(25, 25);
-		//assertTrue(tree.Count() == 1);
+		assertTrue(tree.Count() == 1 && tree.FindNodeByKey(50).Node.LeftChild.equals(tree.FindNodeByKey(25).Node)
+				&& tree.FindNodeByKey(50).Node.Parent == null && tree.FindNodeByKey(25).Node.Parent.equals(tree.Root));
 		tree.AddKeyValue(10, 10);
-		//assertTrue(tree.Count() == 2);
+		assertTrue(tree.Count() == 2 && tree.FindNodeByKey(25).Node.LeftChild.equals(tree.FindNodeByKey(10).Node) &&
+				tree.FindNodeByKey(10).Node.Parent.equals(tree.FindNodeByKey(25).Node) 
+				&& tree.FindNodeByKey(10).Node.LeftChild == null);
 		tree.AddKeyValue(20, 20);
-		//assertTrue(tree.Count() == 3);
+		assertTrue(tree.Count() == 3 && tree.FindNodeByKey(10).Node.RightChild.equals(tree.FindNodeByKey(20).Node));
 		tree.AddKeyValue(40, 40);
-		//assertTrue(tree.Count() == 3);
+		assertTrue(tree.Count() == 3 && tree.FindNodeByKey(25).Node.RightChild.equals(tree.FindNodeByKey(40).Node));
 		tree.AddKeyValue(30, 30);
-		assertTrue(tree.Count() == 4);
+		assertTrue(tree.Count() == 4 && tree.FindNodeByKey(40).Node.LeftChild.equals(tree.FindNodeByKey(30).Node));
 		tree.AddKeyValue(45, 45);
-		assertTrue(tree.Count() == 4);
+		assertTrue(tree.Count() == 4 && tree.FindNodeByKey(40).Node.RightChild.equals(tree.FindNodeByKey(45).Node));
 		tree.AddKeyValue(80, 80);
-		assertTrue(tree.Count() == 4);
+		assertTrue(tree.Count() == 4 && tree.FindNodeByKey(50).Node.RightChild.equals(tree.FindNodeByKey(80).Node)
+				&& tree.Root.RightChild.equals(tree.FindNodeByKey(80).Node));
 		tree.AddKeyValue(70, 70);
-		assertTrue(tree.Count() == 5);
+		assertTrue(tree.Count() == 5 && tree.FindNodeByKey(80).Node.LeftChild.equals(tree.FindNodeByKey(70).Node));
 		tree.AddKeyValue(90, 90);
-		assertTrue(tree.Count() == 5);
+		assertTrue(tree.Count() == 5 && tree.FindNodeByKey(80).Node.RightChild.equals(tree.FindNodeByKey(90).Node));
 		tree.AddKeyValue(55, 55);
-		assertTrue(tree.Count() == 6);
+		assertTrue(tree.Count() == 6 && tree.FindNodeByKey(70).Node.LeftChild.equals(tree.FindNodeByKey(55).Node));
 		tree.AddKeyValue(65, 65);
-		assertTrue(tree.Count() == 7);
+		assertTrue(tree.Count() == 7 && tree.FindNodeByKey(55).Node.RightChild.equals(tree.FindNodeByKey(65).Node));
 		return tree;
 	}
 	
@@ -368,6 +372,64 @@ public class JUntiTestbBST {
 		tree.FindNodeByKey(12);
 		tree.FindNodeByKey(32);
 		return true;
+	}
+	
+	
+	@Test
+	public void searchStackOverFlow() {
+		BSTNode root = new BSTNode(50, 50, null);
+		BST tree = new BST(root);
+		assertTrue(tree.FindNodeByKey(25).NodeHasKey == false && tree.FindNodeByKey(25).ToLeft == true);
+		assertTrue(tree.Count() == 0 && tree.Root.LeftChild == null && tree.Root.RightChild == null);
+		tree.AddKeyValue(25, 25);
+		assertTrue(tree.FindNodeByKey(10).NodeHasKey == false && tree.FindNodeByKey(10).ToLeft == true);
+		assertTrue(tree.Count() == 1 && tree.FindNodeByKey(50).Node.LeftChild.equals(tree.FindNodeByKey(25).Node)
+				&& tree.FindNodeByKey(50).Node.Parent == null && tree.FindNodeByKey(25).Node.Parent.equals(tree.Root));
+		tree.AddKeyValue(10, 10);
+		
+		assertTrue(tree.Count() == 2 && tree.FindNodeByKey(25).Node.LeftChild.equals(tree.FindNodeByKey(10).Node) &&
+				tree.FindNodeByKey(10).Node.Parent.equals(tree.FindNodeByKey(25).Node) 
+				&& tree.FindNodeByKey(10).Node.LeftChild == null && tree.FindNodeByKey(25).NodeHasKey);
+		assertTrue(tree.FindNodeByKey(20).NodeHasKey == false && tree.FindNodeByKey(20).ToLeft == false);
+		tree.AddKeyValue(20, 20);
+		assertTrue(tree.Count() == 3 && tree.FindNodeByKey(10).Node.RightChild.equals(tree.FindNodeByKey(20).Node));
+		assertTrue(tree.FindNodeByKey(40).NodeHasKey == false && tree.FindNodeByKey(40).ToLeft == false);
+		tree.AddKeyValue(40, 40);
+		assertTrue(tree.Count() == 3 && tree.FindNodeByKey(25).Node.RightChild.equals(tree.FindNodeByKey(40).Node));
+		assertTrue(tree.FindNodeByKey(30).NodeHasKey == false && tree.FindNodeByKey(30).ToLeft == true);
+		tree.AddKeyValue(30, 30);
+		assertTrue(tree.Count() == 4 && tree.FindNodeByKey(40).Node.LeftChild.equals(tree.FindNodeByKey(30).Node));
+		assertTrue(tree.FindNodeByKey(45).NodeHasKey == false && tree.FindNodeByKey(45).ToLeft == false);
+		tree.AddKeyValue(45, 45);
+		assertTrue(tree.Count() == 4 && tree.FindNodeByKey(40).Node.RightChild.equals(tree.FindNodeByKey(45).Node));
+		assertTrue(tree.FindNodeByKey(80).NodeHasKey == false && tree.FindNodeByKey(80).ToLeft == false);
+		tree.AddKeyValue(80, 80);
+		assertTrue(tree.Count() == 4 && tree.FindNodeByKey(50).Node.RightChild.equals(tree.FindNodeByKey(80).Node)
+				&& tree.Root.RightChild.equals(tree.FindNodeByKey(80).Node));
+		assertTrue(tree.FindNodeByKey(70).NodeHasKey == false && tree.FindNodeByKey(70).ToLeft == true);
+		tree.AddKeyValue(70, 70);
+		assertTrue(tree.Count() == 5 && tree.FindNodeByKey(80).Node.LeftChild.equals(tree.FindNodeByKey(70).Node)
+				&& tree.FindNodeByKey(80).NodeHasKey);
+		assertTrue(tree.FindNodeByKey(90).NodeHasKey == false && tree.FindNodeByKey(90).ToLeft == false);
+		tree.AddKeyValue(90, 90);
+		assertTrue(tree.Count() == 5 && tree.FindNodeByKey(80).Node.RightChild.equals(tree.FindNodeByKey(90).Node));
+		assertTrue(tree.FindNodeByKey(55).NodeHasKey == false && tree.FindNodeByKey(55).ToLeft == true);
+		tree.AddKeyValue(55, 55);
+		assertTrue(tree.Count() == 6 && tree.FindNodeByKey(70).Node.LeftChild.equals(tree.FindNodeByKey(55).Node));
+		assertTrue(tree.FindNodeByKey(65).NodeHasKey == false && tree.FindNodeByKey(65).ToLeft == false);
+		tree.AddKeyValue(65, 65);
+		assertTrue(tree.Count() == 7 && tree.FindNodeByKey(55).Node.RightChild.equals(tree.FindNodeByKey(65).Node));
+		
+		tree.DeleteNodeByKey(45);
+	//	tree.DeleteNodeByKey(30);
+		tree.Show(tree.Root);
+		assertTrue(tree.FindNodeByKey(35).Node.Parent.equals(tree.FindNodeByKey(45).Node)
+				&& tree.FindNodeByKey(45).Node.LeftChild.equals(tree.FindNodeByKey(30).Node));
+		
+		assertTrue(tree.FinMinMax(tree.FindNodeByKey(45).Node, false) == tree.FindNodeByKey(35).Node
+				&& tree.FinMinMax(tree.FindNodeByKey(45).Node, true) == tree.FindNodeByKey(45).Node);
+		tree.FinMinMax(tree.FindNodeByKey(35).Node, false);
+		
 	}
 
 }
