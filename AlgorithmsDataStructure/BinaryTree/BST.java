@@ -94,7 +94,7 @@ public class BST<T> {
 	}
 
 	public boolean AddKeyValue(int key, T val) {
-		BSTNode<T> nodeToAdd = new BSTNode(key, val, null);
+		BSTNode<T> nodeToAdd = new BSTNode<>(key, val, null);
 		if (Root == null) {
 			Root = nodeToAdd;
 			return true;
@@ -115,7 +115,7 @@ public class BST<T> {
 
 	public BSTNode<T> FinMinMax(BSTNode<T> FromNode, boolean FindMax) {
 		try {
-			BSTFind<T> current = new BSTFind(FromNode);
+			BSTFind<T> current = new BSTFind<T>(FromNode);
 			if (FindMax) {
 				while (current.Node.RightChild != null)
 					current.Node = current.Node.RightChild;
