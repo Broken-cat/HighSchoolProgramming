@@ -269,9 +269,7 @@ public class BST<T> {
 
 	public void recTest(BSTNode<T> _startNode) {
 	//	System.out.println(_startNode.NodeKey);
-		if (_startNode.LeftChild != null || _startNode.RightChild != null)
-			count++;
-		FindNodeByKey(_startNode.NodeKey);
+		count++;
 		if (_startNode.LeftChild != null)
 			recTest(_startNode.LeftChild);
 		if (_startNode.RightChild != null)
@@ -281,7 +279,7 @@ public class BST<T> {
 
 	public int Count() {
 		count = 0;
-		if(Root == null) return 0;
+		if(Root == null)return 0;
 		recTest(Root);
 		return count;
 	}
