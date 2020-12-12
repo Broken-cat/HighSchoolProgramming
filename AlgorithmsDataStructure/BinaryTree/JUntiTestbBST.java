@@ -420,16 +420,55 @@ public class JUntiTestbBST {
 		tree.AddKeyValue(65, 65);
 		assertTrue(tree.Count() == 7 && tree.FindNodeByKey(55).Node.RightChild.equals(tree.FindNodeByKey(65).Node));
 		
-		tree.DeleteNodeByKey(45);
-	//	tree.DeleteNodeByKey(30);
+		deleTeFindAddFind(50, tree);
+		deleTeFindAddFind(10, tree);
+		deleTeFindAddFind(25, tree);
+		deleTeFindAddFind(40, tree);
+		deleTeFindAddFind(30, tree);
+		deleTeFindAddFind(45, tree);
+		deleTeFindAddFind(80, tree);
+		deleTeFindAddFind(90, tree);
+		deleTeFindAddFind(70, tree);
+		deleTeFindAddFind(55, tree);
+		deleTeFindAddFind(65, tree);
+		
+		deleTeFind(50, tree);
+		deleTeFind(10, tree);
+		deleTeFind(25, tree);
+		deleTeFind(40, tree);
+		deleTeFind(30, tree);
+		deleTeFind(45, tree);
+		deleTeFind(80, tree);
+		deleTeFind(90, tree);
+		deleTeFind(70, tree);
+		deleTeFind(55, tree);
+		deleTeFind(65, tree);
+	/*	tree.DeleteNodeByKey(30);
 		tree.Show(tree.Root);
 		assertTrue(tree.FindNodeByKey(35).Node.Parent.equals(tree.FindNodeByKey(45).Node)
 				&& tree.FindNodeByKey(45).Node.LeftChild.equals(tree.FindNodeByKey(30).Node));
 		
 		assertTrue(tree.FinMinMax(tree.FindNodeByKey(45).Node, false) == tree.FindNodeByKey(35).Node
 				&& tree.FinMinMax(tree.FindNodeByKey(45).Node, true) == tree.FindNodeByKey(45).Node);
-		tree.FinMinMax(tree.FindNodeByKey(35).Node, false);
+		tree.FinMinMax(tree.FindNodeByKey(35).Node, false);*/
 		
+	}
+	
+	public void deleTeFindAddFind(int key, BST tree) {
+		assertTrue(tree.FindNodeByKey(key).NodeHasKey == true);
+		tree.DeleteNodeByKey(key); tree.Count();
+		assertTrue(tree.FindNodeByKey(key).NodeHasKey == false);
+		tree.FindNodeByKey(key); tree.Count();
+		tree.AddKeyValue(key, key); tree.Count();
+		assertTrue(tree.FindNodeByKey(key).NodeHasKey == true);
+		tree.FindNodeByKey(key); tree.Count();
+	}
+	
+	public void deleTeFind(int key, BST tree) {
+		assertTrue(tree.FindNodeByKey(key).NodeHasKey == true);
+		tree.DeleteNodeByKey(key); tree.Count();
+		assertTrue(tree.FindNodeByKey(key).NodeHasKey == false);
+		tree.FindNodeByKey(key); tree.Count();
 	}
 
 }
