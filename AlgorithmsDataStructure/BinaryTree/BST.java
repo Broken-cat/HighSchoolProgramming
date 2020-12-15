@@ -282,8 +282,8 @@ public class BST<T> {
 		return count;
 	}
 
-	public LinkedList<BSTNode<T>> WideAllNodes() {
-		LinkedList<BSTNode<T>> res = new LinkedList<BSTNode<T>>();
+	public ArrayList<BSTNode<T>> WideAllNodes() {
+		ArrayList<BSTNode<T>> res = new ArrayList<BSTNode<T>>();
 		Queue<BSTNode<T>> queue = new ArrayDeque<BSTNode<T>>();
 		queue.add(Root);
 		while (!queue.isEmpty()) {
@@ -297,8 +297,8 @@ public class BST<T> {
 		return res;
 	}
 
-	public LinkedList<BSTNode<T>> DeepAllNodes(int _order) {
-		LinkedList<BSTNode<T>> res = new LinkedList<BSTNode<T>>();
+	public ArrayList<BSTNode<T>> DeepAllNodes(int _order) {
+		ArrayList<BSTNode<T>> res = new ArrayList<BSTNode<T>>();
 		if(Root == null)return res;
 		switch (_order) {
 		case 0: {
@@ -318,7 +318,7 @@ public class BST<T> {
 		}
 	}
 
-	private void inOrder(LinkedList<BSTNode<T>> _list, BSTNode<T> _startNode) {
+	private void inOrder(ArrayList<BSTNode<T>> _list, BSTNode<T> _startNode) {
 		if (_startNode != null) {
 			inOrder(_list, _startNode.LeftChild);
 			_list.add(_startNode);
@@ -326,7 +326,7 @@ public class BST<T> {
 		}
 	}
 
-	private void preOrder(LinkedList<BSTNode<T>> _list, BSTNode<T> _startNode) {
+	private void preOrder(ArrayList<BSTNode<T>> _list, BSTNode<T> _startNode) {
 		if (_startNode != null) {
 			_list.add(_startNode);
 			preOrder(_list, _startNode.LeftChild);
@@ -334,7 +334,7 @@ public class BST<T> {
 		}
 	}
 
-	private void postOrder(LinkedList<BSTNode<T>> _list, BSTNode<T> _startNode) {
+	private void postOrder(ArrayList<BSTNode<T>> _list, BSTNode<T> _startNode) {
 		if (_startNode != null) {
 			postOrder(_list, _startNode.LeftChild);
 			postOrder(_list, _startNode.RightChild);
