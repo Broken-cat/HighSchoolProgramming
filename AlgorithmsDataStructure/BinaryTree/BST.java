@@ -1,3 +1,6 @@
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Queue;
 
 class BSTNode<T> {
 	public int ChildsCount;
@@ -300,22 +303,13 @@ public class BST<T> {
 	public ArrayList<BSTNode<T>> DeepAllNodes(int _order) {
 		ArrayList<BSTNode<T>> res = new ArrayList<BSTNode<T>>();
 		if(Root == null)return res;
-		switch (_order) {
-		case 0: {
+		if(_order == 0) 
 			postOrder(res, Root);
-			return res;
-		}
-		case 1: {
+		if(_order == 1) 
 			preOrder(res, Root);
-			return res;
-		}
-		case 2: {
+		if(_order == 2) 
 			inOrder(res, Root);
-			return res;
-		}
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + _order);
-		}
+		return res;
 	}
 
 	private void inOrder(ArrayList<BSTNode<T>> _list, BSTNode<T> _startNode) {
