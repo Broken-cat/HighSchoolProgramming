@@ -1,3 +1,7 @@
+import java.util.ArrayDeque;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 class BSTNode<T> {
 	public int ChildsCount;
@@ -33,7 +37,6 @@ class BSTNode<T> {
 	}
 }
 
-
 //////////////To_left one time was used
 class BSTFind<T> {
 
@@ -59,18 +62,18 @@ public class BST<T> {
 
 	public BSTFind<T> FindNodeByKey(int key) {
 		BSTFind<T> fNode = new BSTFind<T>(this.Root);
-		if(Root == null) {
+		if (Root == null) {
 			fNode.NodeHasKey = false;
 			return fNode;
-		} 
+		}
 		fNode.NodeHasKey = true;
-		while (fNode.Node.NodeKey != key) {    
+		while (fNode.Node.NodeKey != key) {
 			if (fNode.Node.NodeKey > key) {
 				if (fNode.Node.LeftChild != null)
 					fNode.Node = fNode.Node.LeftChild;
 				else {
 					fNode.NodeHasKey = false;
-					if(fNode.Node.NodeKey < key)
+					if (fNode.Node.NodeKey < key)
 						fNode.ToLeft = false;
 					else
 						fNode.ToLeft = true;
@@ -81,7 +84,7 @@ public class BST<T> {
 					fNode.Node = fNode.Node.RightChild;
 				else {
 					fNode.NodeHasKey = false;
-					if(fNode.Node.NodeKey < key)
+					if (fNode.Node.NodeKey < key)
 						fNode.ToLeft = false;
 					else
 						fNode.ToLeft = true;
@@ -139,7 +142,7 @@ public class BST<T> {
 		BSTNode<T> currentNode = current.Node;
 		BSTNode<T> reciever;// = FinMinMax(current.Node, false);
 		if (currentNode.ChildCount() == 0) {
-			if(currentNode.equals(Root)) {
+			if (currentNode.equals(Root)) {
 				currentNode = null;
 				Root = null;
 				return true;
@@ -184,64 +187,62 @@ public class BST<T> {
 			return true;
 		} else if (currentNode.ChildCount() == 2) {
 			reciever = FinMinMax(currentNode.RightChild, false);
-			if(reciever.LeftChild == null && reciever.RightChild == null) {
-				if(!currentNode.LeftChild.equals(reciever))
+			if (reciever.LeftChild == null && reciever.RightChild == null) {
+				if (!currentNode.LeftChild.equals(reciever))
 					currentNode.LeftChild.Parent = reciever;
-				if(!currentNode.RightChild.equals(reciever))
+				if (!currentNode.RightChild.equals(reciever))
 					currentNode.RightChild.Parent = reciever;
-				if(reciever.NodeKey > reciever.Parent.NodeKey)
+				if (reciever.NodeKey > reciever.Parent.NodeKey)
 					reciever.Parent.RightChild = null;
 				else
 					reciever.Parent.LeftChild = null;
 
-				
 				reciever.LeftChild = currentNode.LeftChild;
 				reciever.RightChild = currentNode.RightChild;
-				if(currentNode.equals(this.Root)) {
+				if (currentNode.equals(this.Root)) {
 					this.Root = reciever;
 					reciever.Parent = null;
 				} else {
-					
-					if(reciever.NodeKey > currentNode.Parent.NodeKey) {
-						currentNode.Parent.RightChild = reciever;;
+
+					if (reciever.NodeKey > currentNode.Parent.NodeKey) {
+						currentNode.Parent.RightChild = reciever;
+						;
 					} else {
 						currentNode.Parent.LeftChild = reciever;
 					}
 					reciever.Parent = currentNode.Parent;
 				}
 				return true;
-			} else if (reciever.LeftChild == null && reciever.RightChild != null) {//123123123
-				if(reciever.NodeKey > reciever.Parent.NodeKey)
+			} else if (reciever.LeftChild == null && reciever.RightChild != null) {// 123123123
+				if (reciever.NodeKey > reciever.Parent.NodeKey)
 					reciever.Parent.RightChild = reciever.RightChild;
 				else
 					reciever.Parent.LeftChild = reciever.RightChild;
 				reciever.RightChild.Parent = reciever.Parent;
-				
-				
+
 				currentNode.LeftChild.Parent = reciever;
 				currentNode.RightChild.Parent = reciever;
 				reciever.LeftChild = currentNode.LeftChild;
 				reciever.RightChild = currentNode.RightChild;
-				if(currentNode.equals(this.Root)) {
+				if (currentNode.equals(this.Root)) {
 					reciever.Parent = null;
 					this.Root = reciever;
 					currentNode = null;
 					return true;
 				} else {
-					if(currentNode.NodeKey > currentNode.Parent.NodeKey) {
+					if (currentNode.NodeKey > currentNode.Parent.NodeKey) {
 						currentNode.Parent.RightChild = reciever;
 						reciever.Parent = currentNode.Parent;
-					}
-					else {
+					} else {
 						currentNode.Parent.LeftChild = reciever;
 						reciever.Parent = currentNode.Parent;
 					}
-						
+
 				}
-				
+
 				return true;
 			} else {
-				if(reciever.RightChild != null) {
+				if (reciever.RightChild != null) {
 					reciever.RightChild.Parent = reciever.Parent;
 					reciever.Parent.LeftChild = reciever.RightChild;
 				}
@@ -250,7 +251,7 @@ public class BST<T> {
 				currentNode.RightChild.Parent = reciever;
 				reciever.LeftChild = currentNode.LeftChild;
 				reciever.RightChild = currentNode.RightChild;
-				if(currentNode.equals(this.Root))
+				if (currentNode.equals(this.Root))
 					this.Root = reciever;
 				return true;
 			}
@@ -268,7 +269,7 @@ public class BST<T> {
 	}
 
 	public void recTest(BSTNode<T> _startNode) {
-	//	System.out.println(_startNode.NodeKey);
+		// System.out.println(_startNode.NodeKey);
 		count++;
 		if (_startNode.LeftChild != null)
 			recTest(_startNode.LeftChild);
@@ -279,9 +280,70 @@ public class BST<T> {
 
 	public int Count() {
 		count = 0;
-		if(Root == null)return 0;
+		if (Root == null)
+			return 0;
 		recTest(Root);
 		return count;
+	}
+
+	public LinkedList<BSTNode<T>> WideAllNodes() {
+		LinkedList<BSTNode<T>> res = new LinkedList<BSTNode<T>>();
+		Queue<BSTNode<T>> queue = new ArrayDeque<BSTNode<T>>();
+		queue.add(Root);
+		while (!queue.isEmpty()) {
+			BSTNode<T> node = queue.poll();
+			res.add(node);
+			if (node.LeftChild != null)
+				queue.add(node.LeftChild);
+			if (node.RightChild != null)
+				queue.add(node.RightChild);
+		}
+		return res;
+	}
+
+	public LinkedList<BSTNode<T>> DeepAllNodes(int _order) {
+		LinkedList<BSTNode<T>> res = new LinkedList<BSTNode<T>>();
+		if(Root == null)return res;
+		switch (_order) {
+		case 0: {
+			postOrder(res, Root);
+			return res;
+		}
+		case 1: {
+			preOrder(res, Root);
+			return res;
+		}
+		case 2: {
+			inOrder(res, Root);
+			return res;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + _order);
+		}
+	}
+
+	private void inOrder(LinkedList<BSTNode<T>> _list, BSTNode<T> _startNode) {
+		if (_startNode != null) {
+			inOrder(_list, _startNode.LeftChild);
+			_list.add(_startNode);
+			inOrder(_list, _startNode.RightChild);
+		}
+	}
+
+	private void preOrder(LinkedList<BSTNode<T>> _list, BSTNode<T> _startNode) {
+		if (_startNode != null) {
+			_list.add(_startNode);
+			preOrder(_list, _startNode.LeftChild);
+			preOrder(_list, _startNode.RightChild);
+		}
+	}
+
+	private void postOrder(LinkedList<BSTNode<T>> _list, BSTNode<T> _startNode) {
+		if (_startNode != null) {
+			postOrder(_list, _startNode.LeftChild);
+			postOrder(_list, _startNode.RightChild);
+			_list.add(_startNode);
+		}
 	}
 
 }
