@@ -1,4 +1,5 @@
 
+
 class BSTNode<T> {
 	public int ChildsCount;
 	public int NodeKey;
@@ -284,7 +285,7 @@ public class BST<T> {
 
 	public ArrayList<BSTNode<T>> WideAllNodes() {
 		ArrayList<BSTNode<T>> res = new ArrayList<BSTNode<T>>();
-		Queue<BSTNode<T>> queue = new ArrayDeque<BSTNode<T>>();
+		Queue<BSTNode<T>> queue = new LinkedList<BSTNode<T>>();
 		queue.add(Root);
 		while (!queue.isEmpty()) {
 			BSTNode<T> node = queue.poll();
