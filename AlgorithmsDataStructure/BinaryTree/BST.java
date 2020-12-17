@@ -298,7 +298,7 @@ public class BST<T> {
 		return res;
 	}
 
-	public ArrayList DeepAllNodes(int _order) {
+	public ArrayList<BSTNode<T>> DeepAllNodes(int _order) {
 		ArrayList<BSTNode<T>> res = new ArrayList<BSTNode<T>>();
 		if(Root == null)return res;
 		if(_order == 0) 
@@ -311,10 +311,25 @@ public class BST<T> {
 	}
 
 	private void inOrder(ArrayList<BSTNode<T>> _list, BSTNode<T> _startNode) {
-		if (_startNode != null) {
-			inOrder(_list, _startNode.LeftChild);
-			_list.add(_startNode);
-			inOrder(_list, _startNode.RightChild);
+		if(_startNode == null)
+			return;
+ 
+		Stack<BSTNode<T>> s = new Stack<BSTNode<T>>();
+		BSTNode<T> currentNode=_startNode;
+ 
+		while(!s.empty() || currentNode!=null){
+ 
+			if(currentNode!=null)
+			{
+				s.push(currentNode);
+				currentNode=currentNode.LeftChild;
+			}
+			else
+			{
+				BSTNode<T> n=s.pop();
+				_list.add(n);
+				currentNode=n.RightChild;
+			}
 		}
 	}
 
