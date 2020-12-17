@@ -283,7 +283,7 @@ public class BST<T> {
 		return count;
 	}
 
-	public ArrayList<BSTNode<T>> WideAllNodes() {
+	public ArrayList WideAllNodes() {
 		ArrayList<BSTNode<T>> res = new ArrayList<BSTNode<T>>();
 		Queue<BSTNode<T>> queue = new LinkedList<BSTNode<T>>();
 		queue.add(Root);
@@ -298,7 +298,7 @@ public class BST<T> {
 		return res;
 	}
 
-	public ArrayList<BSTNode<T>> DeepAllNodes(int _order) {
+	public ArrayList DeepAllNodes(int _order) {
 		ArrayList<BSTNode<T>> res = new ArrayList<BSTNode<T>>();
 		if(Root == null)return res;
 		if(_order == 0) 
