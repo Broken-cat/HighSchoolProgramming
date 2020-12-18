@@ -1,4 +1,3 @@
-package aBST;
 
 class aBST {
 	public Integer Tree[]; // массив ключей
