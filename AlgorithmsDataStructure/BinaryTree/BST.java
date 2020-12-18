@@ -299,18 +299,18 @@ public class BST<T> {
 	}
 
 	public ArrayList DeepAllNodes(int _order) {
-		ArrayList<BSTNode<T>> res = new ArrayList<BSTNode<T>>();
+		ArrayList res = new ArrayList();
 		if(Root == null)return res;
 		if(_order == 0) 
-			postOrder(res, Root);
-		if(_order == 1) 
-			preOrder(res, Root);
-		if(_order == 2) 
 			inOrder(res, Root);
+		if(_order == 1) 
+			postOrder(res, Root);
+		if(_order == 2) 
+			preOrder(res, Root);
 		return res;
 	}
 
-	private void inOrder(ArrayList<BSTNode<T>> _list, BSTNode<T> _startNode) {
+	/*private void inOrder(ArrayList<BSTNode<T>> _list, BSTNode<T> _startNode) {
 		if(_startNode == null)
 			return;
  
@@ -331,7 +331,16 @@ public class BST<T> {
 				currentNode=n.RightChild;
 			}
 		}
+	}*/
+	
+	private void inOrder(ArrayList<BSTNode<T>> _list, BSTNode<T> _startNode) {
+		if (_startNode != null) {
+			inOrder(_list, _startNode.LeftChild);
+			_list.add(_startNode);
+			inOrder(_list, _startNode.RightChild);
+		}
 	}
+
 
 	private void preOrder(ArrayList<BSTNode<T>> _list, BSTNode<T> _startNode) {
 		if (_startNode != null) {
