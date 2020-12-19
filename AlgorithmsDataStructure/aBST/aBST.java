@@ -41,10 +41,9 @@ class aBST {
 		int pos = -FindKeyIndex(key);
 		if (Tree[pos] == null) {
 			Tree[pos] = key;
-			return -1;
-		}
-		if (Tree[pos] == null)
 			return pos;
+		}
+		
 		// добавляем ключ в массив
 		return -1;
 		// индекс добавленного/существующего ключа или -1 если не удалось
