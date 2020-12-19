@@ -1,4 +1,5 @@
 
+
 class aBST {
 	public Integer Tree[]; // массив ключей
 
@@ -38,15 +39,29 @@ class aBST {
 	}
 
 	public int AddKey(int key) {
-		int pos = -FindKeyIndex(key);
-		if (Tree[pos] == null) {
-			Tree[pos] = key;
-			return pos;
+		try {
+			int pos = -FindKeyIndex(key);
+			try {
+				if (Tree[pos] == key)
+					;
+				return pos;
+			} catch (ArrayIndexOutOfBoundsException e) {
+				// TODO: handle exception
+				if (pos < 0)
+					return -pos;
+				return -1;// индекс добавленного/существующего ключа или -1 если не удалось
+			} catch (NullPointerException e) {
+				// TODO: handle exception
+				Tree[pos] = key;
+				return pos;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return -1;
 		}
-		
+
 		// добавляем ключ в массив
-		return -1;
-		// индекс добавленного/существующего ключа или -1 если не удалось
+
 	}
 
 }
