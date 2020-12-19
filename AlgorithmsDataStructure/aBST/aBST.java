@@ -5,7 +5,7 @@ class aBST {
 	public aBST(int depth) {
 		// правильно рассчитайте размер массива для дерева глубины depth:
 		int tree_size = 0;
-		for (int i = 0; i < depth; i++)
+		for (int i = 0; i <= depth; i++)
 			tree_size += (int) Math.pow(2, i);
 		Tree = new Integer[tree_size];
 		for (int i = 0; i < tree_size; i++)
