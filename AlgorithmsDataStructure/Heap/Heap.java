@@ -1,4 +1,5 @@
 
+
 class Heap
 {
     public int [] HeapArray; 
@@ -19,9 +20,9 @@ class Heap
 		
     public int GetMax()
     {
-    	HeapArray[0] = -1;
-    	int i = 1;
-    	while(HeapArray[i] >= 0 && i < HeapArray.length) 
+    	if(HeapArray[0] == -1) return -1;
+    	int i = -1;
+    	while(HeapArray[i+1] >= 0 && i < HeapArray.length) 
     		i++;
     	HeapArray[0] = HeapArray[i];
     	HeapArray[i] = -1;
@@ -31,13 +32,21 @@ class Heap
     		k = 1;
     	else 
     		k = 2;
-    	if(HeapArray[0] < HeapArray[k])
-    		
-    		while (HeapArray[i] < HeapArray[(i+1)/2] || HeapArray[i] < HeapArray[(i+2)/2]) {
-    			if(HeapArray[i] < HeapArray[(2*i)+1])
+    	if(HeapArray[0] > HeapArray[1] && HeapArray[0] > HeapArray[2])return HeapArray[0];
+    	else recArray(HeapArray, i);
+    	return HeapArray[0];
+    }
+    
+    public void recArray(int[] heap, int i) {
+    	if (heap[2*i+1] > heap[2*i+2] && heap[2*i+1] > heap[i]) {
+    		swap(heap, i, 2*i+1);
+    		recArray(heap, 2*i+1);
     	}
-	// вернуть значение корня и перестроить кучу
-	return -1; // если куча пуста
+    	else if(heap[2*i+2] > heap[2*i+1] && heap[2*i+2] > heap[i]) {
+    		swap(heap, i, 2*i+2);
+    		recArray(heap, 2*i+2);
+    	}
+    	
     }
     
 
