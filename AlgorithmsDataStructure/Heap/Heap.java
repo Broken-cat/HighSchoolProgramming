@@ -18,10 +18,12 @@ class Heap {
 			Add(a[i]);
 	}
 
+	
 	public int GetMax() {
  		if (HeapArray[0] == -1)
 			return -1;
 		int i = -1;
+		int res = HeapArray[0];
 		try {
 			while (HeapArray[i + 1] >= 0 && i < HeapArray.length)
 				i++;
@@ -41,10 +43,10 @@ class Heap {
 			return HeapArray[0];
 		else
 			recArray(HeapArray, i);
-		return HeapArray[0];
+		return res;
 		// вернуть значение корня и перестроить кучу
 	}
-
+	
 	public void recArray(int[] heap, int i) {
 		try {
 			if (heap[2 * i + 1] > heap[2 * i + 2] && heap[2 * i + 1] > heap[i]) {
