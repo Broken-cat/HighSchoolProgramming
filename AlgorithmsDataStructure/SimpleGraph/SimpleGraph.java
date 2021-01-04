@@ -34,8 +34,7 @@ class SimpleGraph
      vertex[freeSlot] = ver;
     }
 
-    // здесь и далее, параметры v -- индекс вершины
-    // в списке  vertex
+
     public void RemoveVertex(int v)
     {
       while(!vertex[v].ways.isEmpty()) {
