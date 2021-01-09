@@ -1,5 +1,4 @@
 
-
 class SimpleTreeNode<T> {
 	public int NodeLevel;
 	public T NodeValue;
@@ -171,9 +170,9 @@ class SimpleTree<T> {
 		return Leaf;
 	}
 
-	List<T> res;
-	public List<T> EvenTrees() {
-		res = new LinkedList<T>();
+	ArrayList<T> res;
+	public ArrayList<T> EvenTrees() {
+		res = new ArrayList<T>();
 		int num = 0;
 		recNodeForest(Root, num);
 		return res;
@@ -181,10 +180,8 @@ class SimpleTree<T> {
 	
 	public void recNodeForest(SimpleTreeNode<T> _startNode, int num) {
 		
-		//System.out.print(_startNode.NodeValue + " ");
 		try {
 			if ((num+1) % 2 == 0 && _startNode.Children.size() % 2 == 1 && !_startNode.equals(Root)) {
-				System.out.println();
 				res.add(_startNode.Parent.NodeValue);
 				res.add(_startNode.NodeValue);
 			} num++;
@@ -196,7 +193,7 @@ class SimpleTree<T> {
 	}
 
 	public void recListForest(List<SimpleTreeNode<T>> list, int num) {
-		
+
 		for (int i = 0; i < list.size(); i++)
 			recNodeForest(list.get(i), num);
 		
