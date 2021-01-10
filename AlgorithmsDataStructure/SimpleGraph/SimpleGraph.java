@@ -33,7 +33,38 @@ class SimpleGraph
      int freeSlot = freeSlots.pop();
      vertex[freeSlot] = ver;
     }
-
+	
+	
+	ArrayList<Vertex> dfs;
+	public ArrayList<Vertex> DepthFirstSearch(int VFrom, int VTo) {
+		for(int i = 0; i < vertex.length;i++)vertex[i].Hit = false;
+		dfs = new ArrayList<Vertex>();
+		Stack<Vertex> stack = new Stack<Vertex>();
+		Vertex current = vertex[VFrom];
+		stack.push(current);
+		current.Hit = true;
+	go :	while(!stack.isEmpty()) {
+			current = stack.pop();
+			dfs.add(current);
+			for(int i = 0; i < current.ways.size(); i++) {
+				if(vertex[current.ways.get(i)].Value == vertex[VTo].Value) {
+					stack.push(vertex[VTo]);
+					vertex[VTo].Hit = true;
+					dfs.add(vertex[VTo]);
+					break go;
+				}
+				if(vertex[current.ways.get(i)].Hit == false) {
+					vertex[current.ways.get(i)].Hit = true;
+					stack.push(vertex[current.ways.get(i)]);
+				}
+				
+			}
+		}
+		if(vertex[VTo].Hit == false)dfs.clear();
+		
+		return dfs;
+	}
+	
 
     public void RemoveVertex(int v)
     {
