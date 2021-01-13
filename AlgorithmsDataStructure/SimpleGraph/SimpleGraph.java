@@ -1,6 +1,4 @@
-package SimpleGraph;
 
-import java.util.*;
 
 class Vertex {
 	public int Value;
