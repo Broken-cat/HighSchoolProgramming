@@ -1,9 +1,12 @@
+package SimpleGraph;
 
+import java.util.*;
 
 class Vertex {
 	public int Value;
 	public boolean Hit;
 	public Stack<Integer> ways;
+	public Vertex from;
 
 	public Vertex(int val) {
 		Value = val;
@@ -63,29 +66,38 @@ class SimpleGraph {
 		for (int i = 0; i < vertex.length; i++)
 			vertex[i].Hit = false;
 		dfs = new ArrayList<Vertex>();
-		Queue <Vertex> queue = new LinkedList<Vertex>();
+	    Deque <Vertex> queue = new LinkedList<Vertex>();
 		Vertex current = vertex[VFrom];
 		queue.add(current);
 		current.Hit = true;
 		go: while (!queue.isEmpty()) {
 			current = queue.poll();
-			dfs.add(current);
 			for (int i = 0; i < current.ways.size(); i++) {
-				if (vertex[current.ways.get(i)].Value == vertex[VTo].Value) {
-					queue.add(vertex[VTo]);
-					vertex[VTo].Hit = true;
-					dfs.add(vertex[VTo]);
-					break go;
-				}
 				if (vertex[current.ways.get(i)].Hit == false) {
 					vertex[current.ways.get(i)].Hit = true;
 					queue.add(vertex[current.ways.get(i)]);
+					vertex[current.ways.get(i)].from = current;
+				}
+				if (vertex[current.ways.get(i)].Value == vertex[VTo].Value) {
+					queue.add(vertex[VTo]);
+					vertex[VTo].Hit = true;
+					break go;
 				}
 
+				
 			}
 		}
 		if (vertex[VTo].Hit == false)
 			dfs.clear();
+		else {
+			current = queue.getLast();
+			while(current.Value != vertex[VFrom].Value) {
+				dfs.add(current);
+				current = current.from;
+			}
+			dfs.add(current);
+			Collections.reverse(dfs);
+		}
 		return dfs;
 	}
 	
