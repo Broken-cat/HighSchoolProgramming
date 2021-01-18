@@ -1,15 +1,15 @@
 
-
 class Vertex {
 	public int Value;
 	public boolean Hit;
 	public Stack<Integer> ways;
 	public Vertex from;
-
+	public ArrayList<Vertex> fromList;
 	public Vertex(int val) {
 		Value = val;
 		ways = new Stack<Integer>();
 		Hit = false;
+		fromList = new ArrayList<Vertex>();
 	}
 }
 
@@ -99,24 +99,35 @@ class SimpleGraph {
 		return dfs;
 	}
 	
-	
+	//boolean isTriangle;
 	public ArrayList<Vertex> WeakVertices()
     {
 		ArrayList<Vertex> res = new ArrayList<Vertex>();
-	go : for(int i = 0; i < vertex.length; i++) {
-			for(int j = 0; j < vertex[i].ways.size(); j++){
-				if(vertex[i].ways.contains(vertex[j]) && i!=j)continue go;
-				else {
-					res.add(vertex[i]);
-					continue go;
+		for(int i = 0 ; i < vertex.length; i++)
+			res.add(vertex[i]);
+		
+		for(int i = 0; i < vertex.length; i++) {
+			for (int j = 0; j < vertex[i].fromList.size(); j++) {
+				//System.out.print(vertex[i].fromList.get(j).Value);
+				for (int k = 0; k < vertex[i].fromList.get(j).fromList.size() ;k++) {
+					if(vertex[i].fromList.contains(vertex[i].fromList.get(j).fromList.get(k)))
+						res.remove(vertex[i]);
+					//System.out.print(vertex[i].fromList.get(j).fromList.get(k).Value);
 				}
+			//	System.out.println();
 			}
+			
 		}
+		
 		return res;
-      // возвращает список узлов вне треугольников
     }
 	
 
+	public void printT(ArrayList<Vertex> vertex2) {
+		for(int i = 0; i < vertex2.size(); i++)
+			System.out.print(vertex2.get(i).Value+ " ");
+		System.out.println();
+	}
 
 
 	public void AddVertex(int value) {
@@ -149,6 +160,8 @@ class SimpleGraph {
 			m_adjacency[v2][v1] = 1;
 			vertex[v1].ways.push(v2);
 			vertex[v2].ways.push(v1);
+			vertex[v2].fromList.add(vertex[v1]);
+			vertex[v1].fromList.add(vertex[v2]);
 		}
 	}
 
@@ -158,8 +171,6 @@ class SimpleGraph {
 		if (vertex[v1] != null && vertex[v2] != null) {
 			m_adjacency[v1][v2] = 0;
 			m_adjacency[v2][v1] = 0;
-			vertex[v1].ways.removeElement(v2);
-			vertex[v2].ways.removeElement(v1);
 		}
 	}
 }
