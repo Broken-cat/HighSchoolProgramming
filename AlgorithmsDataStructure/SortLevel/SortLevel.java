@@ -1,4 +1,3 @@
-package SortLevel;
 
 public class SortLevel {
 	
