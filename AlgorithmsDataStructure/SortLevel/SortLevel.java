@@ -37,7 +37,7 @@ public class SortLevel {
 			for(int k = j+step; k < array.length; k+=step) {
 				int key = array[k];
 				int ind = k-step;
-				while (ind >= 0 && array[ind] > key ) {
+				while (ind >= 0 && array[ind] > key && ind >= i) {
 					array[ind+step] = array[ind];
 					ind-=step;
 				}
