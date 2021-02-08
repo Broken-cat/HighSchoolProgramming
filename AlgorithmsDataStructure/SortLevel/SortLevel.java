@@ -32,9 +32,8 @@ public class SortLevel {
        return result;
      }
 	
-	public static void InsertionSortStep(int[] array, int step, int i) {
-		for (int j = 0; j < step; j++) {
-			for(int k = i+j+step; k < array.length; k+=step) {
+		public static void InsertionSortStep(int[] array, int step, int i) {
+			for(int k = i+step; k < array.length; k+=step) {
 				int key = array[k];
 				int ind = k-step;
 				while (ind >= 0 && array[ind] > key && ind >= i) {
@@ -43,7 +42,5 @@ public class SortLevel {
 				}
 				array[ind+step]=key;
 			}
-			
-		}
 	}
 }
