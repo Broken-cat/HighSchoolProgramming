@@ -85,7 +85,7 @@ public class SortLevel {
 			while(M[i2] > middleIndex);
 			
 			if(i1 > i2) { 
-				return ++middleIndex;
+				return ++i2;
 			}
 			swap(i1, i2, M);
 		}	
