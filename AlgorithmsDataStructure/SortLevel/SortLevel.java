@@ -67,27 +67,32 @@ public class SortLevel {
 			int temp = array[i];
 			array[i] = array[j];
 			array[j] = temp;
+		
 	}
 	
 	public static int ArrayChunk( int[] M ) {
-		int N = M.length/2;
-		int middleIndex = M[N];
-		int i1 = -1;
-		int i2 = M.length;
+		
 		while(true) {
-			do {
+			int N = M.length/2;
+			int middleIndex = M[N];
+			int i1 = 0;
+			int i2 = M.length-1;
+			while(M[i1] < middleIndex) {
 				i1++;
 			}
-			while(M[i1] < middleIndex);
-			do {
+			while(M[i2] > middleIndex) {
 				i2--;
 			}
-			while(M[i2] > middleIndex);
-			
-			if(i1 > i2) { 
-				return ++i2;
+
+			if(M[i1] > M[i2]) { 
+				swap(i1, i2, M);
+				continue;
 			}
-			swap(i1, i2, M);
+			if(i1 == i2 || (i1==i2-1 && M[i1] < M[i2])) {
+				return i2;
+			}
+			
 		}	
 	}
+	
 }
