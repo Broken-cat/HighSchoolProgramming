@@ -70,19 +70,19 @@ public class SortLevel {
 	}
 	
 	public static void QuickSort( int[] array, int left, int right ) {
-		if(left != right){
-			int N = ArrayChunk(array);
+		if(left < right){
+			int N = ArrayChunk(array, left, right);
 			QuickSort(array, left, N-1);
 			QuickSort(array, N+1, right);
 		}
 	}
 	
-	public static int ArrayChunk( int[] M ) {
-		int middle = M.length/2;
+	public static int ArrayChunk( int[] M , int left, int right) {
+		int middle = (left+right)/2;
 		
 		int N = M[middle];
-		int i1 = 0;
-		int i2 = M.length-1;
+		int i1 = left;
+		int i2 = right;
 		while(true) {
 			
 			while(M[i1] < N) {
@@ -96,7 +96,7 @@ public class SortLevel {
 				swap(i1, i2, M);
 				N = M[middle];
 				i1 = 0;
-				i2 = M.length-1;
+				i2 = right;
 				continue;
 				
 			}
