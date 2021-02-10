@@ -1,5 +1,4 @@
 
-
 public class SortLevel {
 
 	public static void SelectionSortStep(int array[], int i) {
@@ -68,6 +67,14 @@ public class SortLevel {
 			array[i] = array[j];
 			array[j] = temp;
 		
+	}
+	
+	public static void QuickSort( int[] array, int left, int right ) {
+		if(left != right){
+			int N = ArrayChunk(array);
+			QuickSort(array, left, N-1);
+			QuickSort(array, N+1, right);
+		}
 	}
 	
 	public static int ArrayChunk( int[] M ) {
