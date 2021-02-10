@@ -64,10 +64,30 @@ public class SortLevel {
 	}
 
 	public static void swap(int i, int j, int array[]) {
-		if (array[i] < array[j]) {
 			int temp = array[i];
 			array[i] = array[j];
 			array[j] = temp;
-		}
+	}
+	
+	public static int ArrayChunk( int[] M ) {
+		int N = M.length/2;
+		int middleIndex = M[N];
+		int i1 = -1;
+		int i2 = M.length;
+		while(true) {
+			do {
+				i1++;
+			}
+			while(M[i1] < middleIndex);
+			do {
+				i2--;
+			}
+			while(M[i2] > middleIndex);
+			
+			if(i1 > i2) { 
+				return ++middleIndex;
+			}
+			swap(i1, i2, M);
+		}	
 	}
 }
