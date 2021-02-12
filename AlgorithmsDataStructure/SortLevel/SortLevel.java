@@ -77,6 +77,23 @@ public class SortLevel {
 		}
 	}
 	
+	static int count = 0;
+	public static void QuickSortTailOptimization( int[] array, int left, int right ) {
+		++count;
+		while(left < right){
+			int N = ArrayChunk(array, left, right);
+			if(left - N < right - N) {
+				QuickSortTailOptimization(array, left, N-1);
+				left = N+1;
+			} else {
+				QuickSortTailOptimization(array, N+1, right);
+				right = N-1;
+			}
+			
+		}
+	}
+
+	
 	public static int ArrayChunk( int[] M , int left, int right) {
 		int middle = (left+right)/2;
 		
