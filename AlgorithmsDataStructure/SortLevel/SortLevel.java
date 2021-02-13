@@ -131,11 +131,11 @@ public class SortLevel {
 		ArrayList result = new ArrayList<>();
 		int N = ArrayChunk(Array, L, R);
 		while(N != k) { 
-			N = ArrayChunk(Array, L, R);
 		if(N < k) 
 			L++;
 		if(N > k)
 			R--;
+		N = (R+L)/2;
 		}
 		result.add(L);
 		result.add(R);
