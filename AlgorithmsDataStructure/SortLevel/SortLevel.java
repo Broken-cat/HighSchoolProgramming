@@ -127,14 +127,14 @@ public class SortLevel {
 	}
 	
 		
-	public static ArrayList KthOrderStatisticsStep( int[] Array, int L, int R, int k ) {
+		public static ArrayList KthOrderStatisticsStep( int[] Array, int L, int R, int k ) {
 		ArrayList result = new ArrayList<>();
 		int N = ArrayChunk(Array, L, R);
 		 if(N != k) { 
 		if(N < k) 
-			L++;
+			L=++N;
 		if(N > k)
-			R--;
+			R=--N;
 		}
 		result.add(L);
 		result.add(R);
