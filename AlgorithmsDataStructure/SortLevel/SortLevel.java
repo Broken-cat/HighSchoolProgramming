@@ -142,17 +142,19 @@ public class SortLevel {
 	}
 	
 	static ArrayList temp = new ArrayList();
-	public static ArrayList MergeSort(int arr[]) {
-		int len = arr.length;
+	public static ArrayList MergeSort(ArrayList arr) {
 		ArrayList result = new ArrayList();
-		divideRec(arr, temp);
 		if(temp.size() == 1) {
-			result.add(arr[0]);
+			result.add(arr.get(0));
 			return result;
 		}
+		int arr2[] = new int[arr.size()];
+		for(int i = 0; i < arr.size(); i++)
+			arr2[i] = (int)arr.get(i);
+		int len = arr2.length;
+		divideRec(arr2, temp);
 		for(int i = 0; 0 < temp.size(); i+=2) {
-			int[] tempArr = new int[0];
-			takeMinAndMakeem((int[])temp.get(i), (int[])temp.get(i+1), tempArr);
+			 int[] tempArr = takeMinAndMakeem((int[])temp.get(i), (int[])temp.get(i+1));
 			if(tempArr.length == len) {
 				for(int j = 0; j < len; j++)
 					result.add(tempArr[j]);
@@ -176,8 +178,8 @@ public class SortLevel {
 		}
 	}
 	
-	public static  void takeMinAndMakeem(int[] ar1, int[] ar2, int[] res) {
-		res = new int [ar1.length + ar2.length];
+	public static  int[] takeMinAndMakeem(int[] ar1, int[] ar2) {
+		int[] res = new int [ar1.length + ar2.length];
 		int[] tmp = new int[ar1.length + ar2.length];
 		System.arraycopy(ar1, 0, tmp, 0, ar1.length);
 		System.arraycopy(ar1, 0, tmp, 0, ar1.length);
@@ -196,6 +198,7 @@ public class SortLevel {
 			min = 999999999;
 			index++;
 		}
+		return res;
 	}
 	
 	
