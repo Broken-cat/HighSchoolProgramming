@@ -1,4 +1,5 @@
 
+
 public class SortLevel {
 
 	public static void SelectionSortStep(int array[], int i) {
@@ -68,15 +69,6 @@ public class SortLevel {
 			array[j] = temp;
 		
 	}
-	
-	public static void QuickSort( int[] array, int left, int right ) {
-		if(left < right){
-			int N = ArrayChunk(array, left, right);
-			QuickSort(array, left, N-1);
-			QuickSort(array, N+1, right);
-		}
-	}
-	
 	static int count = 0;
 	public static void QuickSortTailOptimization( int[] array, int left, int right ) {
 		++count;
@@ -94,9 +86,18 @@ public class SortLevel {
 	}
 
 	
+	public static void QuickSort( int[] array, int left, int right ) {
+		System.out.println(++count);
+		if(left < right){
+			int N = ArrayChunk(array, left, right);
+			System.out.println(Arrays.toString(array) + " " + left + " " + right);
+			QuickSort(array, left, N-1);
+			QuickSort(array, N+1, right);
+		}
+	}
+	
 	public static int ArrayChunk( int[] M , int left, int right) {
 		int middle = (left+right)/2;
-		
 		int N = M[middle];
 		int i1 = left;
 		int i2 = right;
@@ -126,8 +127,8 @@ public class SortLevel {
 		}	
 	}
 	
-		
-		public static ArrayList KthOrderStatisticsStep( int[] Array, int L, int R, int k ) {
+	
+	public static ArrayList KthOrderStatisticsStep( int[] Array, int L, int R, int k ) {
 		ArrayList result = new ArrayList<>();
 		int N = ArrayChunk(Array, L, R);
 		 if(N != k) { 
@@ -141,5 +142,79 @@ public class SortLevel {
 		return result;
 	}
 	
+	static ArrayList<int []> temp = new ArrayList<int[]>();
+	public static ArrayList MergeSort(int arr[]) {
+		int len = arr.length;
+		ArrayList result = new ArrayList();
+		divideRec(arr, temp);
+		if(temp.size() == 1) {
+			result.add(arr[0]);
+			return result;
+		}
+		for(int i = 0; 0 < temp.size(); i+=2) {
+			int[] tempArr = takeMinAndMakeem(temp.get(i), temp.get(i+1));
+			if(tempArr.length == len) {
+				for(int j = 0; j < len; j++)
+					result.add(tempArr[j]);
+				break;
+			}
+			temp.add(tempArr);
+		}
+		return result;
+		
+	}
+	
+	public static void divideRec(int arr[], ArrayList list) {
+		int[] L =new int [(arr.length+1)/2], R = new int[arr.length/2];
+		if(arr.length != 1)	{
+			System.arraycopy(arr, 0, L, 0, (arr.length+1)/2);
+			System.arraycopy(arr, (arr.length+1)/2, R, 0, arr.length/2);
+			divideRec(L, list);
+			divideRec(R, list);
+		} else {
+			list.add(arr);
+		}
+	}
+	
+	public static int[] takeMinAndMakeem(int[] ar1, int[] ar2) {
+		int[] res = new int [ar1.length + ar2.length];
+		int[] tmp = new int[ar1.length + ar2.length];
+		System.arraycopy(ar1, 0, tmp, 0, ar1.length);
+		System.arraycopy(ar1, 0, tmp, 0, ar1.length);
+		int prevMin = -9999999;
+		int min = 99999999;
+		int index = 0;
+		while(index != ar1.length+ar2.length) {
+			for(int i = 0; i < ar1.length; i++) 
+				if(ar1[i] < min && prevMin < ar1[i]) 
+					min = ar1[i];
+			for(int i = 0; i < ar2.length; i++)
+				if(ar2[i] < min && prevMin < ar2[i])
+					min = ar2[i];
+			res[index] = min;
+			prevMin = min;
+			min = 999999999;
+			index++;
+		}
+		return res;
+	}
+	
+	
+	
+
+	
+	public static int factTail(int n, int a) {
+		System.out.println(a + " " + n);
+		if(n < 0)return 0;
+		if(n == 0)return 1;
+		if(n == 1)return a;
+		return factTail(n-1, n*a);
+	}
+	
+	public static int fact (int n) {
+		if (n == 0)
+			return 1;
+		return n * fact(n-1);
+	}
 	
 }
