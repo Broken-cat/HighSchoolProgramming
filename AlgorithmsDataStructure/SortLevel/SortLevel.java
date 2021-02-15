@@ -1,5 +1,4 @@
 
-
 public class SortLevel {
 
 	public static void SelectionSortStep(int array[], int i) {
@@ -142,7 +141,7 @@ public class SortLevel {
 		return result;
 	}
 	
-	static ArrayList<int []> temp = new ArrayList<int[]>();
+	static ArrayList temp = new ArrayList();
 	public static ArrayList MergeSort(int arr[]) {
 		int len = arr.length;
 		ArrayList result = new ArrayList();
@@ -152,7 +151,8 @@ public class SortLevel {
 			return result;
 		}
 		for(int i = 0; 0 < temp.size(); i+=2) {
-			int[] tempArr = takeMinAndMakeem(temp.get(i), temp.get(i+1));
+			int[] tempArr = new int[0];
+			takeMinAndMakeem((int[])temp.get(i), (int[])temp.get(i+1), tempArr);
 			if(tempArr.length == len) {
 				for(int j = 0; j < len; j++)
 					result.add(tempArr[j]);
@@ -176,8 +176,8 @@ public class SortLevel {
 		}
 	}
 	
-	public static int[] takeMinAndMakeem(int[] ar1, int[] ar2) {
-		int[] res = new int [ar1.length + ar2.length];
+	public static  void takeMinAndMakeem(int[] ar1, int[] ar2, int[] res) {
+		res = new int [ar1.length + ar2.length];
 		int[] tmp = new int[ar1.length + ar2.length];
 		System.arraycopy(ar1, 0, tmp, 0, ar1.length);
 		System.arraycopy(ar1, 0, tmp, 0, ar1.length);
@@ -196,7 +196,6 @@ public class SortLevel {
 			min = 999999999;
 			index++;
 		}
-		return res;
 	}
 	
 	
