@@ -202,14 +202,12 @@ public class SortLevel {
 		if(left.size() == 0 && right.size() != 0) {
 			for(int j = 0; j < right.size(); j++) {
 				res[index] = (right.get(j));
-				right.remove(j);
 				index++;
 			}
 		}
 		if(left.size() != 0 && right.size() == 0) {
 			for(int j = 0; j < left.size(); j++) {
 				res[index] = (left.get(j));
-				left.remove(j);
 				index++;
 			}
 		}
