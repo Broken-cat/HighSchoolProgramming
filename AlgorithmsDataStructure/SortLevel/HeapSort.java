@@ -18,9 +18,7 @@ public class HeapSort {
 	}
 	
 	public int GetNextMax() {
-		while(HeapObject.GetMax() != -1) {
-		}
-		return -1;
+		return HeapObject.GetMax();
 	}
 }
 
