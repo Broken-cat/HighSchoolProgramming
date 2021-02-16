@@ -1,5 +1,3 @@
-package SortLevel;
-
 
 public class HeapSort {
 	public Heap HeapObject;
