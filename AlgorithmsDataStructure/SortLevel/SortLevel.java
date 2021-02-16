@@ -1,4 +1,3 @@
-
 public class SortLevel {
 
 	public static void SelectionSortStep(int array[], int i) {
@@ -182,28 +181,42 @@ public class SortLevel {
 		int[] res = new int [ar1.length + ar2.length];
 		int[] tmp = new int[ar1.length + ar2.length];
 		System.arraycopy(ar1, 0, tmp, 0, ar1.length);
-		System.arraycopy(ar1, 0, tmp, 0, ar1.length);
-		int prevMin = -9999999;
-		int min = 99999999;
 		int index = 0;
-		while(index != ar1.length+ar2.length) {
-			for(int i = 0; i < ar1.length; i++) 
-				if(ar1[i] < min && prevMin < ar1[i]) 
-					min = ar1[i];
-			for(int i = 0; i < ar2.length; i++)
-				if(ar2[i] < min && prevMin < ar2[i])
-					min = ar2[i];
-			res[index] = min;
-			prevMin = min;
-			min = 999999999;
-			index++;
+		ArrayList<Integer> left = new ArrayList<Integer>();
+		for(int i = 0; i < ar1.length; i++)
+			left.add(ar1[i]);
+		ArrayList<Integer> right = new ArrayList<Integer>();
+		for(int i = 0; i < ar2.length; i++)
+			right.add(ar2[i]);
+		while(left.size() != 0 && right.size() != 0) {
+			if(left.get(0) <= right.get(0)) {
+				res[index] = (left.get(0));
+				left.remove(0);
+				index++;
+			} else {
+				res[index] = (right.get(0));
+				right.remove(0);
+				index++;
+			}
+		}	
+		if(left.size() == 0 && right.size() != 0) {
+			for(int j = 0; j < right.size(); j++) {
+				res[index] = (right.get(j));
+				right.remove(j);
+				index++;
+			}
+		}
+		if(left.size() != 0 && right.size() == 0) {
+			for(int j = 0; j < left.size(); j++) {
+				res[index] = (left.get(j));
+				left.remove(j);
+				index++;
+			}
 		}
 		return res;
 	}
 	
 	
-	
-
 	
 	public static int factTail(int n, int a) {
 		System.out.println(a + " " + n);
