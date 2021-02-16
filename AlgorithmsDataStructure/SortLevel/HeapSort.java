@@ -1,3 +1,4 @@
+
 public class HeapSort {
 	public Heap HeapObject;
 	
@@ -55,7 +56,6 @@ class Heap {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
 		HeapArray[0] = HeapArray[i];
 		HeapArray[i] = -1;
 		i = 0;
@@ -65,7 +65,7 @@ class Heap {
 		else
 			k = 2;
 		if (HeapArray[0] > HeapArray[1] && HeapArray[0] > HeapArray[2])
-			return HeapArray[0];
+			return res;
 		else
 			recArray(HeapArray, i);
 		return res;
