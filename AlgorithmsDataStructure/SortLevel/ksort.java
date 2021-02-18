@@ -1,5 +1,3 @@
-package ksort;
-
 public class ksort {
 
 	public String[] items;
