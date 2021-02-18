@@ -1,5 +1,3 @@
-package BinarySearch;
-
 public class BinarySearch {
 	public int Left, Right;
 	private int[] numbers;
