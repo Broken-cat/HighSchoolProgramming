@@ -24,10 +24,11 @@ public class BinarySearch {
 			return;
 		}
 		if(numbers[middle] > N) {
-			Right = middle;
+			Right = middle-1;
 		} else {
-			Left = middle;
+			Left = middle+1;
 		}
+		
 		processing = 0;
 	}
 	
