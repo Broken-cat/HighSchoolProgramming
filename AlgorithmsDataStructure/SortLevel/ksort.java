@@ -13,10 +13,11 @@ public class ksort {
 		firstChar -= 97;
 		if(firstChar < 0 || firstChar > 7)return -1;
 		int numbers = Integer.parseInt(String.valueOf(s.charAt(1)).concat(String.valueOf(s.charAt(2))));
-		firstChar =firstChar*99+numbers;
+		firstChar =firstChar*100+numbers;
 		if(firstChar < 0 || firstChar > 791)return -1;
-		return firstChar+1;
+		return firstChar;
 	}
+	
 	
 	public boolean add(String s) {
 		int ind = index(s);
