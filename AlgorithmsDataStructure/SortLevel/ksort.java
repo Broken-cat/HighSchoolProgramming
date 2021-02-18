@@ -1,10 +1,11 @@
+
 public class ksort {
 
 	public String[] items;
 	public int size;
 	
 	public ksort() {
-		size = 8*99;
+		size = 8*100;
 		items = new String[size];
 	}
 	
@@ -14,10 +15,9 @@ public class ksort {
 		if(firstChar < 0 || firstChar > 7)return -1;
 		int numbers = Integer.parseInt(String.valueOf(s.charAt(1)).concat(String.valueOf(s.charAt(2))));
 		firstChar =firstChar*100+numbers;
-		if(firstChar < 0 || firstChar > 791)return -1;
+		if(firstChar < 0 || firstChar > 800)return -1;
 		return firstChar;
 	}
-	
 	
 	public boolean add(String s) {
 		int ind = index(s);
