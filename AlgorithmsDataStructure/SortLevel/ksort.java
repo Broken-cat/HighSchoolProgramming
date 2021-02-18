@@ -1,4 +1,3 @@
-
 public class ksort {
 
 	public String[] items;
@@ -10,6 +9,7 @@ public class ksort {
 	}
 	
 	public int index(String s ) {
+		if(s.length() <= 0 || s.length() > 3)return -1;
 		int firstChar = hashFun(String.valueOf(s.charAt(0)));
 		firstChar -= 97;
 		if(firstChar < 0 || firstChar > 7)return -1;
