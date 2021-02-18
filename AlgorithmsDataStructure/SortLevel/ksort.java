@@ -27,8 +27,6 @@ public class BinarySearch {
 		} else {
 			Left = middle+1;
 		}
-		
-		processing = 0;
 	}
 	
 	public int GetResult() {
