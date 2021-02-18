@@ -15,11 +15,11 @@ public class ksort {
 		int numbers = Integer.parseInt(String.valueOf(s.charAt(1)).concat(String.valueOf(s.charAt(2))));
 		firstChar =firstChar*99+numbers;
 		if(firstChar < 0 || firstChar > 791)return -1;
-		return firstChar;
+		return firstChar+1;
 	}
 	
 	public boolean add(String s) {
-		int ind = index(s)+1;
+		int ind = index(s);
 		try {
 			items[ind] = s;
 			return true;
