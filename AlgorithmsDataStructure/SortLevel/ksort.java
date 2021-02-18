@@ -19,7 +19,7 @@ public class ksort {
 	}
 	
 	public boolean add(String s) {
-		int ind = index(s)-1;
+		int ind = index(s)+1;
 		try {
 			items[ind] = s;
 			return true;
