@@ -1,42 +1,37 @@
-public class ksort {
-
-	public String[] items;
-	public int size;
+public class BinarySearch {
+	public int Left, Right;
+	private int[] numbers;
+	private int processing;
 	
-	public ksort() {
-		size = 8*100;
-		items = new String[size];
+	public BinarySearch(int arr[]) {
+		numbers = arr;
+		Left = 0;
+		Right = arr.length-1;
+		processing = 0;
 	}
 	
-	public int index(String s ) {
-		if(s.length() <= 0 || s.length() > 3)return -1;
-		int firstChar = hashFun(String.valueOf(s.charAt(0)));
-		firstChar -= 97;
-		if(firstChar < 0 || firstChar > 7)return -1;
-		int numbers = Integer.parseInt(String.valueOf(s.charAt(1)).concat(String.valueOf(s.charAt(2))));
-		firstChar =firstChar*100+numbers;
-		if(firstChar < 0 || firstChar > 800)return -1;
-		return firstChar;
-	}
-	
-	public boolean add(String s) {
-		int ind = index(s);
-		try {
-			items[ind] = s;
-			return true;
-		} catch (Exception e) {
-			// TODO: handle exception
-			return false;
+	public void Step( int N) {
+		if(processing != 0)return;
+		int middle = (Right+Left)/2;
+ 		if(numbers[middle] == N) {
+			processing = +1;
+			return;
 		}
+		if((Left == Right && numbers[Right] != N) ||
+				(Left == Right-1 && numbers[Right] != N)) {
+			processing =  -1;
+			return;
+		}
+		if(numbers[middle] > N) {
+			Right = middle-1;
+		} else {
+			Left = middle+1;
+		}
+		
+		processing = 0;
 	}
 	
-
-	public int hashFun(String value) {
-		byte[] bytes = value.getBytes();
-		int sum = 0;
-		for (int i = 0; i < bytes.length; i++) {
-			sum += bytes[i];
-		}
-		return sum % size;
+	public int GetResult() {
+		return processing;
 	}
 }
