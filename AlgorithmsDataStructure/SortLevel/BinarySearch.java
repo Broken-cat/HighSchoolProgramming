@@ -1,8 +1,9 @@
+package BinarySearch;
 
 public class BinarySearch {
 	public int Left, Right;
 	private int[] numbers;
-	private int processing;
+	public int processing;
 	
 	public BinarySearch(int arr[]) {
 		numbers = arr;
@@ -14,22 +15,16 @@ public class BinarySearch {
 	public void Step( int N) {
 		if(processing != 0)return;
 		int middle = (Right+Left)/2;
-		if(numbers[middle] == N) {
-			processing = 1;
-			return;
-		}
-		if((Left == Right && numbers[Left] != N) ||
-				(Left == Right-1 && numbers[Left] != N)) {
-			processing =  -1;
-			return;
-		}
-		if(numbers[middle] > N) {
+		if(numbers[middle] == N)processing = 1;
+		if(numbers[middle] > N) 
 			Right = middle-1;
-		} else {
+		if(numbers[middle] < N) 
 			Left = middle+1;
+		if(Left == Right || Left == Right-1) {
+			if(numbers[Left] == N || numbers[Right] == N)processing = 1;
+			else processing = -1;
+			return;
 		}
-		
-		processing = 0;
 	}
 	
 	public int GetResult() {
