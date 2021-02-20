@@ -35,6 +35,8 @@ public class BinarySearch {
 	}
 	
 	public boolean  GallopingSearch(int arr[], int N) {
+		Left = 0;
+		Right = arr.length-1;
 		if(arr[index] == N)return true;
 		if(arr[index] < N) {
 			i++;
