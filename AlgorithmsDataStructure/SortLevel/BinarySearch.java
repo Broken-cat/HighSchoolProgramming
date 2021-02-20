@@ -4,15 +4,16 @@ public class BinarySearch {
 	public int processing;
 	public int index;
 	public int i = 1;
-	
+
 	public BinarySearch(int arr[]) {
 		numbers = arr;
 		Left = 0;
 		Right = arr.length-1;
 		processing = 0;
+		index = 1;
 		index = (int)(Math.pow(2, i))-2;;
 	}
-	
+
 	public void Step( int N) {
 		if(processing != 0)return;
 		int middle = (Right+Left)/2;
@@ -44,10 +45,11 @@ public class BinarySearch {
 			}
 		}
 		Right = index;
-		Left = (int) ((Math.pow(2, (index-arr.length-2))-2)+1);
+		Left = (int) ((Math.pow(2, (i-1))-2)+1);
 		while(processing == 0)Step(N);
+
+		while(processing == 0 && Left <= Right)Step(N);
 		if(processing == 1)return true;
 		return false;
-		
 	}
 }
