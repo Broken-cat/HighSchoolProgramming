@@ -1,3 +1,4 @@
+
 public class BinarySearch {
 	public int Left, Right;
 	private int[] numbers;
@@ -47,8 +48,6 @@ public class BinarySearch {
 		Right = index;
 		Left = (int) ((Math.pow(2, (i-1))-2)+1);
 		while(processing == 0)Step(N);
-
-		while(processing == 0 && Left <= Right)Step(N);
 		if(processing == 1)return true;
 		return false;
 	}
