@@ -21,8 +21,8 @@ public class BinarySearch {
 			Right = middle-1;
 		if(numbers[middle] < N) 
 			Left = middle+1;
-		if(Left == Right || Left == Right-1) {
-			if(numbers[Left] == N || numbers[Right] == N)processing = 1;
+		if(Left == Right || Math.abs(Left - Right) == 1) {
+			if(numbers[Left] == N || numbers[Math.abs(Right)] == N)processing = 1;
 			else processing = -1;
 			return;
 		}
@@ -45,7 +45,7 @@ public class BinarySearch {
 		}
 		Right = index;
 		Left = (int) ((Math.pow(2, (index-arr.length-2))-2)+1);
-		while(processing == 0 && Left <= Right)Step(N);
+		while(processing == 0)Step(N);
 		if(processing == 1)return true;
 		return false;
 		
