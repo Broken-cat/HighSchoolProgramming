@@ -1,4 +1,3 @@
-
 public class BinarySearch {
 	public int Left, Right;
 	private int[] numbers;
@@ -11,8 +10,6 @@ public class BinarySearch {
 		Left = 0;
 		Right = arr.length-1;
 		processing = 0;
-		index = 1;
-		index = (int)(Math.pow(2, i))-2;;
 	}
 
 	public void Step( int N) {
@@ -37,20 +34,28 @@ public class BinarySearch {
 	public boolean  GallopingSearch(int arr[], int N) {
 		Left = 0;
 		Right = arr.length-1;
+
+		i = 1;
+		index = (int)(Math.pow(2, i))-2;
 		if(arr[index] == N)return true;
-		if(arr[index] < N) {
+		while(arr[index] < N) {
 			i++;
 			index = (int)(Math.pow(2, i))-2;
 			if(index < arr.length-1) {
-				GallopingSearch(arr, N);
+				continue;
 			} else {
 				index = arr.length-1;
+				break;
 			}
 		}
 		Right = index;
 		Left = (int) ((Math.pow(2, (i-1))-2)+1);
 		while(processing == 0)Step(N);
-		if(processing == 1)return true;
+		if(processing == 1) {
+			processing = 0;
+			return true;
+		}
+		processing = 0;
 		return false;
 	}
 }
