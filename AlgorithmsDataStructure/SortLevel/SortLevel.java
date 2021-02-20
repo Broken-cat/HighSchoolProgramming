@@ -1,8 +1,3 @@
-package SortLevel;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class SortLevel {
 
 	public static void SelectionSortStep(int array[], int i) {
