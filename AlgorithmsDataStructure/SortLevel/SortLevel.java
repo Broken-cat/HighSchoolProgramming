@@ -1,4 +1,7 @@
+package SortLevel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SortLevel {
 
@@ -232,30 +235,63 @@ public class SortLevel {
 		return n * fact(n-1);
 	}
 	
+	static int i = 1;
+	static int index = (int)(Math.pow(2, i))-2;
+	public static boolean GallopingSearch(int arr[], int N) {
+		if(arr[index] == N)return true;
+		if(arr[index] < N) {
+			i++;
+			index = (int)(Math.pow(2, i))-2;
+			if(index < arr.length-1) {
+				GallopingSearch(arr, N);
+			} else {
+				index = arr.length-1;
+			}
+		}
+		int Right = index;
+		int Left = (int) ((Math.pow(2, (i-1))-2)+1);
+		BinarySearch bs = new BinarySearch(arr);
+		while(bs.processing == 0)bs.Step(N);
+
+		while(bs.processing == 0 && Left <= Right)bs.Step(N);
+		if(bs.processing == 1)return true;
+		return false;
+	}
+	
 }
 
-class HeapSort {
-	public Heap HeapObject;
-	
-	public HeapSort(int[] arr) {
-		HeapObject = new Heap();
-		int dep = getDepth(arr.length);
-		HeapObject.MakeHeap(arr, dep);
+ class BinarySearch {
+	public int Left, Right;
+	private int[] numbers;
+	public int processing;
+	public int index;
+	public int i = 1;
+
+	public BinarySearch(int arr[]) {
+		numbers = arr;
+		Left = 0;
+		Right = arr.length-1;
+		processing = 0;
+		index = 1;
+		index = (int)(Math.pow(2, i))-2;;
+	}
+
+	public void Step( int N) {
+		if(processing != 0)return;
+		int middle = (Right+Left)/2;
+		if(numbers[middle] == N)processing = 1;
+		if(numbers[middle] > N) 
+			Right = middle-1;
+		if(numbers[middle] < N) 
+			Left = middle+1;
+		if(Left == Right || Math.abs(Left - Right) == 1) {
+			if(numbers[Left] == N || numbers[Math.abs(Right)] == N)processing = 1;
+			else processing = -1;
+			return;
+		}
 	}
 	
-	public int getDepth(int len) {
-		int temp = 0;
-		int index = 0;
-		while(temp < len) {
-			temp += (int) Math.pow(2, index);
-			index++;
-		}
-		return --index;
-	}
-	
-	public int GetNextMax() {
-		while(HeapObject.GetMax() != -1) {
-		}
-		return -1;
+	public int GetResult() {
+		return processing;
 	}
 }
