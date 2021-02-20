@@ -1,5 +1,3 @@
-package GallopingSearch;
-
 public class GallopingSearch {
 	static int i = 1;
 	static int index = (int)(Math.pow(2, i)-2);
